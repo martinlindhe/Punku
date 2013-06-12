@@ -1,7 +1,7 @@
 using System;
 using System.Drawing;
 
-namespace punku
+namespace Punku
 {
     public class ImageReader : IFileReader
     {

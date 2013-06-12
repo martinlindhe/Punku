@@ -1,6 +1,6 @@
 using System;
 
-namespace punku
+namespace Punku
 {
     public interface IFileReader
     {

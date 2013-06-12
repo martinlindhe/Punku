@@ -33,8 +33,17 @@
     <Compile Include="FileSystem\ImageReader.cs" />
     <Compile Include="FileSystem\BinaryReader.cs" />
     <Compile Include="FileSystem\IFileReader.cs" />
+    <Compile Include="Hash\Hash.cs" />
+    <Compile Include="Hash\MD5.cs" />
+    <Compile Include="Hash\SHA1.cs" />
+    <Compile Include="Hash\SHA256.cs" />
+    <Compile Include="Hash\SHA512.cs" />
+    <Compile Include="ByteArrayPrinter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Hash\" />
   </ItemGroup>
 </Project>

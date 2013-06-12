@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace punku
+namespace Punku
 {
     public class BinaryReader : IFileReader
     {
