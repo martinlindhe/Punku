@@ -1,10 +1,23 @@
-﻿<Properties>
+﻿<Properties GitUserInfo="UsingMD">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="PunkuTests/Hash/TestSHA512.cs">
+    <Files>
+      <File FileName="PunkuTests/Hash/TestMD5.cs" Line="4" Column="11" />
+      <File FileName="PunkuTests/Hash/TestSHA1.cs" Line="4" Column="11" />
+      <File FileName="PunkuTests/Hash/TestSHA256.cs" Line="4" Column="11" />
+      <File FileName="PunkuTests/Hash/TestSHA512.cs" Line="4" Column="11" />
+      <File FileName="PunkuTests/TestByteArrayPrinter.cs" Line="4" Column="11" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" selected="True">
-          <Node name="punku" expanded="True" />
+        <State expanded="True">
+          <Node name="Punku" expanded="True">
+            <Node name="FileSystem" expanded="True" />
+            <Node name="Hash" expanded="True" />
+          </Node>
+          <Node name="PunkuTests" expanded="True" selected="True">
+            <Node name="Hash" expanded="True" />
+          </Node>
         </State>
       </Pad>
       <Pad Id="ClassPad">
