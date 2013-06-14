@@ -1,21 +1,24 @@
 ﻿<Properties GitUserInfo="UsingMD">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="PunkuTests/Hash/TestSHA512.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="punku/IFileReader/BinaryReader.cs">
     <Files>
-      <File FileName="PunkuTests/Hash/TestMD5.cs" Line="4" Column="11" />
-      <File FileName="PunkuTests/Hash/TestSHA1.cs" Line="4" Column="11" />
-      <File FileName="PunkuTests/Hash/TestSHA256.cs" Line="4" Column="11" />
-      <File FileName="PunkuTests/Hash/TestSHA512.cs" Line="4" Column="11" />
+      <File FileName="PunkuTests/Hash/TestMD5.cs" Line="37" Column="40" />
+      <File FileName="PunkuTests/Hash/TestSHA1.cs" Line="37" Column="41" />
+      <File FileName="PunkuTests/Hash/TestSHA256.cs" Line="37" Column="43" />
+      <File FileName="PunkuTests/Hash/TestSHA512.cs" Line="37" Column="43" />
       <File FileName="PunkuTests/TestByteArrayPrinter.cs" Line="4" Column="11" />
+      <File FileName="punku/IFileReader/IFileReader.cs" Line="1" Column="1" />
+      <File FileName="punku/IFileReader/BinaryReader.cs" Line="31" Column="31" />
+      <File FileName="punku/IFileReader/ImageReader.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
+        <State expanded="True" selected="True">
           <Node name="Punku" expanded="True">
-            <Node name="FileSystem" expanded="True" />
             <Node name="Hash" expanded="True" />
+            <Node name="IFileReader" expanded="True" />
           </Node>
-          <Node name="PunkuTests" expanded="True" selected="True">
+          <Node name="PunkuTests" expanded="True">
             <Node name="Hash" expanded="True" />
           </Node>
         </State>
