@@ -11,10 +11,15 @@ namespace Punku
 
         public Image Image { get; private set; }
 
-        public void Read (string filename)
+        public ImageReader(string filename)
+        {
+            Read(filename);
+        }
+
+        public void Read(string filename)
         {
             // handles BMP, GIF, PNG, JPEG, TIFF
-            this.Image = Image.FromFile (filename);
+            this.Image = Image.FromFile(filename);
         }
     }
 }

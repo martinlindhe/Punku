@@ -4,7 +4,7 @@ namespace Punku
 {
     public interface IFileReader
     {
-        void Read (string filename);
+        void Read(string filename);
     }
 }
 

@@ -5,15 +5,20 @@ namespace Punku
 {
     public class BinaryReader : IFileReader
     {
-        public byte[] Data { get; set; }
+        public byte[] Data { get; private set; }
 
-        public long Length { get; set; }
+        public long Length { get; private set; }
+
+        public BinaryReader(string filename)
+        {
+            Read(filename);
+        }
 
         public void Read(string filename)
         {            
             try
             {
-                FileStream src = new FileStream(filename, FileMode.Open, FileAccess.Read);
+                var src = new FileStream(filename, FileMode.Open, FileAccess.Read);
 
                 this.Length = src.Length;
                 this.Data = new byte[this.Length];
