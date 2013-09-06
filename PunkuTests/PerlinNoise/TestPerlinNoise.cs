@@ -39,7 +39,6 @@ public class TestPerlinNoise
         graphics.Dispose();
 
         bitmap.Save("perlin.png", System.Drawing.Imaging.ImageFormat.Png);
-
         bitmap.Dispose();
     }
 
