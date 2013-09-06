@@ -33,7 +33,7 @@ namespace Punku
 	/// Based loosely on SimplexNoise1234 by Stefan Gustavson <http://staffwww.itn.liu.se/~stegu/aqsis/aqsis-newnoise/>
 	/// 
 	/// </summary>
-    public class PerlinNoise
+    public class SimplexNoise
     {
 		/// <summary>
 		/// 1D simplex noise

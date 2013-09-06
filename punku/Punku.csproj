@@ -40,7 +40,7 @@
     <Compile Include="IFileReader\BinaryReader.cs" />
     <Compile Include="IFileReader\IFileReader.cs" />
     <Compile Include="PerlinNoise\Martins2dNoise.cs" />
-    <Compile Include="PerlinNoise\Noise.cs" />
+    <Compile Include="PerlinNoise\SimplexNoise.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
