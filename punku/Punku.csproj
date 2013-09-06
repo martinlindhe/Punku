@@ -41,6 +41,7 @@
     <Compile Include="IFileReader\IFileReader.cs" />
     <Compile Include="PerlinNoise\Martins2dNoise.cs" />
     <Compile Include="PerlinNoise\SimplexNoise.cs" />
+    <Compile Include="PerlinNoise\BrownianMotion.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
