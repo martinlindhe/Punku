@@ -7,18 +7,18 @@ using Punku;
 public class TestFileReaders
 {
     [Test]
-    public void TestBinary()
+    public void TestBinary ()
     {
-        var x = new Punku.BinaryReader("/home/ml/WNDAP360_RM_03May2011.pdf");
+        var x = new Punku.BinaryReader ("binary_file.jpg");
 
-        Console.WriteLine("size is " + x.Length);
+        Console.WriteLine ("size is " + x.Length);
     }
 
     [Test]
-    public void TestImage()
+    public void TestImage ()
     {
-        var x = new Punku.ImageReader("/home/ml/WNDAP360_RM_03May2011.pdf");
+        var x = new Punku.ImageReader ("binary_file.jpg");
 
-        Console.WriteLine("size is " +x.Width + " x " +x.Height);
+        Console.WriteLine ("size is " + x.Width + " x " + x.Height);
     }
 }

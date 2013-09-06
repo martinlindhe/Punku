@@ -39,11 +39,14 @@
     <Compile Include="IFileReader\ImageReader.cs" />
     <Compile Include="IFileReader\BinaryReader.cs" />
     <Compile Include="IFileReader\IFileReader.cs" />
+    <Compile Include="PerlinNoise\Martins2dNoise.cs" />
+    <Compile Include="PerlinNoise\Noise.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Hash\" />
+    <Folder Include="PerlinNoise\" />
   </ItemGroup>
 </Project>
