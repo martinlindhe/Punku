@@ -27,7 +27,7 @@ namespace Punku
 
             Color[][] perlinImage = BlendImages (image1, image2, perlinNoise);
 
-            SaveImage (perlinImage, "perlin_noise_blended.png");
+            SaveImage (perlinImage, "perlin_DemoImageBlend.png");
         }
 
         public static void DemoPlantGrowth ()
@@ -41,7 +41,7 @@ namespace Punku
             Color[][][] animation = AnimateTransition (image1, image2, frameCount);
 
             for (int i = 0; i < frameCount; i++) {
-                SaveImage (animation[i], "blend_animation" + i + ".png");
+                SaveImage (animation[i], "perlin_DemoPlantGrowth" + i + ".png");
             }
         }
 
@@ -56,10 +56,10 @@ namespace Punku
 
             float[][] perlinNoise = GeneratePerlinNoise (width, height, octaveCount);
             Color[][] perlinImage = MapGradient (gradientStart, gradientEnd, perlinNoise);
-            SaveImage (perlinImage, "perlin_noise.png");
+            SaveImage (perlinImage, "perlin_DemoGradientMap.png");
         }
 
-        public static void Main ()
+        public static void RunTests ()
         {
             DemoGradientMap ();
             DemoImageBlend ();
@@ -67,31 +67,33 @@ namespace Punku
         }
         #endregion
 
-        public static Bitmap GenerateBrownian (int height, int width, int octaveCount = 8)
+        public static Bitmap GenerateBrownian (int width, int height, int octaveCount = 8)
         {
-            var baseNoise = GenerateWhiteNoise (width, height);
-            //            var perlinNoise = baseNoise;
-            var perlinNoise = GeneratePerlinNoise (baseNoise, octaveCount);
-            //            perlinNoise = AdjustLevels (perlinNoise, 0.2f, 0.8f);
+            var perlinNoise = GeneratePerlinNoise (width, height, octaveCount);
+            perlinNoise = AdjustLevels (perlinNoise, 0.2f, 0.8f);
 
             Color gradientStart = Color.FromArgb (255, 0, 0);
-            Color gradientEnd = Color.FromArgb (255, 0, 255);
+            Color gradientEnd = Color.FromArgb (255, 255, 255);
             Color[][] perlinImage = MapGradient (gradientStart, gradientEnd, perlinNoise);
 
             Bitmap x = ToBitmap (perlinImage);
+
+            SaveImage (perlinImage, "perlin_noise.png");
+            //x.Save ("perlin_noise.png");
+
             return x;
         }
 
-        private static Bitmap ToBitmap (Color[][] color)
+        private static Bitmap ToBitmap (Color[][] img)
         {        
-            int width = color.Length;
-            int height = color [0].Length;
+            int width = img.Length;
+            int height = img [0].Length;
 
             Bitmap bitmap = new Bitmap (width, height);
 
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
-                    bitmap.SetPixel (x, y, color [x] [y]);
+                    bitmap.SetPixel (x, y, img [x] [y]);
                 }
             }
 
