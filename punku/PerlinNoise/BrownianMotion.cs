@@ -5,10 +5,8 @@ using System.Drawing;
 // based on http://devmag.org.za/2009/04/25/perlin-noise/
 namespace Punku
 {
-    public class BrownianMotion
-    {        
-        static Random random = new Random ();
-        #region Demo
+    public class FractalBrownianMotionTests : FractalBrownianMotion
+    {
         private static void DemoImageBlend ()
         {
             int octaveCount = 8;
@@ -22,27 +20,15 @@ namespace Punku
             int width = image1.Length;
             int height = image1 [0].Length;
 
-            float[][] perlinNoise = GeneratePerlinNoise (width, height, octaveCount);
+            float[][] baseNoise = GenerateWhiteNoise (width, height);
+
+            var perlinNoise = GeneratePerlinNoise (baseNoise, octaveCount);
+
             perlinNoise = AdjustLevels (perlinNoise, 0.2f, 0.8f);
 
             Color[][] perlinImage = BlendImages (image1, image2, perlinNoise);
 
             SaveImage (perlinImage, "perlin_DemoImageBlend.png");
-        }
-
-        public static void DemoPlantGrowth ()
-        {
-            int frameCount = 10;
-
-
-            Color[][] image1 = LoadImage ("sand.png");
-            Color[][] image2 = LoadImage ("grass.png");
-
-            Color[][][] animation = AnimateTransition (image1, image2, frameCount);
-
-            for (int i = 0; i < frameCount; i++) {
-                SaveImage (animation[i], "perlin_DemoPlantGrowth" + i + ".png");
-            }
         }
 
         public static void DemoGradientMap ()
@@ -51,10 +37,13 @@ namespace Punku
             int height = 256;
             int octaveCount = 8;
 
-            Color gradientStart = Color.FromArgb (255, 0, 0);
-            Color gradientEnd = Color.FromArgb (255, 0, 255);
+            Color gradientStart = Color.FromArgb (0, 0, 0);
+            Color gradientEnd = Color.FromArgb (255, 255, 255);
 
-            float[][] perlinNoise = GeneratePerlinNoise (width, height, octaveCount);
+            float[][] baseNoise = GenerateWhiteNoise (width, height);
+
+            var perlinNoise = GeneratePerlinNoise (baseNoise, octaveCount);
+
             Color[][] perlinImage = MapGradient (gradientStart, gradientEnd, perlinNoise);
             SaveImage (perlinImage, "perlin_DemoGradientMap.png");
         }
@@ -63,22 +52,28 @@ namespace Punku
         {
             DemoGradientMap ();
             DemoImageBlend ();
-            DemoPlantGrowth ();
         }
-        #endregion
+    }
 
-        public static Bitmap GenerateBrownian (int width, int height, int octaveCount = 8)
+    public class FractalBrownianMotion
+    {        
+        static Random random = new Random ();
+
+        public static Bitmap GenerateBrownian (int width, int height, int octaveCount = 12)
         {
-            var perlinNoise = GeneratePerlinNoise (width, height, octaveCount);
+            float[][] baseNoise = GenerateWhiteNoise (width, height);
+
+            var perlinNoise = GeneratePerlinNoise (baseNoise, octaveCount);
+
             perlinNoise = AdjustLevels (perlinNoise, 0.2f, 0.8f);
 
-            Color gradientStart = Color.FromArgb (255, 0, 0);
+            Color gradientStart = Color.FromArgb (0, 0, 0);
             Color gradientEnd = Color.FromArgb (255, 255, 255);
             Color[][] perlinImage = MapGradient (gradientStart, gradientEnd, perlinNoise);
+                     
+            SaveImage (perlinImage, "perlin_noise.png");
 
             Bitmap x = ToBitmap (perlinImage);
-
-            SaveImage (perlinImage, "perlin_noise.png");
             //x.Save ("perlin_noise.png");
 
             return x;
@@ -100,12 +95,14 @@ namespace Punku
             return bitmap;            
         }
 
-        private static float[][] GenerateWhiteNoise (int width, int height)
+        protected static float[][] GenerateWhiteNoise (int width, int height)
         {            
             float[][] noise = GetEmptyArray<float> (width, height);
 
-            for (int i = 0; i < width; i++) {
-                for (int j = 0; j < height; j++) {
+            int border_width = 4;
+
+            for (int i = border_width; i < width - border_width; i++) {
+                for (int j = border_width; j < height - border_width; j++) {
                     noise [i] [j] = (float)random.NextDouble () % 1;
                 }
             }
@@ -118,7 +115,7 @@ namespace Punku
             return x0 * (1 - alpha) + alpha * x1;
         }
 
-        public static Color Interpolate (Color col0, Color col1, float alpha)
+        private static Color Interpolate (Color col0, Color col1, float alpha)
         {
             float beta = 1 - alpha;
             return Color.FromArgb (
@@ -132,16 +129,14 @@ namespace Punku
         {        
             float u = 1 - t;
 
-            Color color = Color.FromArgb (
+            return Color.FromArgb (
                 255,
                 (int)(gradientStart.R * u + gradientEnd.R * t),
                 (int)(gradientStart.G * u + gradientEnd.G * t),
                 (int)(gradientStart.B * u + gradientEnd.B * t));
-
-            return color;
         }
 
-        public static Color[][] MapGradient (Color gradientStart, Color gradientEnd, float[][] perlinNoise)
+        protected static Color[][] MapGradient (Color gradientStart, Color gradientEnd, float[][] perlinNoise)
         {
             int width = perlinNoise.Length;
             int height = perlinNoise [0].Length;
@@ -157,7 +152,7 @@ namespace Punku
             return image;
         }
 
-        public static T[][] GetEmptyArray<T> (int width, int height)
+        private static T[][] GetEmptyArray<T> (int width, int height)
         {
             T[][] image = new T[width][];
 
@@ -245,13 +240,6 @@ namespace Punku
             }        
 
             return perlinNoise;
-        }
-
-        public static float[][] GeneratePerlinNoise (int width, int height, int octaveCount)
-        {
-            float[][] baseNoise = GenerateWhiteNoise (width, height);
-
-            return GeneratePerlinNoise (baseNoise, octaveCount);
         }
 
         private static Color[][] MapToGrey (float[][] greyValues)
@@ -345,31 +333,6 @@ namespace Punku
             }
 
             return newImage;
-        }
-
-        private static Color[][][] AnimateTransition (Color[][] image1, Color[][] image2, int frameCount)
-        {  
-            Color[][][] animation = new Color[frameCount][][];
-
-            float low = 0;
-            float increment = 1.0f / frameCount; 
-            float high = increment;
-
-            float[][] perlinNoise = AdjustLevels (
-                GeneratePerlinNoise (image1.Length, image1 [0].Length, 9),
-                0.2f, 0.8f);
-
-            for (int i = 0; i < frameCount; i++) {
-                AdjustLevels (perlinNoise, low, high);
-                float[][] blendMask = AdjustLevels (perlinNoise, low, high);
-                animation [i] = BlendImages (image1, image2, blendMask);
-                //SaveImage(animation[i], "blend_animation" + i + ".png");
-                SaveImage (MapToGrey(blendMask), "blend_mask" + i + ".png");
-                low = high;
-                high += increment;
-            }
-
-            return animation;
         }
     }
 }

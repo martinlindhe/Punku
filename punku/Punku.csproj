@@ -42,6 +42,7 @@
     <Compile Include="PerlinNoise\Martins2dNoise.cs" />
     <Compile Include="PerlinNoise\SimplexNoise.cs" />
     <Compile Include="PerlinNoise\BrownianMotion.cs" />
+    <Compile Include="PerlinNoise\RollingParticleMask.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
