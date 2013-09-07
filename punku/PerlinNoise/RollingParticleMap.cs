@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 
 namespace Punku
 {
@@ -11,22 +13,96 @@ namespace Punku
 
         public static Bitmap Generate (int width, int height)
         {
+            byte[] map = new byte[width * height];
+
+            // repeat with 3000 particles
+            int particle = 0;
+            while (particle++ < 300) {
+
+                // pick a random start particle
+                int x = random.Next (0, width - 1);
+                int y = random.Next (0, height - 1);
+
+                // get its color
+                byte c = map [(y * width) + x];
+                if (c == 255) {
+                    Log ("skipping white");
+                    continue;
+                }
+
+                // draw 50 times for each particle, color is increased when painting.
+                int iteration = 0;
+                while (iteration++ < 50) {
+                    if ((x < 0 || x >= width) || (y < 0 || y >= height)) {
+                        Log ("killed of particle at iteration " + iteration);
+                        iteration = 999;
+                        continue;
+                    }
+
+                    map [(y * width) + x] = ++c;
+
+                    // decide direction
+                    int direction = random.Next (0, 3);
+                    switch (direction) {
+                    case 0:
+                        x++;
+                        break;
+                    case 1:
+                        x--;
+                        break;
+                    case 2:
+                        y++;
+                        break;
+                    case 3:
+                        y--;
+                        break;
+                    }
+
+                }
+            }
+
+            map = NormalizeData (map, 0, 256);
+
+            return ToBitmap (map, width, height);
+        }
+
+        private static byte[] NormalizeData (byte[] data, int min, int max)
+        {
+            byte[] ret = new byte[data.Length];
+
+            byte dataMin = data.Min ();
+            byte dataMax = data.Max ();
+
+            for (int i = 0; i < data.Length; i++)
+                ret [i] = (byte)(min + ((data [i] - dataMin) * (max - min) / (dataMax - dataMin)));
+
+            return ret;
+        }
+
+        public static Bitmap ToBitmap (byte[] map, int width, int height)
+        {
             Bitmap bitmap = new Bitmap (width, height);
 
-            Graphics g = Graphics.FromImage (bitmap);
-            g.Clear (Color.Black); 
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    byte value = map [(y * width) + x];
 
+                    Color color = Color.FromArgb (value, value, value);
 
-
-            // XXX pick a starting position near center.
-
-            // XXX decide directioin
-            // XXX draw 50 times for each particle, color is reduced when painting.
-            // XXX repeat with 3000 particles
+                    bitmap.SetPixel (x, y, color);
+                }
+            }
 
             return bitmap;
         }
 
+        private static void Log (string s)
+        {
+            Console.WriteLine ("[RollingParticleMap] " + s);
+        }
+    }
+}
+/*
         public uint[][] tiles;
         public uint ELEVATION_MAX = 255;
         private float INNER_BLUR = 0.88f;
@@ -175,6 +251,5 @@ namespace Punku
                 _loc_1 = _loc_1 + 1;
             }           
         }
-    }
-}
+*/    
 
