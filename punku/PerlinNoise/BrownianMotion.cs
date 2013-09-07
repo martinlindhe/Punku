@@ -9,19 +9,23 @@ namespace Punku
     {        
         static Random random = new Random ();
 
-        public static Bitmap GenerateBrownian (int width, int height, int octaveCount = 12)
+        public static Bitmap GenerateBrownian (int width, int height, int octaveCount = 8)
         {
             float[][] baseNoise = GenerateWhiteNoise (width, height);
 
+            SaveImage (baseNoise, "perlin_base.png");
+
             var perlinNoise = GeneratePerlinNoise (baseNoise, octaveCount);
+            SaveImage (perlinNoise, "perlin_noise1.png");
 
             perlinNoise = AdjustLevels (perlinNoise, 0.2f, 0.8f);
+            SaveImage (perlinNoise, "perlin_noise_adjusted.png");
 
             Color gradientStart = Color.FromArgb (0, 0, 0);
             Color gradientEnd = Color.FromArgb (255, 255, 255);
             Color[][] perlinImage = MapGradient (gradientStart, gradientEnd, perlinNoise);
                      
-            SaveImage (perlinImage, "perlin_noise.png");
+            SaveImage (perlinImage, "perlin_noise_mapped.png");
 
             Bitmap x = ToBitmap (perlinImage);
             //x.Save ("perlin_noise.png");
@@ -94,6 +98,25 @@ namespace Punku
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
                     image [x] [y] = GetColor (gradientStart, gradientEnd, perlinNoise [x] [y]);
+                }
+            }
+
+            return image;
+        }
+
+        private static Color[][] MapToGrey (float[][] greyValues)
+        {
+            int width = greyValues.Length;
+            int height = greyValues [0].Length;
+
+            Color[][] image = GetEmptyArray<Color> (width, height);
+
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    int grey = (int)(255 * greyValues [x] [y]);
+                    Color color = Color.FromArgb (255, grey, grey, grey);
+
+                    image [x] [y] = color;
                 }
             }
 
@@ -188,25 +211,6 @@ namespace Punku
             }        
 
             return perlinNoise;
-        }
-
-        private static Color[][] MapToGrey (float[][] greyValues)
-        {
-            int width = greyValues.Length;
-            int height = greyValues [0].Length;
-
-            Color[][] image = GetEmptyArray<Color> (width, height);
-
-            for (int x = 0; x < width; x++) {
-                for (int y = 0; y < height; y++) {
-                    int grey = (int)(255 * greyValues [x] [y]);
-                    Color color = Color.FromArgb (255, grey, grey, grey);
-
-                    image [x] [y] = color;
-                }
-            }
-
-            return image;
         }
 
         public static void SaveImage (Color[][] image, string fileName)
