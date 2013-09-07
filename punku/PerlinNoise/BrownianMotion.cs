@@ -5,56 +5,6 @@ using System.Drawing;
 // based on http://devmag.org.za/2009/04/25/perlin-noise/
 namespace Punku
 {
-    public class FractalBrownianMotionTests : FractalBrownianMotion
-    {
-        private static void DemoImageBlend ()
-        {
-            int octaveCount = 8;
-
-            Color gradientStart1 = Color.FromArgb (0, 255, 255);
-            Color gradientEnd1 = Color.FromArgb (0, 255, 0);
-
-            Color[][] image1 = LoadImage ("grass.png");
-            Color[][] image2 = LoadImage ("sand.png");
-
-            int width = image1.Length;
-            int height = image1 [0].Length;
-
-            float[][] baseNoise = GenerateWhiteNoise (width, height);
-
-            var perlinNoise = GeneratePerlinNoise (baseNoise, octaveCount);
-
-            perlinNoise = AdjustLevels (perlinNoise, 0.2f, 0.8f);
-
-            Color[][] perlinImage = BlendImages (image1, image2, perlinNoise);
-
-            SaveImage (perlinImage, "perlin_DemoImageBlend.png");
-        }
-
-        public static void DemoGradientMap ()
-        {
-            int width = 256;
-            int height = 256;
-            int octaveCount = 8;
-
-            Color gradientStart = Color.FromArgb (0, 0, 0);
-            Color gradientEnd = Color.FromArgb (255, 255, 255);
-
-            float[][] baseNoise = GenerateWhiteNoise (width, height);
-
-            var perlinNoise = GeneratePerlinNoise (baseNoise, octaveCount);
-
-            Color[][] perlinImage = MapGradient (gradientStart, gradientEnd, perlinNoise);
-            SaveImage (perlinImage, "perlin_DemoGradientMap.png");
-        }
-
-        public static void RunTests ()
-        {
-            DemoGradientMap ();
-            DemoImageBlend ();
-        }
-    }
-
     public class FractalBrownianMotion
     {        
         static Random random = new Random ();
@@ -99,11 +49,9 @@ namespace Punku
         {            
             float[][] noise = GetEmptyArray<float> (width, height);
 
-            int border_width = 4;
-
-            for (int i = border_width; i < width - border_width; i++) {
-                for (int j = border_width; j < height - border_width; j++) {
-                    noise [i] [j] = (float)random.NextDouble () % 1;
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    noise [x] [y] = (float)random.NextDouble () % 1;
                 }
             }
 
@@ -143,9 +91,9 @@ namespace Punku
 
             Color[][] image = GetEmptyArray<Color> (width, height); //an array of colours
 
-            for (int i = 0; i < width; i++) {
-                for (int j = 0; j < height; j++) {
-                    image [i] [j] = GetColor (gradientStart, gradientEnd, perlinNoise [i] [j]);
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    image [x] [y] = GetColor (gradientStart, gradientEnd, perlinNoise [x] [y]);
                 }
             }
 
@@ -154,13 +102,13 @@ namespace Punku
 
         private static T[][] GetEmptyArray<T> (int width, int height)
         {
-            T[][] image = new T[width][];
+            T[][] o = new T[width][];
 
             for (int i = 0; i < width; i++) {
-                image [i] = new T[height];
+                o [i] = new T[height];
             }
 
-            return image;
+            return o;
         }
 
         public static float[][] GenerateSmoothNoise (float[][] baseNoise, int octave)
@@ -173,28 +121,28 @@ namespace Punku
             int samplePeriod = 1 << octave; // calculates 2 ^ k
             float sampleFrequency = 1.0f / samplePeriod;
 
-            for (int i = 0; i < width; i++) {
+            for (int x = 0; x < width; x++) {
                 //calculate the horizontal sampling indices
-                int sample_i0 = (i / samplePeriod) * samplePeriod;
-                int sample_i1 = (sample_i0 + samplePeriod) % width; //wrap around
-                float horizontal_blend = (i - sample_i0) * sampleFrequency;
+                int sample_x0 = (x / samplePeriod) * samplePeriod;
+                int sample_x1 = (sample_x0 + samplePeriod) % width; //wrap around
+                float horizontal_blend = (x - sample_x0) * sampleFrequency;
 
-                for (int j = 0; j < height; j++) {
+                for (int y = 0; y < height; y++) {
                     //calculate the vertical sampling indices
-                    int sample_j0 = (j / samplePeriod) * samplePeriod;
-                    int sample_j1 = (sample_j0 + samplePeriod) % height; //wrap around
-                    float vertical_blend = (j - sample_j0) * sampleFrequency;
+                    int sample_y0 = (y / samplePeriod) * samplePeriod;
+                    int sample_y1 = (sample_y0 + samplePeriod) % height; //wrap around
+                    float vertical_blend = (y - sample_y0) * sampleFrequency;
 
                     //blend the top two corners
-                    float top = Interpolate (baseNoise[sample_i0][sample_j0],
-                    baseNoise [sample_i1] [sample_j0], horizontal_blend);
+                    float top = Interpolate (baseNoise[sample_x0][sample_y0],
+                    baseNoise [sample_x1] [sample_y0], horizontal_blend);
 
                     //blend the bottom two corners
-                    float bottom = Interpolate (baseNoise[sample_i0][sample_j1],
-                    baseNoise [sample_i1] [sample_j1], horizontal_blend);
+                    float bottom = Interpolate (baseNoise[sample_x0][sample_y1],
+                    baseNoise [sample_x1] [sample_y1], horizontal_blend);
 
                     //final blend
-                    smoothNoise [i] [j] = Interpolate (top, bottom, vertical_blend);                    
+                    smoothNoise [x] [y] = Interpolate (top, bottom, vertical_blend);                    
                 }
             }
 
@@ -225,17 +173,17 @@ namespace Punku
                 amplitude *= persistance;
                 totalAmplitude += amplitude;
 
-                for (int i = 0; i < width; i++) {
-                    for (int j = 0; j < height; j++) {
-                        perlinNoise [i] [j] += smoothNoise [octave] [i] [j] * amplitude;
+                for (int x = 0; x < width; x++) {
+                    for (int y = 0; y < height; y++) {
+                        perlinNoise [x] [y] += smoothNoise [octave] [x] [y] * amplitude;
                     }
                 }
             }
 
             //normalisation
-            for (int i = 0; i < width; i++) {
-                for (int j = 0; j < height; j++) {
-                    perlinNoise [i] [j] /= totalAmplitude;
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    perlinNoise [x] [y] /= totalAmplitude;
                 }
             }        
 
@@ -249,12 +197,12 @@ namespace Punku
 
             Color[][] image = GetEmptyArray<Color> (width, height);
 
-            for (int i = 0; i < width; i++) {
-                for (int j = 0; j < height; j++) {
-                    int grey = (int)(255 * greyValues [i] [j]);
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    int grey = (int)(255 * greyValues [x] [y]);
                     Color color = Color.FromArgb (255, grey, grey, grey);
 
-                    image [i] [j] = color;
+                    image [x] [y] = color;
                 }
             }
 
@@ -268,9 +216,9 @@ namespace Punku
 
             Bitmap bitmap = new Bitmap (width, height);
 
-            for (int i = 0; i < width; i++) {
-                for (int j = 0; j < height; j++) {
-                    bitmap.SetPixel (i, j, image [i] [j]);
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    bitmap.SetPixel (x, y, image [x] [y]);
                 }
             }
 
@@ -286,9 +234,9 @@ namespace Punku
 
             Color[][] image = GetEmptyArray<Color> (width, height);
 
-            for (int i = 0; i < width; i++) {
-                for (int j = 0; j < height; j++) {
-                    image [i] [j] = bitmap.GetPixel (i, j);
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    image [x] [y] = bitmap.GetPixel (x, y);
                 }
             }
 
@@ -302,9 +250,9 @@ namespace Punku
 
             Color[][] image = GetEmptyArray<Color> (width, height); //an array of colours for the new image
 
-            for (int i = 0; i < width; i++) {
-                for (int j = 0; j < height; j++) {
-                    image [i] [j] = Interpolate (image1[i][j], image2 [i] [j], perlinNoise [i] [j]);
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    image [x] [y] = Interpolate (image1[x][y], image2 [x] [y], perlinNoise [x] [y]);
                 }
             }
 
@@ -318,16 +266,16 @@ namespace Punku
 
             float[][] newImage = GetEmptyArray<float> (width, height);
 
-            for (int i = 0; i < width; i++) {
-                for (int j = 0; j < height; j++) {
-                    float col = image [i] [j];
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    float col = image [x] [y];
 
                     if (col <= low) {
-                        newImage [i] [j] = 0;
+                        newImage [x] [y] = 0;
                     } else if (col >= high) {
-                        newImage [i] [j] = 1;
+                        newImage [x] [y] = 1;
                     } else {
-                        newImage [i] [j] = (col - low) / (high - low);
+                        newImage [x] [y] = (col - low) / (high - low);
                     }
                 }
             }
