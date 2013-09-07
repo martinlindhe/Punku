@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{09D942E9-3228-4FB0-A1C0-64969E2322BF}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>punku</RootNamespace>
+    <RootNamespace>Punku</RootNamespace>
     <AssemblyName>punku</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -43,6 +43,7 @@
     <Compile Include="PerlinNoise\SimplexNoise.cs" />
     <Compile Include="PerlinNoise\BrownianMotion.cs" />
     <Compile Include="PerlinNoise\RollingParticleMap.cs" />
+    <Compile Include="Image\ImageResize.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
@@ -51,5 +52,6 @@
   <ItemGroup>
     <Folder Include="Hash\" />
     <Folder Include="PerlinNoise\" />
+    <Folder Include="Image\" />
   </ItemGroup>
 </Project>

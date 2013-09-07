@@ -8,25 +8,28 @@ namespace Punku
     public static class MyExtensions
     {    
         public static void Shuffle<T> (this IList<T> list)
-        {  
-            Random rng = new Random ();  
+        {              
+            Random random = new Random ();  
+
             int n = list.Count;  
+
             while (n > 1) {  
                 n--;  
-                int k = rng.Next (n + 1);  
+                int k = random.Next (n + 1);  
                 T value = list [k];  
                 list [k] = list [n];  
                 list [n] = value;  
-            }  
+            }
+          
         }
     }
 
-    public class Neighbour
+    public class Coordinate
     {
         public int x;
         public int y;
 
-        public Neighbour (int x, int y)
+        public Coordinate (int x, int y)
         {
             this.x = x;
             this.y = y;
@@ -37,68 +40,65 @@ namespace Punku
     {
         private static Random random = new Random ();
 
-        public static Bitmap Generate (int width, int height)
+        public static Image Generate (int width, int height)
         {
             byte[] map = new byte[width * height];
 
+            int edge_bias = 5;
+
             // repeat with 3000 particles
-            int particle = 0;
-            while (particle++ < 3000) {
+            int iterations = 0;
+            while (iterations++ < 3000) {
 
                 // pick a random start particle near center
-                int edge_bias = 5;
                 int x = random.Next (edge_bias, width - edge_bias - 1);
                 int y = random.Next (edge_bias, height - edge_bias - 1);
-
-                // get its color
-                byte c = map [(y * width) + x];
-                if (c == 255) {
-                    continue;
-                }
+     
 
                 // draw 50 times for each particle, color is increased when painting.
-                int iteration = 0;
-                while (iteration++ < 50) {
-                    if ((x < 1 || x >= width - 1) || (y < 1 || y >= height - 1)) {
+                int particle_lifetime = 0;
+                while (particle_lifetime++ < 50) {
+                    byte c = map [(y * height) + x];
+
+                    if ((x < 1 || x >= width - 1) || (y < 1 || y >= height - 1) || c == 255) {
                         // Log ("killed of particle at iteration " + iteration);
-                        iteration = 999;
-                        continue;
+                        break;
                     }
 
-                    // välj alla 3x3 runtomkring mig, blanda dem och börja från början tills jag hittar en som är lägre färg än aktuella och hoppa till den positionen
+                    // välj alla 3x3 runtomkring mig, blanda dem och börja från början 
+                    // tills jag hittar en som är lägre färg än aktuella och hoppa till den positionen
                     var offsets = GetNeighbours3x3 (map, x, y, width, height);
-                    int i = 0;
-                    do {
+                   
+                    for (int i = 0; i < offsets.Count; i++) {
                         byte new_c = map [(offsets[i].y * height) + offsets[i].x];
                         if (new_c < c) {
+                            // Log ("walking from " + x + "," + y + " + to " + offsets [i].x + ", " + offsets [i].y);
                             x = offsets [i].x;
                             y = offsets [i].y;
-                            Log ("selected " + x + ", " + y);
                             break;
                         }
-                    } while (++i < offsets.Count);
+                    }
 
-                    map [(y * width) + x] = ++c;
+                    // Log ("setting " + x + ", " + y + " to " + c);
 
+                    map [(y * height) + x]++;
                 }
             }
 
             map = NormalizeData (map, 0, 255);
 
-            return ToBitmap (map, width, height);
+            return ToImage (map, width, height);
         }
-
-        private static List<Neighbour> GetNeighbours3x3 (byte[] data, int x, int y, int width, int height)
+        // return 3x3 (up to 8) valid coordinates around specified position
+        private static List<Coordinate> GetNeighbours3x3 (byte[] data, int x, int y, int width, int height)
         {
-            // return 3x3 (up to 8) Neighbour around specified byte
-
-            List<Neighbour> res = new List<Neighbour> ();
+            List<Coordinate> res = new List<Coordinate> ();
 
             for (int a = -1; a <= 1; a++) {
                 for (int b = -1; b <= 1; b++) {
-                    if (a > 0 || b > 0) {
+                    if (a != 0 || b != 0) {
                         if (x + a >= 0 && x + a < width && y + b >= 0 && y + b < height) {
-                            res.Add (new Neighbour(x + a, y + b));
+                            res.Add (new Coordinate(x + a, y + b));
                         }
                     }
                 }
@@ -122,7 +122,7 @@ namespace Punku
             return ret;
         }
 
-        public static Bitmap ToBitmap (byte[] map, int width, int height)
+        public static Image ToImage (byte[] map, int width, int height)
         {
             Bitmap bitmap = new Bitmap (width, height);
 
