@@ -41,13 +41,11 @@ namespace Punku
 
             int i = 0;
 
-            while (i < this.Width) {
+            while (i < this.Width)
                 this.tiles [i++] = new uint [this.Height];
-            }
-            return;
         }
 
-        private void CreateRollingParticleMap (bool param1 = true)
+        private void CreateRollingParticleMap (bool biasEdges = true)
         {
             uint _loc_3 = 0;
             uint _loc_4 = 0;
@@ -56,9 +54,9 @@ namespace Punku
             uint _loc_7 = 0;
             init ();
             uint _loc_2 = 0;
-            while (_loc_2 < PARTICLE_ITERATIONS) {
 
-                if (param1) {
+            while (_loc_2 < PARTICLE_ITERATIONS) {
+                if (biasEdges) {
                     _loc_4 = (uint)(random.NextDouble () * (this.Width - EDGE_BIAS * 2) + EDGE_BIAS);
                     _loc_5 = (uint)(random.NextDouble () * (this.Height - EDGE_BIAS * 2) + EDGE_BIAS);
                 } else {
@@ -66,6 +64,7 @@ namespace Punku
                     _loc_5 = (uint)(random.NextDouble () * (this.Height - 1));
                 }
                 _loc_3 = 0;
+
                 while (_loc_3 < PARTICLE_LENGTH) {
 
                     _loc_4 = _loc_4 + Math.Round (Math.Random() * 2 - 1);
@@ -91,9 +90,45 @@ namespace Punku
                 }
                 _loc_2 = _loc_2 + 1;
             }
-            this.blurEdges ();
+            blurEdges ();
             normalize ();
-            return;
+        }
+
+        public void normalize ()
+        {
+            uint _loc_4 = 0;
+            decimal _loc_5 = NaN;
+            uint _loc_1 = 1000000;
+            uint _loc_2 = 0;
+            uint _loc_3 = 0;
+
+            while (_loc_3 < this.Width) {
+
+                _loc_4 = 0;
+                while (_loc_4 < this.Height) {
+
+                    if (this.tiles [_loc_3] [_loc_4].elevation > _loc_2) {
+                        _loc_2 = this.tiles [_loc_3] [_loc_4].elevation;
+                    }
+                    if (this.tiles [_loc_3] [_loc_4].elevation < _loc_1) {
+                        _loc_1 = this.tiles [_loc_3] [_loc_4].elevation;
+                    }
+                    _loc_4 = _loc_4 + 1;
+                }
+                _loc_3 = _loc_3 + 1;
+            }
+            _loc_3 = 0;
+            while (_loc_3 < this.Width) {
+
+                _loc_4 = 0;
+                while (_loc_4 < this.Height) {
+
+                    _loc_5 = (this.tiles [_loc_3] [_loc_4].elevation - _loc_1) / (_loc_2 - _loc_1);
+                    this.tiles [_loc_3] [_loc_4].elevation = Math.round (_loc_5 * ELEVATION_MAX);
+                    _loc_4 = _loc_4 + 1;
+                }
+                _loc_3 = _loc_3 + 1;
+            }
         }
 
         private Array getNeighborhood (uint param1, uint param2)
@@ -138,9 +173,7 @@ namespace Punku
                     _loc_2 = _loc_2 + 1;
                 }
                 _loc_1 = _loc_1 + 1;
-            }
-
-            return;
+            }           
         }
     }
 }
