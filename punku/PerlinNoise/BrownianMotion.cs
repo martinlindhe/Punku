@@ -7,46 +7,27 @@ namespace Punku
 {
     public class FractalBrownianMotion
     {        
-        static Random random = new Random ();
+        private static Random random = new Random ();
 
         public static Bitmap GenerateBrownian (int width, int height, int octaveCount = 8)
         {
             float[][] baseNoise = GenerateWhiteNoise (width, height);
 
-            SaveImage (baseNoise, "perlin_base.png");
+//            SaveImage (baseNoise, "perlin_base.png");
 
             var perlinNoise = GeneratePerlinNoise (baseNoise, octaveCount);
-            SaveImage (perlinNoise, "perlin_noise1.png");
+//            SaveImage (perlinNoise, "perlin_noise1.png");
 
             perlinNoise = AdjustLevels (perlinNoise, 0.2f, 0.8f);
-            SaveImage (perlinNoise, "perlin_noise_adjusted.png");
+//            SaveImage (perlinNoise, "perlin_noise_adjusted.png");
 
             Color gradientStart = Color.FromArgb (0, 0, 0);
             Color gradientEnd = Color.FromArgb (255, 255, 255);
-            Color[][] perlinImage = MapGradient (gradientStart, gradientEnd, perlinNoise);
+            Bitmap perlinBmp = MapGradient (gradientStart, gradientEnd, perlinNoise);
                      
-            SaveImage (perlinImage, "perlin_noise_mapped.png");
+            perlinBmp.Save ("perlin_noise_mapped.png");
 
-            Bitmap x = ToBitmap (perlinImage);
-            //x.Save ("perlin_noise.png");
-
-            return x;
-        }
-
-        private static Bitmap ToBitmap (Color[][] img)
-        {        
-            int width = img.Length;
-            int height = img [0].Length;
-
-            Bitmap bitmap = new Bitmap (width, height);
-
-            for (int x = 0; x < width; x++) {
-                for (int y = 0; y < height; y++) {
-                    bitmap.SetPixel (x, y, img [x] [y]);
-                }
-            }
-
-            return bitmap;            
+            return perlinBmp;
         }
 
         protected static float[][] GenerateWhiteNoise (int width, int height)
@@ -88,20 +69,22 @@ namespace Punku
                 (int)(gradientStart.B * u + gradientEnd.B * t));
         }
 
-        protected static Color[][] MapGradient (Color gradientStart, Color gradientEnd, float[][] perlinNoise)
+        protected static Bitmap MapGradient (Color gradientStart, Color gradientEnd, float[][] perlinNoise)
         {
             int width = perlinNoise.Length;
             int height = perlinNoise [0].Length;
 
-            Color[][] image = GetEmptyArray<Color> (width, height); //an array of colours
+            Bitmap bitmap = new Bitmap (width, height);
+
+            //Color[][] image = GetEmptyArray<Color> (width, height); //an array of colours
 
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
-                    image [x] [y] = GetColor (gradientStart, gradientEnd, perlinNoise [x] [y]);
+                    bitmap.SetPixel (x, y, GetColor (gradientStart, gradientEnd, perlinNoise [x] [y]));
                 }
             }
 
-            return image;
+            return bitmap;
         }
 
         private static Color[][] MapToGrey (float[][] greyValues)
