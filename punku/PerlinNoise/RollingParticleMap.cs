@@ -5,11 +5,37 @@ using System.Linq;
 
 namespace Punku
 {
+    public static class MyExtensions
+    {    
+        public static void Shuffle<T> (this IList<T> list)
+        {  
+            Random rng = new Random ();  
+            int n = list.Count;  
+            while (n > 1) {  
+                n--;  
+                int k = rng.Next (n + 1);  
+                T value = list [k];  
+                list [k] = list [n];  
+                list [n] = value;  
+            }  
+        }
+    }
+
+    public class Neighbour
+    {
+        public int x;
+        public int y;
+
+        public Neighbour (int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
     public class RollingParticleMap
     {
         private static Random random = new Random ();
-        public int Width = 88;
-        public int Height = 32;
 
         public static Bitmap Generate (int width, int height)
         {
@@ -17,53 +43,70 @@ namespace Punku
 
             // repeat with 3000 particles
             int particle = 0;
-            while (particle++ < 300) {
+            while (particle++ < 3000) {
 
-                // pick a random start particle
-                int x = random.Next (0, width - 1);
-                int y = random.Next (0, height - 1);
+                // pick a random start particle near center
+                int edge_bias = 5;
+                int x = random.Next (edge_bias, width - edge_bias - 1);
+                int y = random.Next (edge_bias, height - edge_bias - 1);
 
                 // get its color
                 byte c = map [(y * width) + x];
                 if (c == 255) {
-                    Log ("skipping white");
                     continue;
                 }
 
                 // draw 50 times for each particle, color is increased when painting.
                 int iteration = 0;
                 while (iteration++ < 50) {
-                    if ((x < 0 || x >= width) || (y < 0 || y >= height)) {
-                        Log ("killed of particle at iteration " + iteration);
+                    if ((x < 1 || x >= width - 1) || (y < 1 || y >= height - 1)) {
+                        // Log ("killed of particle at iteration " + iteration);
                         iteration = 999;
                         continue;
                     }
 
-                    map [(y * width) + x] = ++c;
+                    // välj alla 3x3 runtomkring mig, blanda dem och börja från början tills jag hittar en som är lägre färg än aktuella och hoppa till den positionen
+                    var offsets = GetNeighbours3x3 (map, x, y, width, height);
+                    int i = 0;
+                    do {
+                        byte new_c = map [(offsets[i].y * height) + offsets[i].x];
+                        if (new_c < c) {
+                            x = offsets [i].x;
+                            y = offsets [i].y;
+                            Log ("selected " + x + ", " + y);
+                            break;
+                        }
+                    } while (++i < offsets.Count);
 
-                    // decide direction
-                    int direction = random.Next (0, 3);
-                    switch (direction) {
-                    case 0:
-                        x++;
-                        break;
-                    case 1:
-                        x--;
-                        break;
-                    case 2:
-                        y++;
-                        break;
-                    case 3:
-                        y--;
-                        break;
-                    }
+                    map [(y * width) + x] = ++c;
 
                 }
             }
 
-            map = NormalizeData (map, 0, 256);
+            map = NormalizeData (map, 0, 255);
 
             return ToBitmap (map, width, height);
+        }
+
+        private static List<Neighbour> GetNeighbours3x3 (byte[] data, int x, int y, int width, int height)
+        {
+            // return 3x3 (up to 8) Neighbour around specified byte
+
+            List<Neighbour> res = new List<Neighbour> ();
+
+            for (int a = -1; a <= 1; a++) {
+                for (int b = -1; b <= 1; b++) {
+                    if (a > 0 || b > 0) {
+                        if (x + a >= 0 && x + a < width && y + b >= 0 && y + b < height) {
+                            res.Add (new Neighbour(x + a, y + b));
+                        }
+                    }
+                }
+            }
+
+            res.Shuffle ();
+
+            return res;
         }
 
         private static byte[] NormalizeData (byte[] data, int min, int max)
