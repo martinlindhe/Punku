@@ -44,6 +44,7 @@
     <Compile Include="PerlinNoise\BrownianMotion.cs" />
     <Compile Include="PerlinNoise\RollingParticleMap.cs" />
     <Compile Include="Image\ImageResize.cs" />
+    <Compile Include="PerlinNoise\Coordinate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
