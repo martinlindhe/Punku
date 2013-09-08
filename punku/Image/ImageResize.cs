@@ -27,7 +27,9 @@ namespace Punku
 
             Bitmap b = new Bitmap (destWidth, destHeight);
             Graphics g = Graphics.FromImage ((Image)b);
-            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+
+            // will increase size in a pixelized way: use HighQualityBicubic to scale smoothly
+            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Low;
 
             g.DrawImage (imgToResize, 0, 0, destWidth, destHeight);
             g.Dispose ();
