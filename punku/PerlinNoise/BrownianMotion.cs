@@ -11,24 +11,23 @@ namespace Punku
 
         public static Image GenerateBrownian (int width, int height, int octaveCount = 8)
         {
-            float[][] baseNoise = GenerateWhiteNoise (width, height);
+            float[][] noise = GetEmptyArray<float> (width, height);
 
-//            SaveImage (baseNoise, "perlin_base.png");
+            noise = GenerateWhiteNoise (noise, width, height);
+            //            SaveImage (noise, "perlin_base.png");
 
-            float[][] perlinNoise = GeneratePerlinNoise (baseNoise, octaveCount);
-//            SaveImage (perlinNoise, "perlin_noise1.png");
+            noise = GeneratePerlinNoise (noise, octaveCount);
+            //            SaveImage (noise, "perlin_noise1.png");
 
             Color gradientStart = Color.FromArgb (0, 0, 0);
             Color gradientEnd = Color.FromArgb (255, 255, 255);
-            Bitmap perlinBmp = MapGradient (gradientStart, gradientEnd, perlinNoise);
+            Bitmap perlinBmp = ToBitmap (gradientStart, gradientEnd, noise);
                      
             return perlinBmp;
         }
 
-        protected static float[][] GenerateWhiteNoise (int width, int height)
+        protected static float[][] GenerateWhiteNoise (float[][] noise, int width, int height)
         {            
-            float[][] noise = GetEmptyArray<float> (width, height);
-
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
                     noise [x] [y] = (float)random.NextDouble () % 1;
@@ -36,86 +35,6 @@ namespace Punku
             }
 
             return noise;
-        }
-
-        private static float Interpolate (float x0, float x1, float value)
-        {
-            return x0 * (1 - value) + value * x1;
-        }
-
-        public static Color GetColor (Color gradientStart, Color gradientEnd, float value)
-        {        
-            return Color.FromArgb (
-                255,
-                (int)Interpolate (gradientStart.R, gradientEnd.R, value),
-                (int)Interpolate (gradientStart.G, gradientEnd.G, value),
-                (int)Interpolate (gradientStart.B, gradientEnd.B, value)
-            );
-        }
-
-        protected static Bitmap MapGradient (Color gradientStart, Color gradientEnd, float[][] perlinNoise)
-        {
-            int width = perlinNoise.Length;
-            int height = perlinNoise [0].Length;
-
-            Bitmap bitmap = new Bitmap (width, height);
-
-            for (int x = 0; x < width; x++) {
-                for (int y = 0; y < height; y++) {
-                    bitmap.SetPixel (x, y, GetColor (gradientStart, gradientEnd, perlinNoise [x] [y]));
-                }
-            }
-
-            return bitmap;
-        }
-
-        private static T[][] GetEmptyArray<T> (int width, int height)
-        {
-            T[][] o = new T[width][];
-
-            for (int i = 0; i < width; i++) {
-                o [i] = new T[height];
-            }
-
-            return o;
-        }
-
-        public static float[][] GenerateSmoothNoise (float[][] baseNoise, int octave)
-        {
-            int width = baseNoise.Length;
-            int height = baseNoise [0].Length;
-
-            float[][] smoothNoise = GetEmptyArray<float> (width, height);
-
-            int samplePeriod = 1 << octave; // calculates 2 ^ k
-            float sampleFrequency = 1.0f / samplePeriod;
-
-            for (int x = 0; x < width; x++) {
-                //calculate the horizontal sampling indices
-                int sample_x0 = (x / samplePeriod) * samplePeriod;
-                int sample_x1 = (sample_x0 + samplePeriod) % width; //wrap around
-                float horizontal_blend = (x - sample_x0) * sampleFrequency;
-
-                for (int y = 0; y < height; y++) {
-                    //calculate the vertical sampling indices
-                    int sample_y0 = (y / samplePeriod) * samplePeriod;
-                    int sample_y1 = (sample_y0 + samplePeriod) % height; //wrap around
-                    float vertical_blend = (y - sample_y0) * sampleFrequency;
-
-                    //blend the top two corners
-                    float top = Interpolate (baseNoise[sample_x0][sample_y0],
-                    baseNoise [sample_x1] [sample_y0], horizontal_blend);
-
-                    //blend the bottom two corners
-                    float bottom = Interpolate (baseNoise[sample_x0][sample_y1],
-                    baseNoise [sample_x1] [sample_y1], horizontal_blend);
-
-                    //final blend
-                    smoothNoise [x] [y] = Interpolate (top, bottom, vertical_blend);                    
-                }
-            }
-
-            return smoothNoise;
         }
 
         public static float[][] GeneratePerlinNoise (float[][] baseNoise, int octaveCount)
@@ -159,38 +78,84 @@ namespace Punku
             return perlinNoise;
         }
 
-        public static void SaveImage (Color[][] image, string fileName)
+        public static float[][] GenerateSmoothNoise (float[][] baseNoise, int octave)
         {
-            int width = image.Length;
-            int height = image [0].Length;
+            int width = baseNoise.Length;
+            int height = baseNoise [0].Length;
+
+            float[][] smoothNoise = GetEmptyArray<float> (width, height);
+
+            int samplePeriod = 1 << octave; // calculates 2 ^ k
+            float sampleFrequency = 1.0f / samplePeriod;
+
+            for (int x = 0; x < width; x++) {
+                //calculate the horizontal sampling indices
+                int sample_x0 = (x / samplePeriod) * samplePeriod;
+                int sample_x1 = (sample_x0 + samplePeriod) % width; //wrap around
+                float horizontal_blend = (x - sample_x0) * sampleFrequency;
+
+                for (int y = 0; y < height; y++) {
+                    //calculate the vertical sampling indices
+                    int sample_y0 = (y / samplePeriod) * samplePeriod;
+                    int sample_y1 = (sample_y0 + samplePeriod) % height; //wrap around
+                    float vertical_blend = (y - sample_y0) * sampleFrequency;
+
+                    //blend the top two corners
+                    float top = Interpolate (baseNoise[sample_x0][sample_y0],
+                    baseNoise [sample_x1] [sample_y0], horizontal_blend);
+
+                    //blend the bottom two corners
+                    float bottom = Interpolate (baseNoise[sample_x0][sample_y1],
+                    baseNoise [sample_x1] [sample_y1], horizontal_blend);
+
+                    //final blend
+                    smoothNoise [x] [y] = Interpolate (top, bottom, vertical_blend);                    
+                }
+            }
+
+            return smoothNoise;
+        }
+
+        private static float Interpolate (float x0, float x1, float value)
+        {
+            return x0 * (1 - value) + value * x1;
+        }
+
+        public static Color GetColor (Color gradientStart, Color gradientEnd, float value)
+        {        
+            return Color.FromArgb (
+                255,
+                (int)Interpolate (gradientStart.R, gradientEnd.R, value),
+                (int)Interpolate (gradientStart.G, gradientEnd.G, value),
+                (int)Interpolate (gradientStart.B, gradientEnd.B, value)
+            );
+        }
+
+        protected static Bitmap ToBitmap (Color gradientStart, Color gradientEnd, float[][] perlinNoise)
+        {
+            int width = perlinNoise.Length;
+            int height = perlinNoise [0].Length;
 
             Bitmap bitmap = new Bitmap (width, height);
 
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
-                    bitmap.SetPixel (x, y, image [x] [y]);
+                    bitmap.SetPixel (x, y, GetColor (gradientStart, gradientEnd, perlinNoise [x] [y]));
                 }
             }
 
-            bitmap.Save (fileName);
+            return bitmap;
         }
 
-        public static Color[][] LoadImage (string fileName)
+        private static T[][] GetEmptyArray<T> (int width, int height)
         {
-            Bitmap bitmap = new Bitmap (fileName);
+            T[][] o = new T[width][];
 
-            int width = bitmap.Width;
-            int height = bitmap.Height;
-
-            Color[][] image = GetEmptyArray<Color> (width, height);
-
-            for (int x = 0; x < width; x++) {
-                for (int y = 0; y < height; y++) {
-                    image [x] [y] = bitmap.GetPixel (x, y);
-                }
+            for (int i = 0; i < width; i++) {
+                o [i] = new T[height];
             }
 
-            return image;
+            return o;
         }
         /*
         public static Color[][] BlendImages (Color[][] image1, Color[][] image2, float[][] perlinNoise)

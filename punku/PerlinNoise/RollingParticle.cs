@@ -17,8 +17,7 @@ namespace Punku
                 T value = list [k];  
                 list [k] = list [n];  
                 list [n] = value;  
-            }
-          
+            }          
         }
     }
 
@@ -49,12 +48,9 @@ namespace Punku
                 int x = random.Next (edge_left_bias, width - edge_right_bias - 1);
 
                 int particle_lifetime = 0;
-                while (particle_lifetime++ < 50 || (x < 2 || x >= width - 2) || (y < 2 || y >= height - 2)) {
+                while (particle_lifetime++ < 30 || (x < 2 || x >= width - 2) || (y < 2 || y >= height - 2)) {
                     byte c = map [y] [x];
 
-
-                    // välj alla 3x3 runtomkring mig, blanda dem och börja från början 
-                    // tills jag hittar en som är lägre färg än aktuella och hoppa till den positionen
                     var offsets = GetNeighbours3x3 (map, x, y);
 
                     bool found = false;
@@ -75,7 +71,6 @@ namespace Punku
                     }
 
                     // Log ("setting " + x + ", " + y + " to " + c);
-
                     map [y] [x]++;
                 }
             }
