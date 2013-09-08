@@ -15,11 +15,8 @@ namespace Punku
 
 //            SaveImage (baseNoise, "perlin_base.png");
 
-            var perlinNoise = GeneratePerlinNoise (baseNoise, octaveCount);
+            float[][] perlinNoise = GeneratePerlinNoise (baseNoise, octaveCount);
 //            SaveImage (perlinNoise, "perlin_noise1.png");
-
-            perlinNoise = AdjustLevels (perlinNoise, 0.2f, 0.8f);
-//            SaveImage (perlinNoise, "perlin_noise_adjusted.png");
 
             Color gradientStart = Color.FromArgb (0, 0, 0);
             Color gradientEnd = Color.FromArgb (255, 255, 255);
@@ -43,30 +40,19 @@ namespace Punku
             return noise;
         }
 
-        private static float Interpolate (float x0, float x1, float alpha)
+        private static float Interpolate (float x0, float x1, float value)
         {
-            return x0 * (1 - alpha) + alpha * x1;
+            return x0 * (1 - value) + value * x1;
         }
 
-        private static Color Interpolate (Color col0, Color col1, float alpha)
-        {
-            float beta = 1 - alpha;
-            return Color.FromArgb (
-                255,
-                (int)(col0.R * alpha + col1.R * beta),
-                (int)(col0.G * alpha + col1.G * beta),
-                (int)(col0.B * alpha + col1.B * beta));
-        }
-
-        public static Color GetColor (Color gradientStart, Color gradientEnd, float t)
+        public static Color GetColor (Color gradientStart, Color gradientEnd, float value)
         {        
-            float u = 1 - t;
-
             return Color.FromArgb (
                 255,
-                (int)(gradientStart.R * u + gradientEnd.R * t),
-                (int)(gradientStart.G * u + gradientEnd.G * t),
-                (int)(gradientStart.B * u + gradientEnd.B * t));
+                (int)Interpolate (gradientStart.R, gradientEnd.R, value),
+                (int)Interpolate (gradientStart.G, gradientEnd.G, value),
+                (int)Interpolate (gradientStart.B, gradientEnd.B, value)
+            );
         }
 
         protected static Bitmap MapGradient (Color gradientStart, Color gradientEnd, float[][] perlinNoise)
@@ -227,7 +213,7 @@ namespace Punku
 
             return image;
         }
-
+        /*
         public static Color[][] BlendImages (Color[][] image1, Color[][] image2, float[][] perlinNoise)
         {
             int width = image1.Length;
@@ -244,29 +230,15 @@ namespace Punku
             return image;
         }
 
-        public static float[][] AdjustLevels (float[][] image, float low, float high)
+        private static Color Interpolate (Color col0, Color col1, float alpha)
         {
-            int width = image.Length;
-            int height = image [0].Length;
-
-            float[][] newImage = GetEmptyArray<float> (width, height);
-
-            for (int x = 0; x < width; x++) {
-                for (int y = 0; y < height; y++) {
-                    float col = image [x] [y];
-
-                    if (col <= low) {
-                        newImage [x] [y] = 0;
-                    } else if (col >= high) {
-                        newImage [x] [y] = 1;
-                    } else {
-                        newImage [x] [y] = (col - low) / (high - low);
-                    }
-                }
-            }
-
-            return newImage;
-        }
+            float beta = 1 - alpha;
+            return Color.FromArgb (
+                255,
+                (int)(col0.R * alpha + col1.R * beta),
+                (int)(col0.G * alpha + col1.G * beta),
+                (int)(col0.B * alpha + col1.B * beta));
+        }*/
     }
 }
 

@@ -5,6 +5,12 @@ namespace Punku
 {
     public class ImageResizer
     {
+        public static Image Resize (Image img, float scale)
+        {
+            var size = new Size ((int) (img.Width * scale), (int)(img.Height * scale));
+            return Resize (img, size);
+        }
+
         public static Image Resize (Image imgToResize, Size size)
         {
             int sourceWidth = imgToResize.Width;

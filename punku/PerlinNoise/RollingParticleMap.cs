@@ -130,7 +130,8 @@ namespace Punku
                 for (int y = 0; y < height; y++) {
                     byte value = map [(y * width) + x];
 
-                    Color color = Color.FromArgb (value, value, value);
+                    //Color color = Color.FromArgb (value, value, value);
+                    Color color = Color.FromArgb (value, 0, 0, 0);
 
                     bitmap.SetPixel (x, y, color);
                 }
