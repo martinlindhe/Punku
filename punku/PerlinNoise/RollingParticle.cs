@@ -22,7 +22,7 @@ namespace Punku
         }
     }
 
-    public class RollingParticleMap
+    public class RollingParticle
     {
         private static Random random = new Random ();
 
@@ -30,50 +30,53 @@ namespace Punku
         {
             // TODO measure & print time it took to generate this, using own measure time class???
 
-            byte[] map = new byte[height * width];
+            byte[][] map = new byte[height] [];
 
-            int edge_left_bias = 10;
-            int edge_right_bias = 10;
+            for (int i = 0; i < height; i++)
+                map [i] = new byte[width];
 
-            int edge_bottom_bias = 15;
-            int edge_top_bias = 15;
+            int edge_left_bias = 20;
+            int edge_right_bias = 20;
+
+            int edge_bottom_bias = 20;
+            int edge_top_bias = 20;
 
             int iterations = 0;
-            while (iterations++ < 200) {
+            while (iterations++ < 600) {
 
                 // pick a random start particle near center
                 int y = random.Next (edge_bottom_bias, height - edge_top_bias - 1);                
                 int x = random.Next (edge_left_bias, width - edge_right_bias - 1);
 
                 int particle_lifetime = 0;
-                while (particle_lifetime++ < 50 || (x < 1 || x >= width - 1) || (y < 1 || y >= height - 1)) {
-                    byte c = map [(y * width) + x];
+                while (particle_lifetime++ < 50 || (x < 2 || x >= width - 2) || (y < 2 || y >= height - 2)) {
+                    byte c = map [y] [x];
 
 
                     // välj alla 3x3 runtomkring mig, blanda dem och börja från början 
                     // tills jag hittar en som är lägre färg än aktuella och hoppa till den positionen
-                    var offsets = GetNeighbours3x3 (map, x, y, width, height);
+                    var offsets = GetNeighbours3x3 (map, x, y);
 
-                    //bool found = false;
+                    bool found = false;
                    
                     for (int i = 0; i < offsets.Count; i++) {
-                        byte new_c = map [(offsets[i].y * width) + offsets[i].x];
+                        byte new_c = map [offsets[i].y] [offsets[i].x];
                         if (new_c <= c) {
                             // Log ("walking from " + x + "," + y + " + to " + offsets [i].x + ", " + offsets [i].y);
                             x = offsets [i].x;
                             y = offsets [i].y;
-                            //     found = true;
+                            found = true;
                             break;
                         }
-                    }/*
+                    }
                     if (!found) {
-                        Log ("no lower point found, killing particle at iteration " + iterations);
+                        // Log ("no lower point found, killing particle at iteration " + iterations);
                         break;
-                    }*/
+                    }
 
                     // Log ("setting " + x + ", " + y + " to " + c);
 
-                    map [(y * width) + x]++;
+                    map [y] [x]++;
                 }
             }
 
@@ -82,9 +85,12 @@ namespace Punku
             return ToImage (map, width, height);
         }
         // return 3x3 (up to 8) valid coordinates around specified position
-        private static List<Coordinate> GetNeighbours3x3 (byte[] data, int x, int y, int width, int height)
+        private static List<Coordinate> GetNeighbours3x3 (byte[][] data, int x, int y)
         {
             List<Coordinate> res = new List<Coordinate> ();
+
+            int height = data.Length;
+            int width = data [0].Length;
 
             for (int a = -1; a <= 1; a++) {
                 for (int b = -1; b <= 1; b++) {
@@ -101,12 +107,36 @@ namespace Punku
             return res;
         }
 
-        private static byte[] NormalizeData (byte[] data, int min, int max)
+        private static byte FindMin (byte[][] data)
         {
-            byte[] ret = new byte[data.Length];
+            byte res = 255;
 
-            byte dataMin = data.Min ();
-            byte dataMax = data.Max ();
+            for (int y = 0; y < data.Length; y++) {
+                for (int x = 0; x < data[0].Length; x++) {
+                    if (data [y] [x] < res)
+                        res = data [y] [x];
+                }
+            }
+            return res;
+        }
+
+        private static byte FindMax (byte[][] data)
+        {
+            byte res = 0;
+
+            for (int y = 0; y < data.Length; y++) {
+                for (int x = 0; x < data[0].Length; x++) {
+                    if (data [y] [x] > res)
+                        res = data [y] [x];
+                }
+            }
+            return res;
+        }
+
+        private static byte[][] NormalizeData (byte[][] data, int min, int max)
+        {
+            byte dataMin = FindMin (data);
+            byte dataMax = FindMax (data);
 
             Log ("Normalizing from data range " + dataMin + " - " + dataMax + ", to " + min + " - " + max);
 
@@ -116,22 +146,28 @@ namespace Punku
             int scaledRange = max - min;
             int dataRange = dataMax - dataMin;
 
-            for (int i = 0; i < data.Length; i++)
-                ret [i] = (byte)(min + ((data [i] - dataMin) * scaledRange / dataRange));
+            byte[][] ret = new byte[data.Length][];
+
+            for (int y = 0; y < data.Length; y++) {
+                ret [y] = new byte[data [0].Length];
+                for (int x = 0; x < data[0].Length; x++) {
+                    ret [y] [x] = (byte)(min + ((data [y] [x] - dataMin) * scaledRange / dataRange));
+                }
+            }
 
             return ret;
         }
 
-        public static Image ToImage (byte[] map, int width, int height)
+        public static Image ToImage (byte[][] map, int width, int height)
         {
             Bitmap bitmap = new Bitmap (width, height);
 
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
-                    byte value = map [(y * width) + x];
+                    byte value = map [y] [x];
 
-                    //Color color = Color.FromArgb (value, value, value);
-                    Color color = Color.FromArgb (value, 0, 0, 0);
+                    Color color = Color.FromArgb (255, value, value, value);
+                    //Color color = Color.FromArgb (value, 0, 0, 0);
 
                     bitmap.SetPixel (x, y, color);
                 }
@@ -140,12 +176,10 @@ namespace Punku
             return bitmap;
         }
 
-        static void PrintHexMap (byte[] map, int width, int height)
+        static void PrintHexMap (byte[][] map, int width, int height)
         {
-            for (int y = 0; y < height; y++) {
-                byte[] second = new byte[width];            
-                Buffer.BlockCopy (map, y * width, second, 0, width);
-                Log (ByteArrayPrinter.ToHexString (second));
+            for (int y = 0; y < map.Length; y++) {
+                Log (ByteArrayPrinter.ToHexString (map[y]));
             }
         }
 

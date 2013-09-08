@@ -22,8 +22,6 @@ namespace Punku
             Color gradientEnd = Color.FromArgb (255, 255, 255);
             Bitmap perlinBmp = MapGradient (gradientStart, gradientEnd, perlinNoise);
                      
-            perlinBmp.Save ("perlin_noise_mapped.png");
-
             return perlinBmp;
         }
 
@@ -69,25 +67,6 @@ namespace Punku
             }
 
             return bitmap;
-        }
-
-        private static Color[][] MapToGrey (float[][] greyValues)
-        {
-            int width = greyValues.Length;
-            int height = greyValues [0].Length;
-
-            Color[][] image = GetEmptyArray<Color> (width, height);
-
-            for (int x = 0; x < width; x++) {
-                for (int y = 0; y < height; y++) {
-                    int grey = (int)(255 * greyValues [x] [y]);
-                    Color color = Color.FromArgb (255, grey, grey, grey);
-
-                    image [x] [y] = color;
-                }
-            }
-
-            return image;
         }
 
         private static T[][] GetEmptyArray<T> (int width, int height)
