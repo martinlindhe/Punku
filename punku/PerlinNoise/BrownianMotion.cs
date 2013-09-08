@@ -9,7 +9,7 @@ namespace Punku
     {        
         private static Random random = new Random ();
 
-        public static Bitmap GenerateBrownian (int width, int height, int octaveCount = 8)
+        public static Image GenerateBrownian (int width, int height, int octaveCount = 8)
         {
             float[][] baseNoise = GenerateWhiteNoise (width, height);
 
@@ -75,8 +75,6 @@ namespace Punku
             int height = perlinNoise [0].Length;
 
             Bitmap bitmap = new Bitmap (width, height);
-
-            //Color[][] image = GetEmptyArray<Color> (width, height); //an array of colours
 
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {

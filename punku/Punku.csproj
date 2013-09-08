@@ -36,15 +36,15 @@
     <Compile Include="Hash\SHA256.cs" />
     <Compile Include="Hash\SHA512.cs" />
     <Compile Include="ByteArrayPrinter.cs" />
-    <Compile Include="IFileReader\ImageReader.cs" />
     <Compile Include="IFileReader\BinaryReader.cs" />
     <Compile Include="IFileReader\IFileReader.cs" />
     <Compile Include="PerlinNoise\Martins2dNoise.cs" />
     <Compile Include="PerlinNoise\SimplexNoise.cs" />
     <Compile Include="PerlinNoise\BrownianMotion.cs" />
     <Compile Include="PerlinNoise\RollingParticleMap.cs" />
-    <Compile Include="Image\ImageResize.cs" />
     <Compile Include="PerlinNoise\Coordinate.cs" />
+    <Compile Include="Image\ImageReader.cs" />
+    <Compile Include="Image\ImageResizer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />

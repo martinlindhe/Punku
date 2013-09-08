@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace Punku
 {
-    public class ImageResize
+    public class ImageResizer
     {
         public static Image Resize (Image imgToResize, Size size)
         {
