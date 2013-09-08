@@ -14,8 +14,8 @@ namespace Punku
             float nPercentW = 0;
             float nPercentH = 0;
 
-            nPercentW = ((float)size.Width / (float)sourceWidth);
-            nPercentH = ((float)size.Height / (float)sourceHeight);
+            nPercentW = size.Width / sourceWidth;
+            nPercentH = size.Height / sourceHeight;
 
             if (nPercentH < nPercentW)
                 nPercent = nPercentH;
@@ -25,8 +25,8 @@ namespace Punku
             int destWidth = (int)(sourceWidth * nPercent);
             int destHeight = (int)(sourceHeight * nPercent);
 
-            Bitmap b = new Bitmap (destWidth, destHeight);
-            Graphics g = Graphics.FromImage ((Image)b);
+            Bitmap bitmap = new Bitmap (destWidth, destHeight);
+            Graphics g = Graphics.FromImage (bitmap);
 
             // will increase size in a pixelized way: use HighQualityBicubic to scale smoothly
             g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Low;
@@ -34,7 +34,7 @@ namespace Punku
             g.DrawImage (imgToResize, 0, 0, destWidth, destHeight);
             g.Dispose ();
 
-            return b;
+            return bitmap;
         }
     }
 }

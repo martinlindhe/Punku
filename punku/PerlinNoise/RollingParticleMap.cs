@@ -44,17 +44,18 @@ namespace Punku
         {
             byte[] map = new byte[height * width];
 
-            int edge_bias = 20;
+            int edge_bias = 10;
 
             int iterations = 0;
-            while (iterations++ < 200) {
+            while (iterations++ < 600) {
 
                 // pick a random start particle near center
+                int y = random.Next (edge_bias, height - edge_bias - 1);                
                 int x = random.Next (edge_bias, width - edge_bias - 1);
-                int y = random.Next (edge_bias, height - edge_bias - 1);
-                map [(y * height) + x]++;
 
-/*
+                // map [(y * height) + x] ++;
+
+
                 // draw 50 times for each particle, color is increased when painting.
                 int particle_lifetime = 0;
                 while (particle_lifetime++ < 50) {
@@ -83,7 +84,7 @@ namespace Punku
 
                     map [(y * height) + x]++;
                 }
-*/
+
             }
 
             map = NormalizeData (map, 0, 255);
@@ -116,6 +117,9 @@ namespace Punku
 
             byte dataMin = data.Min ();
             byte dataMax = data.Max ();
+
+            if (dataMax == 0)
+                return data;
 
             for (int i = 0; i < data.Length; i++)
                 ret [i] = (byte)(min + ((data [i] - dataMin) * (max - min) / (dataMax - dataMin)));
