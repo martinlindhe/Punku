@@ -43,7 +43,8 @@
     <Compile Include="IFileReader\FileReaders.cs" />
     <Compile Include="PerlinNoise\TestPerlinNoise.cs" />
     <Compile Include="PerlinNoise\FractalBrownianMotionTests.cs" />
-    <Compile Include="RomanNumbers.cs" />
+    <Compile Include="TestMorseCode.cs" />
+    <Compile Include="TestRomanNumbers.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="nunit.framework, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">

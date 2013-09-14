@@ -3,16 +3,16 @@ using NUnit.Framework;
 using Punku;
 
 [TestFixture]
-public class RomanNumbers
+public class RomanNumbersTest
 {
 	[Test]
-	public void Test1 ()
+	public void DecimalToRoman ()
 	{
 		Assert.AreEqual (RomanNumber.DecimalToRoman (1955), "MCMLV");
 	}
 
 	[Test]
-	public void Test2 ()
+	public void RomanToDecimal ()
 	{
 		Assert.AreEqual (RomanNumber.RomanToDecimal ("LXXX"), 80);
 		Assert.AreEqual (RomanNumber.RomanToDecimal ("MMX"), 2010);
