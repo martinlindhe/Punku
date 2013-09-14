@@ -34,21 +34,23 @@ namespace Punku
             for (int i = 0; i < height; i++)
                 map [i] = new byte[width];
 
-            int edge_left_bias = 20;
-            int edge_right_bias = 20;
+            int max_lifetime = 20;
 
-            int edge_bottom_bias = 20;
-            int edge_top_bias = 20;
+            int edge_left_bias = 10;
+            int edge_right_bias = 10;
+
+            int edge_bottom_bias = 10;
+            int edge_top_bias = 10;
 
             int iterations = 0;
-            while (iterations++ < 600) {
+            while (iterations++ < 900) {
 
                 // pick a random start particle near center
                 int y = random.Next (edge_bottom_bias, height - edge_top_bias - 1);                
                 int x = random.Next (edge_left_bias, width - edge_right_bias - 1);
 
                 int particle_lifetime = 0;
-                while (particle_lifetime++ < 30 || (x < 2 || x >= width - 2) || (y < 2 || y >= height - 2)) {
+                while (particle_lifetime++ < max_lifetime || (x < 3 || x >= width - 3) || (y < 3 || y >= height - 3)) {
                     byte c = map [y] [x];
 
                     var offsets = GetNeighbours3x3 (map, x, y);
@@ -104,7 +106,7 @@ namespace Punku
 
         private static byte FindMin (byte[][] data)
         {
-            byte res = 255;
+            byte res = byte.MaxValue;
 
             for (int y = 0; y < data.Length; y++) {
                 for (int x = 0; x < data[0].Length; x++) {
@@ -117,7 +119,7 @@ namespace Punku
 
         private static byte FindMax (byte[][] data)
         {
-            byte res = 0;
+            byte res = byte.MinValue;
 
             for (int y = 0; y < data.Length; y++) {
                 for (int x = 0; x < data[0].Length; x++) {

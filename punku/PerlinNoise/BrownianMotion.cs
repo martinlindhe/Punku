@@ -19,9 +19,7 @@ namespace Punku
             noise = GeneratePerlinNoise (noise, octaveCount);
             //            SaveImage (noise, "perlin_noise1.png");
 
-            Color gradientStart = Color.FromArgb (0, 0, 0);
-            Color gradientEnd = Color.FromArgb (255, 255, 255);
-            Bitmap perlinBmp = ToBitmap (gradientStart, gradientEnd, noise);
+            Bitmap perlinBmp = ToBitmap (0, 255, noise);
                      
             return perlinBmp;
         }
@@ -124,15 +122,17 @@ namespace Punku
         public static Color GetColor (Color gradientStart, Color gradientEnd, float value)
         {        
             return Color.FromArgb (
-                255,
                 (int)Interpolate (gradientStart.R, gradientEnd.R, value),
                 (int)Interpolate (gradientStart.G, gradientEnd.G, value),
                 (int)Interpolate (gradientStart.B, gradientEnd.B, value)
             );
         }
 
-        protected static Bitmap ToBitmap (Color gradientStart, Color gradientEnd, float[][] perlinNoise)
+        protected static Bitmap ToBitmap (int start, int end, float[][] perlinNoise)
         {
+            Color gradientStart = Color.FromArgb (start, start, start);
+            Color gradientEnd = Color.FromArgb (end, end, end);
+
             int width = perlinNoise.Length;
             int height = perlinNoise [0].Length;
 
