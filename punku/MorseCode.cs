@@ -69,12 +69,9 @@ namespace Punku
 
 			string[] words = s.Split (' ');
 
-			// TODO rework into a Encode method also
-			// TODO add unit tests & move to Punku
-
 			string res = "";
+
 			foreach (string word in words) {
-				// TODO find in list
 
 				if (word == "") {
 					res += " ";
@@ -104,8 +101,7 @@ namespace Punku
 			string res = "";
 
 			foreach (char c in s.ToLower()) {
-				// find morse version
-
+	
 				if (c == ' ') {
 					res += " ";
 					continue;

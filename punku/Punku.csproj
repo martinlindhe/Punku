@@ -47,6 +47,7 @@
     <Compile Include="PerlinNoise\RollingParticle.cs" />
     <Compile Include="RomanNumber.cs" />
     <Compile Include="MorseCode.cs" />
+    <Compile Include="Rot13.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
