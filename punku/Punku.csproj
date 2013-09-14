@@ -46,6 +46,7 @@
     <Compile Include="Image\ImageResizer.cs" />
     <Compile Include="PerlinNoise\RollingParticle.cs" />
     <Compile Include="RomanNumber.cs" />
+    <Compile Include="MorseCode.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
