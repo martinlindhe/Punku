@@ -7,9 +7,9 @@ namespace Punku
 {
 	public static class Rot13
 	{
-		/// <summary>
-		/// Performs the ROT13 character rotation
-		/// </summary>
+		/**
+		 * Performs the ROT13 character rotation
+		 */
 		public static string Transform (string value)
 		{
 			char[] array = value.ToCharArray ();

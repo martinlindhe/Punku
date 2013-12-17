@@ -33,8 +33,6 @@
     <Compile Include="Hash\Hash.cs" />
     <Compile Include="Hash\MD5.cs" />
     <Compile Include="Hash\SHA1.cs" />
-    <Compile Include="Hash\SHA256.cs" />
-    <Compile Include="Hash\SHA512.cs" />
     <Compile Include="ByteArrayPrinter.cs" />
     <Compile Include="IFileReader\BinaryReader.cs" />
     <Compile Include="IFileReader\IFileReader.cs" />
@@ -48,6 +46,9 @@
     <Compile Include="RomanNumber.cs" />
     <Compile Include="MorseCode.cs" />
     <Compile Include="Rot13.cs" />
+    <Compile Include="Hash\SHA2_256.cs" />
+    <Compile Include="Hash\SHA2_512.cs" />
+    <Compile Include="StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />

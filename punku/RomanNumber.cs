@@ -5,30 +5,6 @@ using System.Text;
 // TODO: validate input string as "valid roman number"
 namespace Punku
 {
-	public static class StringExtensions
-	{
-		public static string Repeat (this string input, int count)
-		{
-			StringBuilder builder = new StringBuilder (
-				(input == null ? 0 : input.Length) * count);
-
-			for (int i = 0; i < count; i++)
-				builder.Append (input);
-
-			return builder.ToString ();
-		}
-
-		public static int Count (this string input, char letter)
-		{
-			int count = 0;
-			foreach (char c in input) 
-				if (c == letter)
-					count++;
-
-			return count;
-		}
-	}
-
 	public class RomanValue
 	{
 		public int value;
@@ -50,19 +26,19 @@ namespace Punku
 
 			List<RomanValue> list = new List<RomanValue> ();
 
-			list.Add (new RomanValue(1000, "M"));
-			list.Add (new RomanValue(900, "CM"));
-			list.Add (new RomanValue(500, "D"));
-			list.Add (new RomanValue(400, "CD"));
-			list.Add (new RomanValue(100, "C"));
-			list.Add (new RomanValue(90, "XC"));
-			list.Add (new RomanValue(50, "L"));
-			list.Add (new RomanValue(40, "XL"));
-			list.Add (new RomanValue(10, "X"));
-			list.Add (new RomanValue(9, "IX"));
-			list.Add (new RomanValue(5, "V"));
-			list.Add (new RomanValue(4, "IV"));
-			list.Add (new RomanValue(1, "I"));
+			list.Add (new RomanValue (1000, "M"));
+			list.Add (new RomanValue (900, "CM"));
+			list.Add (new RomanValue (500, "D"));
+			list.Add (new RomanValue (400, "CD"));
+			list.Add (new RomanValue (100, "C"));
+			list.Add (new RomanValue (90, "XC"));
+			list.Add (new RomanValue (50, "L"));
+			list.Add (new RomanValue (40, "XL"));
+			list.Add (new RomanValue (10, "X"));
+			list.Add (new RomanValue (9, "IX"));
+			list.Add (new RomanValue (5, "V"));
+			list.Add (new RomanValue (4, "IV"));
+			list.Add (new RomanValue (1, "I"));
 
 			int n = value;
 			string res = "";
