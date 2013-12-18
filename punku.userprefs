@@ -1,38 +1,22 @@
 ﻿<Properties GitUserInfo="UsingMD">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="PunkuTests/TestByteArrayPrinter.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PunkuTests/TestRot13.cs">
     <Files>
       <File FileName="PunkuTests/Hash/TestMD5.cs" Line="1" Column="1" />
       <File FileName="PunkuTests/Hash/TestSHA1.cs" Line="1" Column="1" />
       <File FileName="PunkuTests/Hash/TestSHA256.cs" Line="1" Column="1" />
       <File FileName="PunkuTests/Hash/TestSHA512.cs" Line="1" Column="1" />
-      <File FileName="PunkuTests/TestByteArrayPrinter.cs" Line="39" Column="6" />
+      <File FileName="PunkuTests/TestByteArrayPrinter.cs" Line="1" Column="1" />
       <File FileName="punku/IFileReader/IFileReader.cs" Line="1" Column="1" />
       <File FileName="punku/IFileReader/BinaryReader.cs" Line="1" Column="1" />
-      <File FileName="punku/IFileReader/ImageReader.cs" Line="1" Column="1" />
       <File FileName="punku/Hash/Hash.cs" Line="1" Column="1" />
-      <File FileName="PunkuTests/IFileReader/FileReaders.cs" Line="13" Column="9" />
+      <File FileName="PunkuTests/IFileReader/FileReaders.cs" Line="1" Column="1" />
+      <File FileName="punku/PerlinNoise/Martins2dNoise.cs" Line="1" Column="1" />
+      <File FileName="punku/PerlinNoise/SimplexNoise.cs" Line="1" Column="1" />
+      <File FileName="PunkuTests/PerlinNoise/TestPerlinNoise.cs" Line="41" Column="1" />
+      <File FileName="PunkuTests/TestRot13.cs" Line="1" Column="1" />
+      <File FileName="PunkuTests/TestMorseCode.cs" Line="1" Column="1" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Punku" expanded="True">
-            <Node name="Hash" expanded="True" />
-            <Node name="IFileReader" expanded="True" />
-          </Node>
-          <Node name="PunkuTests" expanded="True">
-            <Node name="IFileReader" expanded="True" />
-            <Node name="TestByteArrayPrinter.cs" selected="True" />
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="ClassPad">
-        <State expanded="True" selected="True" />
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

@@ -1,0 +1,8 @@
+*.exe
+*.dll
+*.exe.mdb
+*.dll.mdb
+bin/
+obj/
+.directory
+.DS_Store

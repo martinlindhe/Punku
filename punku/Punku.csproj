@@ -49,16 +49,16 @@
     <Compile Include="Hash\SHA2_256.cs" />
     <Compile Include="Hash\SHA2_512.cs" />
     <Compile Include="StringExtensions.cs" />
-    <Compile Include="UnitConverters\Area.cs" />
-    <Compile Include="UnitConverters\Base.cs" />
-    <Compile Include="UnitConverters\Datasize.cs" />
-    <Compile Include="UnitConverters\Duration.cs" />
-    <Compile Include="UnitConverters\Energy.cs" />
-    <Compile Include="UnitConverters\Length.cs" />
-    <Compile Include="UnitConverters\Mass.cs" />
-    <Compile Include="UnitConverters\Speed.cs" />
-    <Compile Include="UnitConverters\Temperature.cs" />
-    <Compile Include="UnitConverters\Volume.cs" />
+    <Compile Include="Convert\Area.cs" />
+    <Compile Include="Convert\Base.cs" />
+    <Compile Include="Convert\Datasize.cs" />
+    <Compile Include="Convert\Duration.cs" />
+    <Compile Include="Convert\Energy.cs" />
+    <Compile Include="Convert\Length.cs" />
+    <Compile Include="Convert\Mass.cs" />
+    <Compile Include="Convert\Speed.cs" />
+    <Compile Include="Convert\Temperature.cs" />
+    <Compile Include="Convert\Volume.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />

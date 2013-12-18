@@ -46,30 +46,27 @@
     <Compile Include="TestMorseCode.cs" />
     <Compile Include="TestRomanNumbers.cs" />
     <Compile Include="TestRot13.cs" />
+    <Compile Include="Convert\AreaTest.cs" />
+    <Compile Include="Convert\BaseTest.cs" />
+    <Compile Include="Convert\DatasizeTest.cs" />
+    <Compile Include="Convert\DurationTest.cs" />
+    <Compile Include="Convert\EnergyTest.cs" />
+    <Compile Include="Convert\LengthTest.cs" />
+    <Compile Include="Convert\MassTest.cs" />
+    <Compile Include="Convert\SpeedTest.cs" />
+    <Compile Include="Convert\TemperatureTest.cs" />
+    <Compile Include="Convert\VolumeTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
-      <Private>False</Private>
-      <Package>nunit</Package>
-    </Reference>
-    <Reference Include="nunit.util, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
-      <Private>False</Private>
-      <Package>nunit</Package>
-    </Reference>
-    <Reference Include="nunit.core, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
-      <Private>False</Private>
-      <Package>nunit</Package>
-    </Reference>
-    <Reference Include="nunit.core.interfaces, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
-      <Private>False</Private>
-      <Package>nunit</Package>
-    </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\nunit-2.9.6.net-4.5\nunit.framework.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\punku\Punku.csproj">
