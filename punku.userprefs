@@ -2,20 +2,11 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.Workbench ActiveDocument="PunkuTests/Strings/StringExtensionsTest.cs">
     <Files>
-      <File FileName="punku/Strings/StringExtensions.cs" Line="6" Column="29" />
-      <File FileName="PunkuTests/Strings/StringExtensionsTest.cs" Line="11" Column="22" />
-      <File FileName="punku/Strings/Rot13.cs" Line="7" Column="1" />
+      <File FileName="punku/Strings/StringExtensions.cs" Line="1" Column="1" />
+      <File FileName="PunkuTests/Strings/StringExtensionsTest.cs" Line="11" Column="3" />
+      <File FileName="punku/Strings/Rot13.cs" Line="1" Column="1" />
       <File FileName="PunkuTests/Strings/Rot13Test.cs" Line="1" Column="1" />
     </Files>
-    <Pads>
-      <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True">
-          <Node name="PunkuTests" expanded="True">
-            <Node name="TestMD5" selected="True" />
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

@@ -3,6 +3,7 @@ using NUnit.Framework;
 using Punku;
 
 [TestFixture]
+[Category ("Strings")]
 public class MorseCodeTest
 {
 	[Test]
