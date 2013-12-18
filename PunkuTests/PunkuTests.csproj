@@ -34,6 +34,7 @@
     <Folder Include="IFileReader\" />
     <Folder Include="PerlinNoise\" />
     <Folder Include="Strings\" />
+    <Folder Include="Validate\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TestByteArrayPrinter.cs" />
@@ -58,6 +59,9 @@
     <Compile Include="Hash\Sha1Test.cs" />
     <Compile Include="Hash\Sha2_256Test.cs" />
     <Compile Include="Hash\Sha2_512Test.cs" />
+    <Compile Include="Strings\LuhnTest.cs" />
+    <Compile Include="Validate\OrganizationNumberSwedenTest.cs" />
+    <Compile Include="Validate\PersonalIdentityNumberSwedenTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />
