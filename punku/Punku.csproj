@@ -53,12 +53,15 @@
     <Compile Include="Strings\MorseCode.cs" />
     <Compile Include="Strings\RomanNumber.cs" />
     <Compile Include="Strings\Rot13.cs" />
-    <Compile Include="Strings\StringExtensions.cs" />
     <Compile Include="Hash\Sha1.cs" />
     <Compile Include="Hash\Sha2_256.cs" />
     <Compile Include="Hash\Sha2_512.cs" />
     <Compile Include="Hash\Md5.cs" />
     <Compile Include="Geometry\Coordinate.cs" />
+    <Compile Include="MemberInfoGetter.cs" />
+    <Compile Include="Strings\Luhn.cs" />
+    <Compile Include="Extensions\Int32Extensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
@@ -70,5 +73,6 @@
     <Folder Include="Image\" />
     <Folder Include="Strings\" />
     <Folder Include="Geometry\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
 </Project>

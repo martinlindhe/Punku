@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using Punku;
 
 public static class StringExtensions
 {
@@ -21,5 +22,14 @@ public static class StringExtensions
 				count++;
 
 		return count;
+	}
+
+	/** 
+	 * Debug: print line to console
+	 */
+	public static void Log (this string input)
+	{
+		string paramName = MemberInfoGetter.GetMemberName (() => input);
+		Console.WriteLine ("<string " + paramName + ", " + input.Length + "> " + input);
 	}
 }
