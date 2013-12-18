@@ -1,9 +1,12 @@
+/**
+ * decodes substitution ciphers in various ways
+ * caesar cipher  http://en.wikipedia.org/wiki/Caesar_cipher
+ */
+
 using System;
 
-// decodes substitution ciphers in various ways
-// caesar cipher  http://en.wikipedia.org/wiki/Caesar_cipher
 // TODO: create a substitution key, use it to encode / decode a string
-namespace Punku
+namespace Punku.Strings
 {
 	public static class Rot13
 	{

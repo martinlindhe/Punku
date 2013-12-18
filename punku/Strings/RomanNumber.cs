@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 // TODO: validate input string as "valid roman number"
-namespace Punku
+namespace Punku.Strings
 {
 	public class RomanValue
 	{

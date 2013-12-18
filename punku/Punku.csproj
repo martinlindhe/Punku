@@ -43,12 +43,8 @@
     <Compile Include="Image\ImageReader.cs" />
     <Compile Include="Image\ImageResizer.cs" />
     <Compile Include="PerlinNoise\RollingParticle.cs" />
-    <Compile Include="RomanNumber.cs" />
-    <Compile Include="MorseCode.cs" />
-    <Compile Include="Rot13.cs" />
     <Compile Include="Hash\SHA2_256.cs" />
     <Compile Include="Hash\SHA2_512.cs" />
-    <Compile Include="StringExtensions.cs" />
     <Compile Include="Convert\Area.cs" />
     <Compile Include="Convert\Base.cs" />
     <Compile Include="Convert\Datasize.cs" />
@@ -59,6 +55,10 @@
     <Compile Include="Convert\Speed.cs" />
     <Compile Include="Convert\Temperature.cs" />
     <Compile Include="Convert\Volume.cs" />
+    <Compile Include="Strings\MorseCode.cs" />
+    <Compile Include="Strings\RomanNumber.cs" />
+    <Compile Include="Strings\Rot13.cs" />
+    <Compile Include="Strings\StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
@@ -68,5 +68,6 @@
     <Folder Include="Hash\" />
     <Folder Include="PerlinNoise\" />
     <Folder Include="Image\" />
+    <Folder Include="Strings\" />
   </ItemGroup>
 </Project>

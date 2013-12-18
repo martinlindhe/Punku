@@ -33,6 +33,7 @@
     <Folder Include="Hash\" />
     <Folder Include="IFileReader\" />
     <Folder Include="PerlinNoise\" />
+    <Folder Include="Strings\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Hash\TestMD5.cs" />
@@ -43,9 +44,6 @@
     <Compile Include="IFileReader\FileReaders.cs" />
     <Compile Include="PerlinNoise\TestPerlinNoise.cs" />
     <Compile Include="PerlinNoise\FractalBrownianMotionTests.cs" />
-    <Compile Include="TestMorseCode.cs" />
-    <Compile Include="TestRomanNumbers.cs" />
-    <Compile Include="TestRot13.cs" />
     <Compile Include="Convert\AreaTest.cs" />
     <Compile Include="Convert\BaseTest.cs" />
     <Compile Include="Convert\DatasizeTest.cs" />
@@ -56,6 +54,10 @@
     <Compile Include="Convert\SpeedTest.cs" />
     <Compile Include="Convert\TemperatureTest.cs" />
     <Compile Include="Convert\VolumeTest.cs" />
+    <Compile Include="Strings\MorseCodeTest.cs" />
+    <Compile Include="Strings\RomanNumbersTest.cs" />
+    <Compile Include="Strings\Rot13Test.cs" />
+    <Compile Include="Strings\StringExtensionsTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />

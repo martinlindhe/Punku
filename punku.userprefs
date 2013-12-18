@@ -1,22 +1,21 @@
 ﻿<Properties GitUserInfo="UsingMD">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="PunkuTests/TestRot13.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PunkuTests/Strings/StringExtensionsTest.cs">
     <Files>
-      <File FileName="PunkuTests/Hash/TestMD5.cs" Line="1" Column="1" />
-      <File FileName="PunkuTests/Hash/TestSHA1.cs" Line="1" Column="1" />
-      <File FileName="PunkuTests/Hash/TestSHA256.cs" Line="1" Column="1" />
-      <File FileName="PunkuTests/Hash/TestSHA512.cs" Line="1" Column="1" />
-      <File FileName="PunkuTests/TestByteArrayPrinter.cs" Line="1" Column="1" />
-      <File FileName="punku/IFileReader/IFileReader.cs" Line="1" Column="1" />
-      <File FileName="punku/IFileReader/BinaryReader.cs" Line="1" Column="1" />
-      <File FileName="punku/Hash/Hash.cs" Line="1" Column="1" />
-      <File FileName="PunkuTests/IFileReader/FileReaders.cs" Line="1" Column="1" />
-      <File FileName="punku/PerlinNoise/Martins2dNoise.cs" Line="1" Column="1" />
-      <File FileName="punku/PerlinNoise/SimplexNoise.cs" Line="1" Column="1" />
-      <File FileName="PunkuTests/PerlinNoise/TestPerlinNoise.cs" Line="41" Column="1" />
-      <File FileName="PunkuTests/TestRot13.cs" Line="1" Column="1" />
-      <File FileName="PunkuTests/TestMorseCode.cs" Line="1" Column="1" />
+      <File FileName="punku/Strings/StringExtensions.cs" Line="6" Column="29" />
+      <File FileName="PunkuTests/Strings/StringExtensionsTest.cs" Line="11" Column="22" />
+      <File FileName="punku/Strings/Rot13.cs" Line="7" Column="1" />
+      <File FileName="PunkuTests/Strings/Rot13Test.cs" Line="1" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True">
+          <Node name="PunkuTests" expanded="True">
+            <Node name="TestMD5" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
