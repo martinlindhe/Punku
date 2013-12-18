@@ -17,4 +17,28 @@ public class StringExtensionTest
 	{
 		Assert.AreEqual ("häj".Repeat (2), "häjhäj");
 	}
+
+	[Test]
+	public void Count01 ()
+	{
+		Assert.AreEqual ("haj".Count ('a'), 1);
+	}
+
+	[Test]
+	public void Count02 ()
+	{
+		Assert.AreEqual ("haaj".Count ('a'), 2);
+	}
+
+	[Test]
+	public void Count03 ()
+	{
+		Assert.AreEqual ("häj".Count ('a'), 0);
+	}
+
+	[Test]
+	public void Count04 ()
+	{
+		Assert.AreEqual ("haj".Count ('ä'), 0);
+	}
 }

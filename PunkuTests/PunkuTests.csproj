@@ -36,10 +36,6 @@
     <Folder Include="Strings\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Hash\TestMD5.cs" />
-    <Compile Include="Hash\TestSHA1.cs" />
-    <Compile Include="Hash\TestSHA256.cs" />
-    <Compile Include="Hash\TestSHA512.cs" />
     <Compile Include="TestByteArrayPrinter.cs" />
     <Compile Include="IFileReader\FileReaders.cs" />
     <Compile Include="PerlinNoise\TestPerlinNoise.cs" />
@@ -58,6 +54,10 @@
     <Compile Include="Strings\RomanNumbersTest.cs" />
     <Compile Include="Strings\Rot13Test.cs" />
     <Compile Include="Strings\StringExtensionsTest.cs" />
+    <Compile Include="Hash\Md5Test.cs" />
+    <Compile Include="Hash\Sha1Test.cs" />
+    <Compile Include="Hash\Sha2_256Test.cs" />
+    <Compile Include="Hash\Sha2_512Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />
