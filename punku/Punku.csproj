@@ -62,6 +62,7 @@
     <Compile Include="Strings\Luhn.cs" />
     <Compile Include="Extensions\Int32Extensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Validate\PersonalIdentityNumberSweden.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
@@ -74,5 +75,6 @@
     <Folder Include="Strings\" />
     <Folder Include="Geometry\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Validate\" />
   </ItemGroup>
 </Project>
