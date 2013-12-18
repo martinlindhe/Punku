@@ -63,6 +63,7 @@
     <Compile Include="Extensions\Int32Extensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Validate\PersonalIdentityNumberSweden.cs" />
+    <Compile Include="Validate\OrganizationNumberSweden.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
