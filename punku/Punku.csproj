@@ -31,20 +31,15 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Compile Include="Hash\Hash.cs" />
-    <Compile Include="Hash\MD5.cs" />
-    <Compile Include="Hash\SHA1.cs" />
     <Compile Include="ByteArrayPrinter.cs" />
     <Compile Include="IFileReader\BinaryReader.cs" />
     <Compile Include="IFileReader\IFileReader.cs" />
     <Compile Include="PerlinNoise\Martins2dNoise.cs" />
     <Compile Include="PerlinNoise\SimplexNoise.cs" />
     <Compile Include="PerlinNoise\BrownianMotion.cs" />
-    <Compile Include="PerlinNoise\Coordinate.cs" />
     <Compile Include="Image\ImageReader.cs" />
     <Compile Include="Image\ImageResizer.cs" />
     <Compile Include="PerlinNoise\RollingParticle.cs" />
-    <Compile Include="Hash\SHA2_256.cs" />
-    <Compile Include="Hash\SHA2_512.cs" />
     <Compile Include="Convert\Area.cs" />
     <Compile Include="Convert\Base.cs" />
     <Compile Include="Convert\Datasize.cs" />
@@ -59,6 +54,11 @@
     <Compile Include="Strings\RomanNumber.cs" />
     <Compile Include="Strings\Rot13.cs" />
     <Compile Include="Strings\StringExtensions.cs" />
+    <Compile Include="Hash\Sha1.cs" />
+    <Compile Include="Hash\Sha2_256.cs" />
+    <Compile Include="Hash\Sha2_512.cs" />
+    <Compile Include="Hash\Md5.cs" />
+    <Compile Include="Geometry\Coordinate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
@@ -69,5 +69,6 @@
     <Folder Include="PerlinNoise\" />
     <Folder Include="Image\" />
     <Folder Include="Strings\" />
+    <Folder Include="Geometry\" />
   </ItemGroup>
 </Project>
