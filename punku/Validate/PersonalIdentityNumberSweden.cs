@@ -19,6 +19,12 @@ namespace Punku
 {
 	public class PersonalIdentityNumberSweden
 	{
+		/*public static DateTime ToDateTime (string s)
+		{
+			// TODO is there a Date object??
+
+/// XXX refactor IsValidDate more?!?!
+		}*/
 		/**
 		 * odd = male
 		 */
@@ -51,18 +57,12 @@ namespace Punku
 			return false;
 		}
 
-		public static bool IsValid (string s)
+		private static bool IsValidDate (string s)
 		{
-			s = s.Replace ("-", "");
-
 			int yy;
 
 			if (s.Length == 12) {
 				yy = System.Convert.ToInt32 (s.Substring (0, 4), 10);
-
-				var y2 = s.Substring (0, 2);
-				if (y2 == "19" || y2 == "20")
-					s = s.Substring (2);
 			} else if (s.Length == 10) {
 				yy = System.Convert.ToInt32 (s.Substring (0, 2), 10);
 
@@ -83,12 +83,30 @@ namespace Punku
 
 			// fail = date is invalid
 			try {
-				DateTime testDate = new DateTime (yy, mm, dd);
+				DateTime checkDate = new DateTime (yy, mm, dd);
 			} catch {
 				return false;
 			}
 
-			int calc = Punku.Strings.Luhn.Calculate (s.Substring (0, 9));
+			return true;
+		}
+
+		public static bool IsValid (string s)
+		{
+			s = s.Replace ("-", "");
+
+			if (!IsValidDate (s))
+				return false;
+
+			string part;
+			if (s.Length == 12)
+				part = s.Substring (2, 9);
+			else if (s.Length == 10)
+				part = s.Substring (0, 9);
+			else
+				return false;
+
+			int calc = Punku.Strings.Luhn.Calculate (part);
 			int input = System.Convert.ToInt32 (s.Substring (s.Length - 1, 1), 10);
 
 			if (calc == input)
