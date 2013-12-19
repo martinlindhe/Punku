@@ -38,4 +38,18 @@ public class PersonalIdentityNumberSwedenTestTest
 		Assert.AreEqual (x.Month, 12);
 		Assert.AreEqual (x.Day, 18);
 	}
+
+	[Test]
+	[ExpectedException (typeof(FormatException))]
+	public void ParseDateTime02 ()
+	{
+		PersonalIdentityNumberSweden.ToDateTime ("801232-0000");
+	}
+
+	[Test]
+	[ExpectedException (typeof(FormatException))]
+	public void ParseDateTime03 ()
+	{
+		PersonalIdentityNumberSweden.ToDateTime ("abc123-0000");
+	}
 }
