@@ -4,7 +4,7 @@ using Punku;
 
 [TestFixture]
 [Category ("Convert")]
-public class DurationTest
+public class Convert_Duration
 {
 	[Test]
 	public static void Test01 ()

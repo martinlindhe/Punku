@@ -4,7 +4,7 @@ using Punku;
 
 [TestFixture]
 [Category ("Strings")]
-public class Rot13Test
+public class Strings_Rot13
 {
 	[Test]
 	public void Test01 ()

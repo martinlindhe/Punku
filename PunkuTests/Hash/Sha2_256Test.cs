@@ -4,7 +4,8 @@ using NUnit.Framework;
 using Punku.Hash;
 
 [TestFixture]
-public class Sha2_256Test
+[Category ("Hash")]
+public class Hash_Sha2_256
 {
 	[Test]
 	public void EmptyString ()

@@ -4,7 +4,7 @@ using Punku;
 
 [TestFixture]
 [Category ("Convert")]
-public class TemperatureTest
+public class Convert_Temperature
 {
 	[Test]
 	public static void Test01 ()

@@ -4,7 +4,7 @@ using Punku;
 
 [TestFixture]
 [Category ("Convert")]
-public class VolumeTest
+public class Convert_Volume
 {
 	[Test]
 	public static void Test01 ()

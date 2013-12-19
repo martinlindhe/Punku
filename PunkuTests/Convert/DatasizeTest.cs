@@ -4,7 +4,7 @@ using Punku;
 
 [TestFixture]
 [Category ("Convert")]
-public class DatasizeTest
+public class Convert_Datasize
 {
 	[Test]
 	public static void Test01 ()
@@ -43,13 +43,13 @@ public class DatasizeTest
 	}
 
 	[Test]
-	public static void TestToBytes01 ()
+	public static void ToBytes01 ()
 	{
 		Assert.AreEqual (Punku.Convert.Datasize.ToBytes ("2 KiB"), 2048);
 	}
 
 	[Test]
-	public static void TestToBytes02 ()
+	public static void ToBytes02 ()
 	{
 		Assert.AreEqual (Punku.Convert.Datasize.ToBytes ("3M"), 3145728);
 	}

@@ -4,7 +4,7 @@ using Punku;
 
 [TestFixture]
 [Category ("Convert")]
-public class AreaTest
+public class Convert_Area
 {
 	[Test]
 	public static void Test01 ()

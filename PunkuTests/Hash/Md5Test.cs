@@ -4,7 +4,8 @@ using NUnit.Framework;
 using Punku.Hash;
 
 [TestFixture]
-public class Md5Test
+[Category ("Hash")]
+public class Hash_Md5
 {
 	[Test]
 	public void EmptyString ()

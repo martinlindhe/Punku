@@ -4,7 +4,7 @@ using Punku;
 
 [TestFixture]
 [Category ("Convert")]
-public class SpeedTest
+public class Convert_Speed
 {
 	[Test]
 	public static void Test01 ()

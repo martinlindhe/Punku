@@ -4,7 +4,7 @@ using Punku;
 
 [TestFixture]
 [Category ("Convert")]
-public class MassTest
+public class Convert_Mass
 {
 	[Test]
 	public static void Test01 ()

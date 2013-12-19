@@ -62,6 +62,7 @@
     <Compile Include="Strings\LuhnTest.cs" />
     <Compile Include="Validate\OrganizationNumberSwedenTest.cs" />
     <Compile Include="Validate\PersonalIdentityNumberSwedenTest.cs" />
+    <Compile Include="Strings\DiceDnDTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />

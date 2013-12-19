@@ -4,7 +4,7 @@ using Punku;
 
 [TestFixture]
 [Category ("Strings")]
-public class StringExtensionTest
+public class Strings_StringExtensions
 {
 	[Test]
 	public void Repeat01 ()

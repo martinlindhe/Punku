@@ -4,7 +4,7 @@ using Punku;
 
 [TestFixture]
 [Category ("Convert")]
-public class EnergyTest
+public class Convert_Energy
 {
 	[Test]
 	public static void Test01 ()

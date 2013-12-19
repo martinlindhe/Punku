@@ -4,7 +4,7 @@ using Punku;
 
 [TestFixture]
 [Category ("Strings")]
-public class MorseCodeTest
+public class Strings_MorseCode
 {
 	[Test]
 	public void Decode01 ()

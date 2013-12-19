@@ -4,7 +4,7 @@ using Punku;
 
 [TestFixture]
 [Category ("Strings")]
-public class LuhnTest
+public class Strings_Luhn
 {
 	[Test]
 	public void Calculate01 ()

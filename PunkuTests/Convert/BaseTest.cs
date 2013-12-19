@@ -4,83 +4,83 @@ using Punku;
 
 [TestFixture]
 [Category ("Convert")]
-public class BaseTest
+public class Convert_Base
 {
 	[Test]
-	public static void TestBaseConvert1 ()
+	public static void BaseConvert01 ()
 	{
 		Assert.AreEqual (Punku.Convert.Base.ToBase (255, 10), "255");
 	}
 
 	[Test]
-	public static void TestBaseConvert2 ()
+	public static void BaseConvert02 ()
 	{
 		Assert.AreEqual (Punku.Convert.Base.ToBase (255, 16), "FF");
 	}
 
 	[Test]
-	public static void TestBaseConvert3 ()
+	public static void BaseConvert03 ()
 	{
 		Assert.AreEqual (Punku.Convert.Base.ToBase (255, 8), "377");
 	}
 
 	[Test]
-	public static void TestBaseConvert4 ()
+	public static void BaseConvert04 ()
 	{
 		Assert.AreEqual (Punku.Convert.Base.ToBase (255, 2), "11111111");
 	}
 
 	[Test]
-	public static void TestBaseConvertBase5 ()
+	public static void ConvertToBase5 ()
 	{
 		Assert.AreEqual (Punku.Convert.Base.ToBase (255, 5), "2010");
 	}
 
 	[Test]
-	public static void TestBaseConvertBase12 ()
+	public static void ConvertToBase12 ()
 	{
 		Assert.AreEqual (Punku.Convert.Base.ToBase (255, 12), "193");
 	}
 
 	[Test]
-	public static void TestBaseConvertBase20 ()
+	public static void ConvertToBase20 ()
 	{
 		Assert.AreEqual (Punku.Convert.Base.ToBase (255, 20), "CF");
 	}
 
 	[Test]
-	public static void TestBaseConvertBase60 ()
+	public static void ConvertToBase60 ()
 	{
 		Assert.AreEqual (Punku.Convert.Base.ToBase (255, 60), "4F");
 	}
 
 	[Test]
-	public static void TestDecimal ()
+	public static void Decimal01 ()
 	{
 		Assert.AreEqual (Punku.Convert.Base.ParseToInt64 ("256"), 256);
 	}
 
 	[Test]
-	public static void TestHex ()
+	public static void Hex01 ()
 	{
 		Assert.AreEqual (Punku.Convert.Base.ParseToInt64 ("0x100"), 256);
 	}
 
 	[Test]
-	public static void TestBinary ()
+	public static void Binary01 ()
 	{
 		Assert.AreEqual (Punku.Convert.Base.ParseToInt64 ("b100000000"), 256);
 	}
 
 	[Test]
-	public static void TestOctal ()
+	public static void Octal01 ()
 	{
 
 		Assert.AreEqual (Punku.Convert.Base.ParseToInt64 ("021"), 17);
 	}
 
 	[Test]
-	public static void TestBaseConversion ()
+	public static void BaseConversion01 ()
 	{
 		var x = new Punku.Convert.Base ("255");
 		Assert.AreEqual (x.ToDecimal (), 255);
