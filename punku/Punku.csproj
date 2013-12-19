@@ -64,6 +64,7 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Validate\PersonalIdentityNumberSweden.cs" />
     <Compile Include="Validate\OrganizationNumberSweden.cs" />
+    <Compile Include="Game\DiceDnD.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
@@ -77,5 +78,6 @@
     <Folder Include="Geometry\" />
     <Folder Include="Extensions\" />
     <Folder Include="Validate\" />
+    <Folder Include="Game\" />
   </ItemGroup>
 </Project>
