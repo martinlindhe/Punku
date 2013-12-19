@@ -24,6 +24,18 @@ public static class StringExtensions
 		return count;
 	}
 
+	public static bool IsNumbersOnly (this string input)
+	{
+		if (input == "")
+			return false;
+
+		foreach (char c in input)
+			if (c < '0' || c > '9')
+				return false;
+
+		return true;
+	}
+
 	/** 
 	 * Debug: print line to console
 	 */
