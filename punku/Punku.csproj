@@ -58,13 +58,14 @@
     <Compile Include="Hash\Sha2_512.cs" />
     <Compile Include="Hash\Md5.cs" />
     <Compile Include="Geometry\Coordinate.cs" />
-    <Compile Include="MemberInfoGetter.cs" />
     <Compile Include="Strings\Luhn.cs" />
     <Compile Include="Extensions\Int32Extensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Validate\PersonalIdentityNumberSweden.cs" />
     <Compile Include="Validate\OrganizationNumberSweden.cs" />
     <Compile Include="Strings\DiceDnD.cs" />
+    <Compile Include="Strings\Ean13.cs" />
+    <Compile Include="Debug\MemberInfoGetter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
@@ -78,5 +79,10 @@
     <Folder Include="Geometry\" />
     <Folder Include="Extensions\" />
     <Folder Include="Validate\" />
+    <Folder Include="Debug\" />
+    <Folder Include="Documentation\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Documentation\TODO.txt" />
   </ItemGroup>
 </Project>

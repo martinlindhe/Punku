@@ -1,0 +1,86 @@
+﻿
+add a Debug measure time class, for test stugfff
+
+finish ean13:
+
+
+
+
+    function set($n)
+    {
+        $n = str_replace(' ', '', $n);
+
+        if (!$n || !is_numeric($n))
+            throw new \Exception ('invalid format');
+
+        if (strlen($n) != 13)
+            throw new \Exception ('wrong length: '.strlen($n));
+
+        $this->code = $n;
+
+        $this->gs1   = substr($this->code, 0, 3);
+        $this->check = substr($this->code, -1, 1);
+
+        //XXX lookup meaning: http://en.wikipedia.org/wiki/List_of_GS1_country_codes
+        $c2 = substr($this->gs1, 0, 2);
+        if ($c2 == 50)
+            return $this->parseUK();
+
+        if ($c2 >= 40 && $c2 <= 44)
+            return $this->parseGermany();
+
+        if ($c2 == '73')
+            return $this->parseSweden();
+
+        switch ($this->gs1) {
+        case '729': $this->country = 'Israel'; break;
+        default:
+            $this->country = 'unknown country code '.$this->gs1;
+        }
+    }
+
+
+    /**
+     * http://en.wikipedia.org/wiki/GS1_Sweden
+     * http://www.gs1.se/sv/GS1-systemet/GEPIR---Nummerupplysning/
+     */
+    private function parseSweden()
+    {
+        $this->gs1_name = 'Sweden';
+
+        //GS1-13 code structure: GS1-YYYYYY-ZZZ-C    3|6|3|1 = 13 digits where Y = company, Z = product
+        $this->company = substr($this->code, 3, 6);
+        $this->product = substr($this->code, 9, 3);
+
+        switch ($this->company)
+        {
+        case '007003': case '007013': $name = 'Carlsberg Sverige AB'; break;
+        case '040002': $name = 'Spendrups Bryggeriaktiebolag'; break;
+        case '050007': $name = 'Findus Sverige AB'; break;
+        default: $name = 'Unknown '.$this->company; break;
+        }
+
+        $this->company_name = $name;
+    }
+
+    private function parseGermany()
+    {
+        $this->gs1_name = 'Germany';
+//        $this->unknown = substr($this->code, 3, -1);
+
+        $this->company = substr($this->code, 3, 4); //XXX osäker
+        $this->product = substr($this->code, 7, 5); //XXX osäker
+
+        switch ($this->company) {
+        case '0339': $name = 'Kraft Foods Deutschland GmbH'; break;
+        default: $name = 'Unknown '.$this->company; break;
+        }
+
+        $this->company_name = $name;
+    }
+
+    private function parseUK()
+    {
+        $this->gs1_name = 'United Kingdom';
+        $this->unknown = substr($this->code, 3, -1);
+    }
