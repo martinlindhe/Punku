@@ -66,6 +66,7 @@
     <Compile Include="Strings\DiceDnD.cs" />
     <Compile Include="Strings\Ean13.cs" />
     <Compile Include="Debug\MemberInfoGetter.cs" />
+    <Compile Include="Debug\MeasureTime.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
