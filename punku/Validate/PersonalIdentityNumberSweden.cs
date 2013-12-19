@@ -13,19 +13,16 @@
  */
 
 using System;
+using System.Globalization;
 
-// TODO ToDateTime exception check unit test
-// TODO use ToDateTime in IsValidDate() method to remove duplicated code
 namespace Punku
 {
 	public class PersonalIdentityNumberSweden
 	{
 		public static DateTime ToDateTime (string s)
 		{
-			// TODO unit test for the exceptions thrown by DateTime will throw exception if date is invalid
 			s = s.Replace ("-", "");
-
-			/// XXX refactor IsValidDate more?!?! or use TryParse directly with specified format string
+		
 			int yy;
 
 			if (s.Length == 12) {
@@ -41,14 +38,17 @@ namespace Punku
 					yy = 2000 + yy;
 
 			} else {
-				throw new Exception (); // TODO throw a proper exception 
+				throw new FormatException (); 
 			}
 
 			int mm = System.Convert.ToInt32 (s.Substring (2, 2), 10);
 			int dd = System.Convert.ToInt32 (s.Substring (4, 2), 10);
-			// Console.WriteLine ("yy = " + yy + ", mm = " + mm + ", dd = " + dd);
 	
-			return new DateTime (yy, mm, dd);
+			try {
+				return new DateTime (yy, mm, dd);
+			} catch {
+				throw new FormatException ();
+			}
 		}
 
 		/**
@@ -105,9 +105,7 @@ namespace Punku
 
 			int mm = System.Convert.ToInt32 (s.Substring (2, 2), 10);
 			int dd = System.Convert.ToInt32 (s.Substring (4, 2), 10);
-			// Console.WriteLine ("yy = " + yy + ", mm = " + mm + ", dd = " + dd);
 
-			// fail = date is invalid
 			try {
 				var checkDate = new DateTime (yy, mm, dd);
 
