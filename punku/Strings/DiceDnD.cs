@@ -1,5 +1,9 @@
+/**
+ * Rolls dices, according to Dungeons & Dragons dice format
+ */
 using System;
 
+// TODO rework to a static class as it would fit usage better?
 namespace Punku.Game
 {
     public class DiceDnD
@@ -8,6 +12,15 @@ namespace Punku.Game
         protected int numberOfDots;
         protected int adjustment;
 
+        /**
+         * @param cmd nDd([+/-]m)
+         *
+         * where
+         * n - is the number of dices to roll
+         * d - is the number of dots on each dice
+         * m - modifier
+         * and optional modifier as a signed integer
+         */
         public DiceDnD (string cmd)
         {
             int pos = cmd.IndexOfAny (new char[] { 'D', 'd' });
@@ -43,12 +56,12 @@ namespace Punku.Game
             return result + adjustment;
         }
 
-        public int Min ()
+        public int SmallestPossible ()
         {
             return numberOfDices + adjustment;	
         }
 
-        public int Max ()
+        public int LargestPossible ()
         {
             return (numberOfDices * numberOfDots) + adjustment;
         }
