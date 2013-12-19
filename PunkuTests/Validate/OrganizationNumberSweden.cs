@@ -4,7 +4,7 @@ using Punku;
 
 [TestFixture]
 [Category ("Validate")]
-public class OrganizationNumberSwedenTest
+public class Validate_OrganizationNumberSweden
 {
 	[Test]
 	public void IsAkiteBolag01 ()

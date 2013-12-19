@@ -1,12 +1,27 @@
 ﻿<Properties GitUserInfo="UsingMD">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="PunkuTests/Strings/StringExtensionsTest.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="punku/Strings/StringExtensions.cs">
     <Files>
-      <File FileName="punku/Strings/StringExtensions.cs" Line="1" Column="1" />
-      <File FileName="PunkuTests/Strings/StringExtensionsTest.cs" Line="11" Column="3" />
       <File FileName="punku/Strings/Rot13.cs" Line="1" Column="1" />
       <File FileName="PunkuTests/Strings/Rot13Test.cs" Line="1" Column="1" />
+      <File FileName="punku/Hash/Hash.cs" Line="1" Column="1" />
+      <File FileName="punku/Hash/Md5.cs" Line="11" Column="4" />
+      <File FileName="PunkuTests/Hash/Md5Test.cs" Line="35" Column="14" />
+      <File FileName="punku/Hash/Sha1.cs" Line="8" Column="19" />
+      <File FileName="punku/Hash/Sha2_256.cs" Line="13" Column="4" />
+      <File FileName="punku/Hash/Sha2_512.cs" Line="8" Column="23" />
+      <File FileName="PunkuTests/Hash/Sha1Test.cs" Line="35" Column="14" />
+      <File FileName="PunkuTests/Hash/Sha2_256Test.cs" Line="35" Column="14" />
+      <File FileName="PunkuTests/Hash/Sha2_512Test.cs" Line="11" Column="3" />
+      <File FileName="punku/Strings/StringExtensions.cs" Line="28" Column="41" />
     </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True">
+          <Node name="PunkuTests" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

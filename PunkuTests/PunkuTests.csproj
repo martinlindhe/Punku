@@ -37,32 +37,32 @@
     <Folder Include="Validate\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestByteArrayPrinter.cs" />
     <Compile Include="IFileReader\FileReaders.cs" />
-    <Compile Include="PerlinNoise\TestPerlinNoise.cs" />
-    <Compile Include="PerlinNoise\FractalBrownianMotionTests.cs" />
-    <Compile Include="Convert\AreaTest.cs" />
-    <Compile Include="Convert\BaseTest.cs" />
-    <Compile Include="Convert\DatasizeTest.cs" />
-    <Compile Include="Convert\DurationTest.cs" />
-    <Compile Include="Convert\EnergyTest.cs" />
-    <Compile Include="Convert\LengthTest.cs" />
-    <Compile Include="Convert\MassTest.cs" />
-    <Compile Include="Convert\SpeedTest.cs" />
-    <Compile Include="Convert\TemperatureTest.cs" />
-    <Compile Include="Convert\VolumeTest.cs" />
-    <Compile Include="Strings\MorseCodeTest.cs" />
-    <Compile Include="Strings\RomanNumbersTest.cs" />
-    <Compile Include="Strings\Rot13Test.cs" />
-    <Compile Include="Strings\StringExtensionsTest.cs" />
-    <Compile Include="Hash\Md5Test.cs" />
-    <Compile Include="Hash\Sha1Test.cs" />
-    <Compile Include="Hash\Sha2_256Test.cs" />
-    <Compile Include="Hash\Sha2_512Test.cs" />
-    <Compile Include="Strings\LuhnTest.cs" />
-    <Compile Include="Validate\OrganizationNumberSwedenTest.cs" />
-    <Compile Include="Validate\PersonalIdentityNumberSwedenTest.cs" />
-    <Compile Include="Strings\DiceDnDTest.cs" />
+    <Compile Include="Convert\Area.cs" />
+    <Compile Include="Convert\Base.cs" />
+    <Compile Include="Convert\Datasize.cs" />
+    <Compile Include="Convert\Duration.cs" />
+    <Compile Include="Convert\Energy.cs" />
+    <Compile Include="Convert\Length.cs" />
+    <Compile Include="Convert\Mass.cs" />
+    <Compile Include="Convert\Speed.cs" />
+    <Compile Include="Convert\Temperature.cs" />
+    <Compile Include="Convert\Volume.cs" />
+    <Compile Include="Hash\Md5.cs" />
+    <Compile Include="Hash\Sha1.cs" />
+    <Compile Include="Hash\Sha2_256.cs" />
+    <Compile Include="Hash\Sha2_512.cs" />
+    <Compile Include="PerlinNoise\FractalBrownianMotion.cs" />
+    <Compile Include="PerlinNoise\PerlinNoise.cs" />
+    <Compile Include="Strings\DiceDnD.cs" />
+    <Compile Include="Strings\Luhn.cs" />
+    <Compile Include="Strings\MorseCode.cs" />
+    <Compile Include="Strings\RomanNumbers.cs" />
+    <Compile Include="Strings\Rot13.cs" />
+    <Compile Include="Strings\StringExtensions.cs" />
+    <Compile Include="ByteArrayPrinter.cs" />
+    <Compile Include="Validate\OrganizationNumberSweden.cs" />
+    <Compile Include="Validate\PersonalIdentityNumberSweden.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />
