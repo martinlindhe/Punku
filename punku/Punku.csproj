@@ -52,7 +52,6 @@
     <Compile Include="Convert\Volume.cs" />
     <Compile Include="Strings\MorseCode.cs" />
     <Compile Include="Strings\RomanNumber.cs" />
-    <Compile Include="Strings\Rot13.cs" />
     <Compile Include="Hash\Sha1.cs" />
     <Compile Include="Hash\Sha2_256.cs" />
     <Compile Include="Hash\Sha2_512.cs" />
@@ -67,6 +66,8 @@
     <Compile Include="Strings\Ean13.cs" />
     <Compile Include="Debug\MemberInfoGetter.cs" />
     <Compile Include="Debug\MeasureTime.cs" />
+    <Compile Include="Strings\Rotate.cs" />
+    <Compile Include="Strings\Invert.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />

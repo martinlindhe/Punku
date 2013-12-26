@@ -8,28 +8,29 @@ using System;
 // TODO: create a substitution key, use it to encode / decode a string
 namespace Punku.Strings
 {
-	public static class Rot13
+	public static class Rotate
 	{
 		/**
 		 * Performs the ROT13 character rotation
 		 */
-		public static string Transform (string value)
+		public static string Rot13 (string value)
 		{
+			int shift = 13;
 			char[] array = value.ToCharArray ();
 			for (int i = 0; i < array.Length; i++) {
 				int number = (int)array [i];
 
 				if (number >= 'a' && number <= 'z') {
 					if (number > 'm') {
-						number -= 13;
+						number -= shift;
 					} else {
-						number += 13;
+						number += shift;
 					}
 				} else if (number >= 'A' && number <= 'Z') {
 					if (number > 'M') {
-						number -= 13;
+						number -= shift;
 					} else {
-						number += 13;
+						number += shift;
 					}
 				}
 				array [i] = (char)number;
