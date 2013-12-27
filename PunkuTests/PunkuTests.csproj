@@ -57,12 +57,14 @@
     <Compile Include="Strings\DiceDnD.cs" />
     <Compile Include="Strings\Luhn.cs" />
     <Compile Include="Strings\MorseCode.cs" />
-    <Compile Include="Strings\RomanNumbers.cs" />
-    <Compile Include="Strings\Rot13.cs" />
     <Compile Include="Strings\StringExtensions.cs" />
     <Compile Include="ByteArrayPrinter.cs" />
     <Compile Include="Validate\OrganizationNumberSweden.cs" />
     <Compile Include="Validate\PersonalIdentityNumberSweden.cs" />
+    <Compile Include="Strings\Ean13.cs" />
+    <Compile Include="Strings\RomanNumber.cs" />
+    <Compile Include="Strings\Rotate.cs" />
+    <Compile Include="Strings\Invert.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />

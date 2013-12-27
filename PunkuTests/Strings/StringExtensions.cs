@@ -41,4 +41,40 @@ public class Strings_StringExtensions
 	{
 		Assert.AreEqual ("haj".Count ('ä'), 0);
 	}
+
+	[Test]
+	public void NumbersOnly01 ()
+	{
+		Assert.AreEqual ("123".IsNumbersOnly (), true);
+	}
+
+	[Test]
+	public void NumbersOnly02 ()
+	{
+		Assert.AreEqual ("".IsNumbersOnly (), false);
+	}
+
+	[Test]
+	public void NumbersOnly03 ()
+	{
+		Assert.AreEqual ("12a".IsNumbersOnly (), false);
+	}
+
+	[Test]
+	public void NumbersOnly04 ()
+	{
+		Assert.AreEqual ("1 ".IsNumbersOnly (), false);
+	}
+
+	[Test]
+	public void NumbersOnly05 ()
+	{
+		Assert.AreEqual (" 1".IsNumbersOnly (), false);
+	}
+
+	[Test]
+	public void NumbersOnly06 ()
+	{
+		Assert.AreEqual ("1".IsNumbersOnly (), true);
+	}
 }

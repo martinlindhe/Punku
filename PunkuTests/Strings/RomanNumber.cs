@@ -4,12 +4,18 @@ using Punku;
 
 [TestFixture]
 [Category ("Strings")]
-public class RomanNumbersTest
+public class Strings_RomanNumber
 {
 	[Test]
 	public void DecimalToRoman01 ()
 	{
 		Assert.AreEqual (Punku.Strings.RomanNumber.DecimalToRoman (1955), "MCMLV");
+	}
+
+	[Test]
+	public void DecimalToRoman02 ()
+	{
+		Assert.AreEqual (Punku.Strings.RomanNumber.DecimalToRoman (1666), "MDCLXVI");
 	}
 
 	[Test]
