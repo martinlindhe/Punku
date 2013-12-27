@@ -10,13 +10,10 @@ namespace Punku.Strings
 {
 	public static class Rotate
 	{
-		/**
-		 * Performs the ROT13 character rotation
-		 */
-		public static string Rot13 (string value)
+		public static string RotateLetters (string s, int shift)
 		{
-			int shift = 13;
-			char[] array = value.ToCharArray ();
+			char[] array = s.ToCharArray ();
+
 			for (int i = 0; i < array.Length; i++) {
 				int number = (int)array [i];
 
@@ -36,6 +33,14 @@ namespace Punku.Strings
 				array [i] = (char)number;
 			}
 			return new string (array);
+		}
+
+		/**
+		 * Performs the ROT13 character rotation
+		 */
+		public static string Rot13 (string value)
+		{
+			return RotateLetters (value, 13);
 		}
 	}
 }
