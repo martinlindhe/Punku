@@ -65,6 +65,7 @@
     <Compile Include="Strings\RomanNumber.cs" />
     <Compile Include="Strings\Rotate.cs" />
     <Compile Include="Strings\Invert.cs" />
+    <Compile Include="Strings\Shift.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />
