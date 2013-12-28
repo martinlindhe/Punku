@@ -18,7 +18,7 @@ namespace Punku.Strings
 				Table [i] = (char)('z' - i + 'a');
 
 			for (int i = 'A'; i <= 'Z'; i++)
-				Table [i] = (char)('Z' - i + 'A')
+				Table [i] = (char)('Z' - i + 'A');
 		}
 
 		public string InvertString (string s)
