@@ -1,60 +1,40 @@
 ﻿using System;
 
-// TODO drop static lookup table
 namespace Punku.Strings
 {
-	public static class Invert
+	/** 
+	 * Transform english text to inverted form (a=z, b=y, c=x etc)
+	 */
+	public class Invert
 	{
-		/**
-		 * Inverts all letters (a=z, b=y etc)
-		 */
-		public static string InvertEnglish (string s)
+		public char[] Table = new char[char.MaxValue];
+
+		public Invert ()
 		{
-			char[] tbl = new char[char.MaxValue];
+			for (int i = 0; i < char.MaxValue; i++)
+				Table [i] = (char)i;
 
-			// init tbl
-			for (int i = 0; i < char.MaxValue; i++) {
-				tbl [i] = (char)i;
-			}
-			tbl ['a'] = 'z';
-			tbl ['b'] = 'y';
-			tbl ['c'] = 'x';
-			tbl ['d'] = 'w';
-			tbl ['e'] = 'v';
-			tbl ['f'] = 'u';
-			tbl ['g'] = 't';
-			tbl ['h'] = 's';
-			tbl ['i'] = 'r';
-			tbl ['j'] = 'q';
-			tbl ['k'] = 'p';
-			tbl ['l'] = 'o';
-			tbl ['m'] = 'n';
-			tbl ['n'] = 'm';
-			tbl ['o'] = 'l';
-			tbl ['p'] = 'k';
-			tbl ['q'] = 'j';
-			tbl ['r'] = 'i';
-			tbl ['s'] = 'h';
-			tbl ['t'] = 'g';
-			tbl ['u'] = 'f';
-			tbl ['v'] = 'e';
-			tbl ['w'] = 'd';
-			tbl ['x'] = 'c';
-			tbl ['y'] = 'b';
-			tbl ['z'] = 'a';
+			for (int i = 'a'; i <= 'z'; i++)
+				Table [i] = (char)('z' - i + 'a');
 
-			// ellwll/hrnkov/proo
+			for (int i = 'A'; i <= 'Z'; i++)
+				Table [i] = (char)('Z' - i + 'A')
+		}
 
-			// invert az
-		
-			char[] array = s.ToCharArray ();
-			for (int i = 0; i < array.Length; i++) {
-				int number = (int)array [i];
+		public string InvertString (string s)
+		{
+			char[] arr = s.ToCharArray ();
 
+			for (int i = 0; i < arr.Length; i++)
+				arr [i] = Table [arr [i]];
 
-				array [i] = tbl [number];
-			}
-			return new string (array);
+			return new string (arr);
+		}
+
+		public static string InvertStringStatic (string s)
+		{
+			var inv = new Invert ();
+			return inv.InvertString (s);
 		}
 	}
 }
