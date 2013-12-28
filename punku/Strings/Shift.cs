@@ -1,7 +1,5 @@
 ﻿using System;
 
-// TODO: upper case!
-// TODO: unit test for non-2-shifts
 // FIXME: vad är skillnaden mellan Rot13? är det metoden...?
 namespace Punku.Strings
 {
@@ -22,6 +20,13 @@ namespace Punku.Strings
 					Table [i] = (char)(i + shift);
 				else
 					Table [i] = (char)(i + shift - 'z' + 'a' - 1);
+			}
+
+			for (int i = 'A'; i <= 'Z'; i++) {
+				if (i + shift <= 'Z')
+					Table [i] = (char)(i + shift);
+				else
+					Table [i] = (char)(i + shift - 'Z' + 'A' - 1);
 			}
 		}
 
