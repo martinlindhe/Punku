@@ -1,7 +1,8 @@
 ﻿using System;
 
 // TODO: upper case!
-// FIXME: vad är skillnaden mellan Rotate? är det metoden...?
+// TODO: unit test for non-2-shifts
+// FIXME: vad är skillnaden mellan Rot13? är det metoden...?
 namespace Punku.Strings
 {
 	/**
@@ -19,13 +20,8 @@ namespace Punku.Strings
 			for (int i = 'a'; i <= 'z'; i++) {
 				if (i + shift <= 'z')
 					Table [i] = (char)(i + shift);
-				else {
-					// XXX ugly hack. respect SHIFT and do this dynamically
-					if (i == 'y')
-						Table [i] = 'a';
-					if (i == 'z')
-						Table [i] = 'b';
-				}
+				else
+					Table [i] = (char)(i + shift - 'z' + 'a' - 1);
 			}
 		}
 
