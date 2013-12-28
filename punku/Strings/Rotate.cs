@@ -1,38 +1,53 @@
 /**
- * decodes substitution ciphers in various ways
- * caesar cipher  http://en.wikipedia.org/wiki/Caesar_cipher
+ * http://en.wikipedia.org/wiki/Caesar_cipher
  */
 
 using System;
 
-// TODO: create a substitution key, use it to encode / decode a string
 namespace Punku.Strings
 {
-	public static class Rotate
+	/**
+	 * Transform english text to a rotated form (a = a + shift)
+	 * also called a ceasar cipher
+	 */
+	public class Rotate
 	{
-		public static string RotateLetters (string s, int shift)
+		public char[] Table = new char[char.MaxValue];
+
+		public Rotate (int shift)
 		{
-			char[] array = s.ToCharArray ();
+			for (int i = 0; i < char.MaxValue; i++)
+				Table [i] = (char)i;
 
-			for (int i = 0; i < array.Length; i++) {
-				int number = (int)array [i];
-
-				if (number >= 'a' && number <= 'z') {
-					if (number > 'm') {
-						number -= shift;
-					} else {
-						number += shift;
-					}
-				} else if (number >= 'A' && number <= 'Z') {
-					if (number > 'M') {
-						number -= shift;
-					} else {
-						number += shift;
-					}
-				}
-				array [i] = (char)number;
+			for (int i = 'a'; i <= 'z'; i++) {
+				if (i + shift <= 'z')
+					Table [i] = (char)(i + shift);
+				else
+					Table [i] = (char)(i + shift - 'z' + 'a' - 1);
 			}
-			return new string (array);
+
+			for (int i = 'A'; i <= 'Z'; i++) {
+				if (i + shift <= 'Z')
+					Table [i] = (char)(i + shift);
+				else
+					Table [i] = (char)(i + shift - 'Z' + 'A' - 1);
+			}
+		}
+
+		public string RotateString (string s)
+		{
+			char[] arr = s.ToCharArray ();
+
+			for (int i = 0; i < arr.Length; i++)
+				arr [i] = Table [arr [i]];
+
+			return new string (arr);
+		}
+
+		public static string RotateString (string s, int shift)
+		{
+			var x = new Rotate (shift);
+			return x.RotateString (s);
 		}
 
 		/**
@@ -40,7 +55,7 @@ namespace Punku.Strings
 		 */
 		public static string Rot13 (string value)
 		{
-			return RotateLetters (value, 13);
+			return RotateString (value, 13);
 		}
 	}
 }
