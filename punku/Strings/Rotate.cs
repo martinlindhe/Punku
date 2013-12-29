@@ -10,10 +10,8 @@ namespace Punku.Strings
 	 * Transform english text to a rotated form (a = a + shift)
 	 * also called a ceasar cipher
 	 */
-	public class Rotate
+	public class Rotate : StringTransformer
 	{
-		public char[] Table = new char[char.MaxValue];
-
 		public Rotate (int shift)
 		{
 			for (int i = 0; i < char.MaxValue; i++)
@@ -34,20 +32,10 @@ namespace Punku.Strings
 			}
 		}
 
-		public string RotateString (string s)
-		{
-			char[] arr = s.ToCharArray ();
-
-			for (int i = 0; i < arr.Length; i++)
-				arr [i] = Table [arr [i]];
-
-			return new string (arr);
-		}
-
-		public static string RotateString (string s, int shift)
+		public static string Transform (string s, int shift)
 		{
 			var x = new Rotate (shift);
-			return x.RotateString (s);
+			return x.Transform (s);
 		}
 
 		/**
@@ -55,7 +43,7 @@ namespace Punku.Strings
 		 */
 		public static string Rot13 (string value)
 		{
-			return RotateString (value, 13);
+			return Transform (value, 13);
 		}
 	}
 }

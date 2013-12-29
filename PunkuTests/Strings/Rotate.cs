@@ -33,24 +33,24 @@ public class Strings_Rotate
 	[Test]
 	public void Test05 ()
 	{
-		Assert.AreEqual (Punku.Strings.Rotate.RotateString ("abcdefghijklmnopqrstuvwxyz", 1), "bcdefghijklmnopqrstuvwxyza");
+		Assert.AreEqual (Punku.Strings.Rotate.Transform ("abcdefghijklmnopqrstuvwxyz", 1), "bcdefghijklmnopqrstuvwxyza");
 	}
 
 	[Test]
 	public void Test06 ()
 	{
-		Assert.AreEqual (Punku.Strings.Rotate.RotateString ("abcdefghijklmnopqrstuvwxyz", 2), "cdefghijklmnopqrstuvwxyzab");
+		Assert.AreEqual (Punku.Strings.Rotate.Transform ("abcdefghijklmnopqrstuvwxyz", 2), "cdefghijklmnopqrstuvwxyzab");
 	}
 
 	[Test]
 	public void Test07 ()
 	{
-		Assert.AreEqual (Punku.Strings.Rotate.RotateString ("abcdefghijklmnopqrstuvwxyz", 3), "defghijklmnopqrstuvwxyzabc");
+		Assert.AreEqual (Punku.Strings.Rotate.Transform ("abcdefghijklmnopqrstuvwxyz", 3), "defghijklmnopqrstuvwxyzabc");
 	}
 
 	[Test]
 	public void Test08 ()
 	{
-		Assert.AreEqual (Punku.Strings.Rotate.RotateString ("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 2), "CDEFGHIJKLMNOPQRSTUVWXYZAB");
+		Assert.AreEqual (Punku.Strings.Rotate.Transform ("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 2), "CDEFGHIJKLMNOPQRSTUVWXYZAB");
 	}
 }

@@ -5,10 +5,8 @@ namespace Punku.Strings
 	/** 
 	 * Transform english text to inverted form (a=z, b=y, c=x etc)
 	 */
-	public class Invert
+	public class Invert : StringTransformer
 	{
-		public char[] Table = new char[char.MaxValue];
-
 		public Invert ()
 		{
 			for (int i = 0; i < char.MaxValue; i++)
@@ -21,20 +19,10 @@ namespace Punku.Strings
 				Table [i] = (char)('Z' - i + 'A');
 		}
 
-		public string InvertString (string s)
-		{
-			char[] arr = s.ToCharArray ();
-
-			for (int i = 0; i < arr.Length; i++)
-				arr [i] = Table [arr [i]];
-
-			return new string (arr);
-		}
-
-		public static string InvertStringStatic (string s)
+		public static string TransformStatic (string s)
 		{
 			var inv = new Invert ();
-			return inv.InvertString (s);
+			return inv.Transform (s);
 		}
 	}
 }

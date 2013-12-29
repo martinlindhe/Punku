@@ -1,1 +1,5 @@
 ﻿
+			// to verify:
+			for (int i = 'a'; i <= 'z'; i++) {
+				Console.WriteLine ((char)i + " (" + i + ") = " + Table [i]);
+			}
