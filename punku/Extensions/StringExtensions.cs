@@ -36,12 +36,22 @@ public static class StringExtensions
 		return true;
 	}
 
-	/** 
-	 * Debug: print line to console
+	/**
+	 * Is string a palindrome, like "racecar" ?
 	 */
-	public static void Log (this string input)
+	public static bool IsPalindrome (this string input)
 	{
-		string paramName = MemberInfoGetter.GetMemberName (() => input);
-		Console.WriteLine ("<string " + paramName + ", " + input.Length + "> " + input);
+		if (input.Length < 1)
+			return false;
+
+		char[] a1 = input.ToCharArray ();
+		char[] a2 = input.ToCharArray ();
+		Array.Reverse (a2);
+
+		for (int i = 0; i < a1.Length; i++)
+			if (a1 [i] != a2 [i])
+				return false;
+
+		return true;
 	}
 }
