@@ -66,6 +66,7 @@
     <Compile Include="Strings\Rotate.cs" />
     <Compile Include="Strings\Invert.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\CharArrayExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />
