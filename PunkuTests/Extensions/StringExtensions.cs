@@ -3,8 +3,8 @@ using NUnit.Framework;
 using Punku;
 
 [TestFixture]
-[Category ("Strings")]
-public class Strings_StringExtensions
+[Category ("Extensions")]
+public class Extensions_String
 {
 	[Test]
 	public void Repeat01 ()
@@ -76,5 +76,23 @@ public class Strings_StringExtensions
 	public void NumbersOnly06 ()
 	{
 		Assert.AreEqual ("1".IsNumbersOnly (), true);
+	}
+
+	[Test]
+	public void Palindrome01 ()
+	{
+		Assert.AreEqual ("".IsPalindrome (), false);
+	}
+
+	[Test]
+	public void Palindrome02 ()
+	{
+		Assert.AreEqual ("racecar".IsPalindrome (), true);
+	}
+
+	[Test]
+	public void Palindrome03 ()
+	{
+		Assert.AreEqual ("hello".IsPalindrome (), false);
 	}
 }

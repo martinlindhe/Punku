@@ -35,6 +35,7 @@
     <Folder Include="PerlinNoise\" />
     <Folder Include="Strings\" />
     <Folder Include="Validate\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IFileReader\FileReaders.cs" />
@@ -57,7 +58,6 @@
     <Compile Include="Strings\DiceDnD.cs" />
     <Compile Include="Strings\Luhn.cs" />
     <Compile Include="Strings\MorseCode.cs" />
-    <Compile Include="Strings\StringExtensions.cs" />
     <Compile Include="ByteArrayPrinter.cs" />
     <Compile Include="Validate\OrganizationNumberSweden.cs" />
     <Compile Include="Validate\PersonalIdentityNumberSweden.cs" />
@@ -65,6 +65,7 @@
     <Compile Include="Strings\RomanNumber.cs" />
     <Compile Include="Strings\Rotate.cs" />
     <Compile Include="Strings\Invert.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />
