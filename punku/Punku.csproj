@@ -58,7 +58,6 @@
     <Compile Include="Hash\Md5.cs" />
     <Compile Include="Geometry\Coordinate.cs" />
     <Compile Include="Strings\Luhn.cs" />
-    <Compile Include="Extensions\Int32Extensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Validate\PersonalIdentityNumberSweden.cs" />
     <Compile Include="Validate\OrganizationNumberSweden.cs" />
@@ -69,6 +68,7 @@
     <Compile Include="Strings\Rotate.cs" />
     <Compile Include="Strings\Invert.cs" />
     <Compile Include="Strings\StringTransformer.cs" />
+    <Compile Include="Extensions\CharArrayExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />

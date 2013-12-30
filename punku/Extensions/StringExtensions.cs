@@ -4,6 +4,9 @@ using Punku;
 
 public static class StringExtensions
 {
+	/**
+	 * repeat the string count times
+	 */
 	public static string Repeat (this string input, int count)
 	{
 		var builder = new StringBuilder ((input == null ? 0 : input.Length) * count);
@@ -14,6 +17,9 @@ public static class StringExtensions
 		return builder.ToString ();
 	}
 
+	/**
+	 * return the number of times letter occurs
+	 */
 	public static int Count (this string input, char letter)
 	{
 		int count = 0;
@@ -24,6 +30,9 @@ public static class StringExtensions
 		return count;
 	}
 
+	/** 
+	 * true if string only contains 0-9 
+	 */
 	public static bool IsNumbersOnly (this string input)
 	{
 		if (input == "")
@@ -36,8 +45,8 @@ public static class StringExtensions
 		return true;
 	}
 
-	/**
-	 * Is string a palindrome, like "racecar" ?
+	/** 
+	 * true if string is a palindrome, like "racecar"
 	 */
 	public static bool IsPalindrome (this string input)
 	{
