@@ -16,6 +16,15 @@ public class Hash_Sha2_512
 	}
 
 	[Test]
+	public void Datablock01 ()
+	{
+		byte[] x = { 1, 2, 3, 4, 5, 6, 7, 8 };
+		Assert.AreEqual (
+			"1818cc2acd207880a07afc360fd0da87e51ccf17e7c604c4eb16be5788322724c298e1fcc66eb293926993141ef0863c09eda383188cf5df49b910aacac17ec5", 
+			new Sha2_512 (x).ToString ());
+	}
+
+	[Test]
 	public void BrownFox ()
 	{
 		Assert.AreEqual (

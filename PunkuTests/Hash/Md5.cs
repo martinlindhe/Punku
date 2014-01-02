@@ -8,6 +8,15 @@ using Punku.Hash;
 public class Hash_Md5
 {
 	[Test]
+	public void Datablock01 ()
+	{
+		byte[] x = { 1, 2, 3, 4, 5, 6, 7, 8 };
+		Assert.AreEqual (
+			"0ee0646c1c77d8131cc8f4ee65c7673b", 
+			new Md5 (x).ToString ());
+	}
+
+	[Test]
 	public void EmptyString ()
 	{
 		Assert.AreEqual (

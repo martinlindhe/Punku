@@ -68,6 +68,7 @@
     <Compile Include="Strings\Invert.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\CharArrayExtensions.cs" />
+    <Compile Include="Hash\Sha2_384.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />
