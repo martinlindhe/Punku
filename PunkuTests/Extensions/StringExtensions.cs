@@ -109,6 +109,12 @@ public class Extensions_String
 	}
 
 	[Test]
+	public void Alphanumeric07 ()
+	{
+		Assert.AreEqual ("abå".IsAlphanumeric (), false);
+	}
+
+	[Test]
 	public void NumbersOnly06 ()
 	{
 		Assert.AreEqual ("1".IsNumbersOnly (), true);
@@ -123,11 +129,17 @@ public class Extensions_String
 	[Test]
 	public void Palindrome02 ()
 	{
-		Assert.AreEqual ("racecar".IsPalindrome (), true);
+		Assert.AreEqual (" ".IsPalindrome (), false);
 	}
 
 	[Test]
 	public void Palindrome03 ()
+	{
+		Assert.AreEqual ("racecar".IsPalindrome (), true);
+	}
+
+	[Test]
+	public void Palindrome04 ()
 	{
 		Assert.AreEqual ("hello".IsPalindrome (), false);
 	}
