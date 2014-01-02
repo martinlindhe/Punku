@@ -73,6 +73,42 @@ public class Extensions_String
 	}
 
 	[Test]
+	public void Alphanumeric01 ()
+	{
+		Assert.AreEqual ("".IsAlphanumeric (), false);
+	}
+
+	[Test]
+	public void Alphanumeric02 ()
+	{
+		Assert.AreEqual (" ".IsAlphanumeric (), false);
+	}
+
+	[Test]
+	public void Alphanumeric03 ()
+	{
+		Assert.AreEqual ("1abcEEs".IsAlphanumeric (), true);
+	}
+
+	[Test]
+	public void Alphanumeric04 ()
+	{
+		Assert.AreEqual ("ab-".IsAlphanumeric (), false);
+	}
+
+	[Test]
+	public void Alphanumeric05 ()
+	{
+		Assert.AreEqual ("'".IsAlphanumeric (), false);
+	}
+
+	[Test]
+	public void Alphanumeric06 ()
+	{
+		Assert.AreEqual ("ab'".IsAlphanumeric (), false);
+	}
+
+	[Test]
 	public void NumbersOnly06 ()
 	{
 		Assert.AreEqual ("1".IsNumbersOnly (), true);
