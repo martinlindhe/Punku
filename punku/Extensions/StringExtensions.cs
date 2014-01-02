@@ -65,7 +65,7 @@ public static class StringExtensions
 	 */
 	public static bool IsPalindrome (this string input)
 	{
-		if (input.Length < 1)
+		if (input.Trim ().Length < 1)
 			return false;
 
 		char[] a1 = input.ToCharArray ();
