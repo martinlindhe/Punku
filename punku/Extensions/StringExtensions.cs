@@ -31,7 +31,7 @@ public static class StringExtensions
 	}
 
 	/** 
-	 * true if string only contains 0-9 
+	 * true if string only contains 0-9
 	 */
 	public static bool IsNumbersOnly (this string input)
 	{
@@ -42,6 +42,21 @@ public static class StringExtensions
 			if (c < '0' || c > '9')
 				return false;
 
+		return true;
+	}
+
+	/** 
+	 * true if string only contains 0-9, a-z or A-Z
+	 */
+	public static bool IsAlphanumeric (this string input)
+	{
+		if (input == "")
+			return false;
+
+		foreach (char c in input)
+			if ((c < '0' || c > '9') && (c < 'a' || c > 'z') && (c < 'A' || c > 'Z'))
+				return false;
+	
 		return true;
 	}
 

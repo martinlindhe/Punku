@@ -69,6 +69,7 @@
     <Compile Include="Strings\Invert.cs" />
     <Compile Include="Strings\StringTransformer.cs" />
     <Compile Include="Extensions\CharArrayExtensions.cs" />
+    <Compile Include="Debug\VarDump.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
