@@ -28,7 +28,7 @@ public class Hash_Sha1
 	{
 		Assert.AreEqual (
 			"07a66fe243a73aea9d5e1f10a54a317a24af27bc",
-			Sha1.FromFile ("../../resources/binary_file.jpg").ToString ());
+			Sha1.FromFile ("../../_Resources/binary_file.jpg").ToString ());
 	}
 
 	[Test]

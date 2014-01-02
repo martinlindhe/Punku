@@ -4,21 +4,22 @@ using NUnit.Framework;
 using Punku;
 
 [TestFixture]
-public class TestFileReaders
+[Category ("Files")]
+public class FileReaders
 {
-    [Test]
-    public void TestBinary ()
-    {
-        var x = new Punku.BinaryReader ("binary_file.jpg");
+	[Test]
+	public void Binary01 ()
+	{
+		var binary = new Punku.BinaryReader ("../../_Resources/binary_file.jpg");
+		Assert.AreEqual (binary.Length, 67698);
+	}
 
-        Console.WriteLine ("size is " + x.Length);
-    }
+	[Test]
+	public void Image01 ()
+	{
+		var x = new Punku.ImageReader ("../../_Resources/binary_file.jpg");
 
-    [Test]
-    public void TestImage ()
-    {
-        var x = new Punku.ImageReader ("binary_file.jpg");
-
-        Console.WriteLine ("size is " + x.Width + " x " + x.Height);
-    }
+		Assert.AreEqual (x.Width, 459);
+		Assert.AreEqual (x.Height, 761);
+	}
 }

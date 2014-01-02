@@ -28,7 +28,7 @@ public class Hash_Md5
 	{
 		Assert.AreEqual (
 			"5523c90d6373e63b34c483683434f45e",
-			Md5.FromFile ("../../resources/binary_file.jpg").ToString ());
+			Md5.FromFile ("../../_Resources/binary_file.jpg").ToString ());
 	}
 
 	[Test]

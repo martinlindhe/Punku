@@ -36,6 +36,7 @@
     <Folder Include="Strings\" />
     <Folder Include="Validate\" />
     <Folder Include="Extensions\" />
+    <Folder Include="_Resources\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IFileReader\FileReaders.cs" />
@@ -87,5 +88,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="binary_file.jpg" />
+    <None Include="_Resources\binary_file.jpg" />
   </ItemGroup>
 </Project>

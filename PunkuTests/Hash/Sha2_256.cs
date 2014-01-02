@@ -28,7 +28,7 @@ public class Hash_Sha2_256
 	{
 		Assert.AreEqual (
 			"5855923abba91083d74c8411f00cc04102ac58ee030169859d90d8845482e210",
-			Sha2_256.FromFile ("../../resources/binary_file.jpg").ToString ());
+			Sha2_256.FromFile ("../../_Resources/binary_file.jpg").ToString ());
 	}
 
 	[Test]
