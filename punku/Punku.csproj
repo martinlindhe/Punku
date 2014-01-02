@@ -70,6 +70,7 @@
     <Compile Include="Strings\StringTransformer.cs" />
     <Compile Include="Extensions\CharArrayExtensions.cs" />
     <Compile Include="Debug\VarDump.cs" />
+    <Compile Include="Hash\Sha2_384.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
