@@ -59,7 +59,6 @@
     <Compile Include="Strings\DiceDnD.cs" />
     <Compile Include="Strings\Luhn.cs" />
     <Compile Include="Strings\MorseCode.cs" />
-    <Compile Include="ByteArrayPrinter.cs" />
     <Compile Include="Validate\OrganizationNumberSweden.cs" />
     <Compile Include="Validate\PersonalIdentityNumberSweden.cs" />
     <Compile Include="Strings\Ean13.cs" />
@@ -69,6 +68,7 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\CharArrayExtensions.cs" />
     <Compile Include="Hash\Sha2_384.cs" />
+    <Compile Include="Extensions\ByteArrayExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />
@@ -88,7 +88,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="binary_file.jpg" />
     <None Include="_Resources\binary_file.jpg" />
   </ItemGroup>
 </Project>
