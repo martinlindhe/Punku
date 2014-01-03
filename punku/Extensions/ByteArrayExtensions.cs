@@ -60,10 +60,12 @@ public static class ByteArrayExtensions
 		return res.ToString ();
 	}
 
+	/** 
+	 * Returns a char[] from the byte[]
+	 */
 	public static char[] ToCharArray (this byte[] bytes)
 	{
-		// TODO add test this method!
-		char[] res = new char[bytes.Length];
+		var res = new char[bytes.Length];
 
 		for (int i = 0; i < bytes.Length; i++)
 			res [i] = (char)bytes [i];
