@@ -8,18 +8,10 @@ public static class ByteArrayExtensions
 	 */
 	public static string ToHexString (this byte[] bytes)
 	{
-		byte b;
-
 		var res = new StringBuilder ();
 
-		for (int bx = 0; bx < bytes.Length; bx++) {
-
-			b = (byte)(bytes [bx] >> 4);
-			res.Append ((char)(b > 9 ? b + 0x37 + 0x20 : b + 0x30));
-
-			b = (byte)(bytes [bx] & 0x0F);
-			res.Append ((char)(b > 9 ? b + 0x37 + 0x20 : b + 0x30));
-		}
+		foreach (byte b in bytes)
+			res.Append (b.ToString ("x2"));
 
 		return res.ToString ();
 	}
