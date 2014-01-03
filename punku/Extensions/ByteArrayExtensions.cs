@@ -59,5 +59,54 @@ public static class ByteArrayExtensions
 
 		return res.ToString ();
 	}
+
+	public static char[] ToCharArray (this byte[] bytes)
+	{
+		// TODO add test this method!
+		char[] res = new char[bytes.Length];
+
+		for (int i = 0; i < bytes.Length; i++)
+			res [i] = (char)bytes [i];
+
+		return res;
+	}
+
+	/**
+	 * Returns an array shifted to the right by shift
+	 */
+	public static byte[] RotateRight (this byte[] bytes, int shift)
+	{
+		byte[] Table = new byte[byte.MaxValue + 1];
+
+		// NOTE: we exploit byte rounding to fill the shift table
+		for (int i = 0; i <= byte.MaxValue; i++)
+			Table [i] = (byte)(i + shift);
+
+		byte[] arr = new byte[bytes.Length];
+
+		for (int i = 0; i < bytes.Length; i++)
+			arr [i] = Table [bytes [i]];
+
+		return arr;
+	}
+
+	/**
+	 * Returns an array shifted to the left by shift
+	 */
+	public static byte[] RotateLeft (this byte[] bytes, int shift)
+	{
+		byte[] Table = new byte[byte.MaxValue + 1];
+
+		// NOTE: we exploit byte rounding to fill the shift table
+		for (int i = 0; i <= byte.MaxValue; i++)
+			Table [i] = (byte)(i - shift);
+
+		byte[] arr = new byte[bytes.Length];
+
+		for (int i = 0; i < bytes.Length; i++)
+			arr [i] = Table [bytes [i]];
+
+		return arr;
+	}
 }
 
