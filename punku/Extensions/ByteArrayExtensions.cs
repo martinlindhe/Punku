@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Text;
 
-// TODO: use this in metaemu & hexview. move their hex printing to helper extensions
-// TODO: like ToCString but for $-terminated DOS strings
 public static class ByteArrayExtensions
 {
 	/**
@@ -11,19 +9,19 @@ public static class ByteArrayExtensions
 	public static string ToHexString (this byte[] bytes)
 	{
 		byte b;
-		int cx = 0;
 
-		char[] c = new char[bytes.Length * 2];
+		var res = new StringBuilder ();
 
-		for (int bx = 0; bx < bytes.Length; ++bx) {
+		for (int bx = 0; bx < bytes.Length; bx++) {
+
 			b = (byte)(bytes [bx] >> 4);
-			c [cx++] = (char)(b > 9 ? b + 0x37 + 0x20 : b + 0x30);
+			res.Append ((char)(b > 9 ? b + 0x37 + 0x20 : b + 0x30));
 
 			b = (byte)(bytes [bx] & 0x0F);
-			c [cx++] = (char)(b > 9 ? b + 0x37 + 0x20 : b + 0x30);
+			res.Append ((char)(b > 9 ? b + 0x37 + 0x20 : b + 0x30));
 		}
 
-		return new string (c);
+		return res.ToString ();
 	}
 
 	/**
@@ -34,6 +32,7 @@ public static class ByteArrayExtensions
 		var res = new StringBuilder ();
 
 		foreach (byte x in bytes) {
+
 			if (x == 0)
 				break;
 

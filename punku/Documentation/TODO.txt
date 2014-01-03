@@ -1,2 +1,4 @@
-﻿
+﻿ TODO: use ByteArrayExtensions in metaemu & hexview. move their hex printing to helper extensions
+
+
 TODO: ROT-13 på byte array
