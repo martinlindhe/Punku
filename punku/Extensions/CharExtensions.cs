@@ -4,7 +4,7 @@ using System.Text;
 public static class CharExtensions
 {
 	/**
-	 * Returns a 4-letter long hex value representation of char (UTF-16)
+	 * Returns a 4-letter long hex value representation of a UTF-16 code unit
 	 */
 	public static string ToHexString (this char c)
 	{
