@@ -78,4 +78,26 @@ public class Extensions_ByteArray
 			"0102030004"
 		);
 	}
+
+	[Test]
+	public void RotateRight01 ()
+	{
+		byte[] x = { (byte)'a', (byte)'b', (byte)'c' };
+
+		Assert.AreEqual (
+			x.RotateRight (1),
+			new byte[] { (byte)'b', (byte)'c', (byte)'d' }
+		); 
+	}
+
+	[Test]
+	public void RotateLeft01 ()
+	{
+		byte[] x = { (byte)'c', (byte)'d', (byte)'e' };
+
+		Assert.AreEqual (
+			x.RotateLeft (2),
+			new byte[] { (byte)'a', (byte)'b', (byte)'c' }
+		); 
+	}
 }
