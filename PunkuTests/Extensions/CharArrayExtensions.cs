@@ -14,4 +14,17 @@ public class Extensions_CharArray
 
 		Assert.AreEqual (s1, s2);
 	}
+
+	[Test]
+	public void ToHexString01 ()
+	{
+		string s = "hej";
+
+		char[] x = s.ToCharArray ();
+
+		Assert.AreEqual (
+			x.ToHexString (),
+			"00680065006a"
+		);
+	}
 }
