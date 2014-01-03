@@ -8,6 +8,36 @@ using Punku;
 public class Extensions_ByteArray
 {
 	[Test]
+	public void DosString01 ()
+	{
+		byte[] x = { (byte)'a', (byte)'b', (byte)'c', (byte)'$' };
+		Assert.AreEqual (
+			x.ToDosString (),
+			"abc"
+		);    
+	}
+
+	[Test]
+	public void DosString02 ()
+	{
+		byte[] x = { (byte)'$' };
+		Assert.AreEqual (
+			x.ToDosString (),
+			""
+		);    
+	}
+
+	[Test]
+	public void DosString03 ()
+	{
+		byte[] x = { 0 };
+		Assert.AreEqual (
+			x.ToDosString (),
+			"\u0000"
+		);    
+	}
+
+	[Test]
 	public void CString01 ()
 	{
 		byte[] x = { (byte)'a', (byte)'b', (byte)'c' };
