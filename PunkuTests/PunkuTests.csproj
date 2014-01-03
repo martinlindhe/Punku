@@ -69,6 +69,7 @@
     <Compile Include="Extensions\CharArrayExtensions.cs" />
     <Compile Include="Hash\Sha2_384.cs" />
     <Compile Include="Extensions\ByteArrayExtensions.cs" />
+    <Compile Include="Extensions\IntExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />
