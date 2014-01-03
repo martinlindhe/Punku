@@ -31,7 +31,6 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Compile Include="Hash\Hash.cs" />
-    <Compile Include="ByteArrayPrinter.cs" />
     <Compile Include="IFileReader\BinaryReader.cs" />
     <Compile Include="IFileReader\IFileReader.cs" />
     <Compile Include="PerlinNoise\Martins2dNoise.cs" />
@@ -71,6 +70,7 @@
     <Compile Include="Extensions\CharArrayExtensions.cs" />
     <Compile Include="Debug\VarDump.cs" />
     <Compile Include="Hash\Sha2_384.cs" />
+    <Compile Include="Extensions\ByteArrayExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
