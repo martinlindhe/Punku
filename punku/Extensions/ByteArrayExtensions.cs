@@ -1,8 +1,13 @@
 ﻿using System;
+using System.Text;
 
 // TODO: use this in metaemu & hexview. move their hex printing to helper extensions
+// TODO: like ToCString but for $-terminated DOS strings
 public static class ByteArrayExtensions
 {
+	/**
+	 * Returns a hex string representation of the content
+	 */
 	public static string ToHexString (this byte[] bytes)
 	{
 		byte b;
@@ -21,26 +26,39 @@ public static class ByteArrayExtensions
 		return new string (c);
 	}
 
+	/**
+	 * Decodes byte array to a C-string (each letter is 1 byte, 0 = end of text)
+	 */
 	public static string ToCString (this byte[] bytes)
 	{
-		int len;
+		var res = new StringBuilder ();
 
-		for (len = 0; len < bytes.Length; len++)
-			if (bytes [len] == 0)
+		foreach (byte x in bytes) {
+			if (x == 0)
 				break;
 
-		char[] c = new char[len];
-
-		for (int i = 0; i < bytes.Length; i++) {
-
-			// stop on NUL
-			if (bytes [i] == 0)
-				break;
-
-			c [i] = (char)bytes [i];
+			res.Append ((char)x);
 		}
 
-		return new string (c);
+		return res.ToString ();
+	}
+
+	/**
+	 * Decodes byte array to a DOS $-terminated string (each letter is 1 byte, $ = end of text)
+	 */
+	public static string ToDosString (this byte[] bytes)
+	{
+		var res = new StringBuilder ();
+
+		foreach (byte x in bytes) {
+	
+			if (x == (byte)'$')
+				break;
+
+			res.Append ((char)x);
+		}
+
+		return res.ToString ();
 	}
 }
 
