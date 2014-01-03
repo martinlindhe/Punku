@@ -71,6 +71,7 @@
     <Compile Include="Debug\VarDump.cs" />
     <Compile Include="Hash\Sha2_384.cs" />
     <Compile Include="Extensions\ByteArrayExtensions.cs" />
+    <Compile Include="Extensions\IntExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />

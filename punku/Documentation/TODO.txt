@@ -1,1 +1,2 @@
-﻿ TODO: use ByteArrayExtensions in metaemu & hexview. move their hex printing to helper extensions
+﻿
+better mysql tools
