@@ -8,6 +8,16 @@ using Punku;
 public class Extensions_ByteArray
 {
 	[Test]
+	public void ToCharArray01 ()
+	{
+		byte[] x = { (byte)'a', (byte)'b', (byte)'c' };
+		Assert.AreEqual (
+			x.ToCharArray (),
+			new char[] { 'a', 'b', 'c' }
+		);    
+	}
+
+	[Test]
 	public void DosString01 ()
 	{
 		byte[] x = { (byte)'a', (byte)'b', (byte)'c', (byte)'$' };
