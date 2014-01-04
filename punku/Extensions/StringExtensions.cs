@@ -78,4 +78,24 @@ public static class StringExtensions
 
 		return true;
 	}
+
+	/**
+	 * Returns a Base64 encoded representation of the string, converted to UTF-8
+	 */
+	public static string ToBase64 (this string input)
+	{
+		byte[] bytes = System.Text.ASCIIEncoding.UTF8.GetBytes (input);
+
+		return System.Convert.ToBase64String (bytes);
+	}
+
+	/**
+	 * Decodes a Base64 string to UTF-8
+	 */
+	public static string FromBase64 (this string input)
+	{
+		byte[] bytes = System.Convert.FromBase64String (input);
+
+		return System.Text.ASCIIEncoding.UTF8.GetString (bytes);
+	}
 }
