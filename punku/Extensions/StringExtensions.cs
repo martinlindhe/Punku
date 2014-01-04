@@ -84,9 +84,7 @@ public static class StringExtensions
 	 */
 	public static string ToBase64 (this string input)
 	{
-		byte[] bytes = System.Text.ASCIIEncoding.UTF8.GetBytes (input);
-
-		return System.Convert.ToBase64String (bytes);
+		return System.Text.ASCIIEncoding.UTF8.GetBytes (input).ToBase64 ();
 	}
 
 	/**
@@ -94,8 +92,14 @@ public static class StringExtensions
 	 */
 	public static string FromBase64 (this string input)
 	{
-		byte[] bytes = System.Convert.FromBase64String (input);
+		return System.Text.ASCIIEncoding.UTF8.GetString (input.FromBase64ToByteArray ());
+	}
 
-		return System.Text.ASCIIEncoding.UTF8.GetString (bytes);
+	/**
+	 * Decodes a Base64 string to byte[] array
+	 */
+	public static byte[] FromBase64ToByteArray (this string input)
+	{
+		return System.Convert.FromBase64String (input);
 	}
 }

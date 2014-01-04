@@ -102,5 +102,13 @@ public static class ByteArrayExtensions
 
 		return arr;
 	}
+
+	/**
+	 * Returns a Base64 encoded representation of the data
+	 */
+	public static string ToBase64 (this byte[] bytes)
+	{
+		return System.Convert.ToBase64String (bytes);
+	}
 }
 
