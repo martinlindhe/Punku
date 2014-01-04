@@ -155,4 +155,13 @@ public class Extensions_String
 	{
 		Assert.AreEqual ("aGVsbG8=".FromBase64 (), "hello");
 	}
+
+	[Test]
+	public void FromBase64ToByteArray01 ()
+	{
+		Assert.AreEqual (
+			"AgME".FromBase64ToByteArray (),
+			new byte[] { 2, 3, 4 }
+		);
+	}
 }
