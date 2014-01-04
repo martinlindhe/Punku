@@ -143,4 +143,16 @@ public class Extensions_String
 	{
 		Assert.AreEqual ("hello".IsPalindrome (), false);
 	}
+
+	[Test]
+	public void ToBase64_01 ()
+	{
+		Assert.AreEqual ("pleasure.".ToBase64 (), "cGxlYXN1cmUu");
+	}
+
+	[Test]
+	public void FromBase64_01 ()
+	{
+		Assert.AreEqual ("aGVsbG8=".FromBase64 (), "hello");
+	}
 }
