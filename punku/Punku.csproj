@@ -73,10 +73,12 @@
     <Compile Include="Extensions\ByteArrayExtensions.cs" />
     <Compile Include="Extensions\IntExtensions.cs" />
     <Compile Include="Extensions\CharExtensions.cs" />
+    <Compile Include="External\Dapper.NET\SqlMapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
     <Reference Include="System" />
+    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Hash\" />
@@ -88,6 +90,7 @@
     <Folder Include="Validate\" />
     <Folder Include="Debug\" />
     <Folder Include="Documentation\" />
+    <Folder Include="External\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Documentation\TODO.txt" />
