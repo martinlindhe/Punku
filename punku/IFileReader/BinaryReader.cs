@@ -18,8 +18,7 @@ namespace Punku
 		 * NOTE: src.Read() can throw FileNotFoundException
 		 */
 		public void Read (string filename)
-		{            
-            
+		{
 			var src = new FileStream (filename, FileMode.Open, FileAccess.Read);
 
 			this.Length = src.Length;
@@ -27,8 +26,6 @@ namespace Punku
                              
 			var numBytesToRead = this.Length;            
 			var numBytesRead = 0;
-
-			// TODO redo to a  do-while loop when test case first exist
                
 			while (numBytesToRead > 0) {                   
 				int n = src.Read (this.Data, numBytesRead, (int)numBytesToRead);

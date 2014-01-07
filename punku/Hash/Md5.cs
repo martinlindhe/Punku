@@ -9,9 +9,7 @@ namespace Punku.Hash
 	{
 		public Md5 (string s)
 		{
-			byte[] data = Encoding.Default.GetBytes (s); 
-			// TODO how does data get filled. each char taking 1 byte, or 2 (utf-16 ???)
-
+			byte[] data = Encoding.Default.GetBytes (s);
 			hash = new MD5CryptoServiceProvider ().ComputeHash (data);
 		}
 

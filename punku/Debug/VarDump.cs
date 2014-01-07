@@ -23,7 +23,7 @@ namespace Punku
 
 		public static void Dump (char[] val)
 		{
-			throw new Exception ("XXX pinrt hex of char-arr");
+			throw new Exception ("XXX TODO print hex of char-arr");
 		}
 	}
 }
