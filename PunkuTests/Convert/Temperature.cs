@@ -141,7 +141,6 @@ public class Convert_Temperature
 	[Test]
 	public static void Test23 ()
 	{
-		// TODO according to google: 1 millikelvin = -273.14900 degrees Celsius
 		Assert.AreEqual (Punku.Convert.Temperature.Convert ("millikelvin", "C", 1m), -273.149m);
 	}
 }
