@@ -1,29 +1,16 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace Punku
 {
-	public class VarDump
+	public class ObjectDump
 	{
-		public static void Dump (string val)
+		/**
+		 * Returns a pretty-printed JSON representation of the object
+		 */
+		public static string Dump (this object value)
 		{
-			// TODO also print hex data
-			Console.WriteLine ("VarDump (" + val.Length + " string): " + val);
-		}
-
-		public static void Dump (char val)
-		{
-			int tmp = (int)val;
-			Console.WriteLine ("VarDump (char): " + val + " (0x" + tmp.ToString ("x2") + ")");
-		}
-
-		public static void Dump (int val)
-		{
-			Console.WriteLine ("VarDump (int): " + val + " (0x" + val.ToString ("x4") + ")");
-		}
-
-		public static void Dump (char[] val)
-		{
-			throw new Exception ("XXX TODO print hex of char-arr");
+			return JsonConvert.SerializeObject (value, Formatting.Indented);
 		}
 	}
 }

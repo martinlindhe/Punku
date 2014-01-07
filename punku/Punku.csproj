@@ -74,6 +74,7 @@
     <Compile Include="Extensions\IntExtensions.cs" />
     <Compile Include="Extensions\CharExtensions.cs" />
     <Compile Include="External\Dapper.NET\SqlMapper.cs" />
+    <Compile Include="External\Dapper.NET\SqlMapperExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />

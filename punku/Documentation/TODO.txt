@@ -1,2 +1,12 @@
 ﻿
-better mysql tools
+
+Punku git:
+	add external reference to
+
+		https://github.com/JamesNK/Newtonsoft.Json
+		
+	add external reference to
+	
+		https://github.com/SamSaffron/dapper-dot-net
+		
+		
