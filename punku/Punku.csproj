@@ -93,6 +93,7 @@
     <Folder Include="Debug\" />
     <Folder Include="Documentation\" />
     <Folder Include="External\" />
+    <Folder Include="Math\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Documentation\TODO.txt" />
