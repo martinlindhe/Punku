@@ -65,27 +65,9 @@ namespace Punku.Convert
 			throw new Exception ("parse error");
 		}
 
-		public static string ToBase (ulong value, uint toBase)
+		public static string ToBase (ulong value, uint digitBase)
 		{
-			string AlphaCodes = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-
-			if (toBase < 2 || toBase > AlphaCodes.Length)
-				throw new ArgumentException ("toBase");
-
-			if (value < 0)
-				throw new ArgumentException ("value");
-
-			if (value == 0)
-				return "0";
-
-			string retVal = "";
-
-			while (value > 0) {
-				retVal = AlphaCodes [(int)(value % toBase)] + retVal;
-				value /= toBase;
-			}
-
-			return retVal;
+			return value.ToBase (digitBase);
 		}
 	}
 }
