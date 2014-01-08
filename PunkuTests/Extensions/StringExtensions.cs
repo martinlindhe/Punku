@@ -19,6 +19,18 @@ public class Extensions_String
 	}
 
 	[Test]
+	public void Reverse01 ()
+	{
+		Assert.AreEqual ("hello".Reverse (), "olleh");
+	}
+
+	[Test]
+	public void Reverse02 ()
+	{
+		Assert.AreEqual ("höger".Reverse (), "regöh");
+	}
+
+	[Test]
 	public void Count01 ()
 	{
 		Assert.AreEqual ("haj".Count ('a'), 1);
