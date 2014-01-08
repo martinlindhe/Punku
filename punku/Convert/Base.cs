@@ -65,7 +65,7 @@ namespace Punku.Convert
 			throw new Exception ("parse error");
 		}
 
-		public static string ToBase (int value, int toBase)
+		public static string ToBase (ulong value, uint toBase)
 		{
 			string AlphaCodes = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
@@ -81,7 +81,7 @@ namespace Punku.Convert
 			string retVal = "";
 
 			while (value > 0) {
-				retVal = AlphaCodes [value % toBase] + retVal;
+				retVal = AlphaCodes [(int)(value % toBase)] + retVal;
 				value /= toBase;
 			}
 
