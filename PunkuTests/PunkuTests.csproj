@@ -37,6 +37,7 @@
     <Folder Include="Validate\" />
     <Folder Include="Extensions\" />
     <Folder Include="_Resources\" />
+    <Folder Include="Math\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IFileReader\FileReaders.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Extensions\ByteArrayExtensions.cs" />
     <Compile Include="Extensions\IntExtensions.cs" />
     <Compile Include="Extensions\CharExtensions.cs" />
+    <Compile Include="Math\Math.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />
