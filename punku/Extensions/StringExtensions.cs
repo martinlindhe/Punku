@@ -18,6 +18,19 @@ public static class StringExtensions
 	}
 
 	/**
+	 * @return reversed string
+	 */
+	public static string Reverse (this string input)
+	{
+		if (input == null)
+			return null;
+
+		char[] array = input.ToCharArray ();
+		Array.Reverse (array);
+		return new String (array);
+	}
+
+	/**
 	 * return the number of times letter occurs
 	 */
 	public static int Count (this string input, char letter)
@@ -77,6 +90,25 @@ public static class StringExtensions
 				return false;
 
 		return true;
+	}
+
+	/**
+	 * Decodes a base-x encoded value
+	 */
+	public static ulong FromBase (this string input, uint numberBase)
+	{
+		// TODO verify all digits are valid numbers in numberBase
+
+		var reversed = input.Reverse ();
+		ulong result = 0;
+		int pos = 0;
+
+		foreach (char c in reversed) {
+			result += c * (ulong)Math.Pow (numberBase, pos);
+			pos++;
+		}
+
+		return result;
 	}
 
 	/**
