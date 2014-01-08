@@ -4,15 +4,15 @@ namespace Punku
 {
 	public static class Math
 	{
-		public static bool IsNarcissisticNumber (ulong n)
+		public static bool IsNarcissisticNumber (ulong n, uint digitBase = 10)
 		{
 			// NOTE: there can be a rounding error due to Math.Pow using doubles
 
 			ulong res = 0;
-			int count = n.CountDigits ();
+			uint digitCount = n.CountDigits (digitBase);
 
-			foreach (var x in n.Digits ())
-				res += (ulong)System.Math.Pow (x, count);
+			foreach (var digit in n.Digits (digitBase))
+				res += (ulong)System.Math.Pow (digit, digitCount);
 
 			if (n == res)
 				return true;

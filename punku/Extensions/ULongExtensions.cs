@@ -3,15 +3,15 @@
 public static class ULongExtensions
 {
 	/**
-	 * @return the number of digits in the number (base 10)
+	 * @return the number of digits in the number
 	 */
-	public static int CountDigits (this ulong i)
+	public static uint CountDigits (this ulong i, uint digitBase = 10)
 	{
-		int cnt = 1;
+		uint cnt = 1;
 
-		while (i >= 10) {
+		while (i >= digitBase) {
 			cnt++;
-			i /= 10;
+			i /= digitBase;
 		}
 
 		return cnt;
@@ -20,14 +20,14 @@ public static class ULongExtensions
 	/**
 	 * @return byte array of the separate digits in the number (base 10)
 	 */
-	public static byte[] Digits (this ulong i)
+	public static byte[] Digits (this ulong i, uint digitBase = 10)
 	{
-		int count = CountDigits (i);
+		int count = (int)i.CountDigits (digitBase);
 		byte[] digits = new byte[count];
 
 		for (int n = count - 1; n >= 0; n--) {
-			digits [n] = (byte)(i % 10);
-			i /= 10;
+			digits [n] = (byte)(i % digitBase);
+			i /= digitBase;
 		}
 
 		return digits;
