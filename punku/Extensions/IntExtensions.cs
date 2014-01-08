@@ -8,7 +8,7 @@ public static class IntExtensions
 	}
 
 	/**
-	 * @ return the number of digits in the number
+	 * @return the number of digits in the number
 	 */
 	public static int CountDigits (this int i)
 	{
@@ -21,6 +21,21 @@ public static class IntExtensions
 			i /= 10;
 		}
 		return cnt;
+	}
+
+	/**
+	 * @return byte array of the separate digits in the number
+	 */
+	public static byte[] Digits (this int i)
+	{
+		int count = CountDigits (i);
+		byte[] digits = new byte[count];
+
+		for (int n = count - 1; n >= 0; n--) {
+			digits [n] = (byte)(i % 10);
+			i /= 10;
+		}
+		return digits;
 	}
 }
 
