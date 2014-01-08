@@ -72,8 +72,8 @@
     <Compile Include="Extensions\ByteArrayExtensions.cs" />
     <Compile Include="Extensions\IntExtensions.cs" />
     <Compile Include="Extensions\CharExtensions.cs" />
-    <Compile Include="Math\Math.cs" />
     <Compile Include="Extensions\ULongExtensions.cs" />
+    <Compile Include="Math\NarcissisticNumber.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />
