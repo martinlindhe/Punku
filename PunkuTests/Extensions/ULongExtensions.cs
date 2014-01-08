@@ -67,4 +67,18 @@ public class Extensions_ULong
 			new byte[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }
 		);
 	}
+
+	[Test]
+	public static void ToBase01 ()
+	{
+		ulong x = 255;
+		Assert.AreEqual (x.ToBase (8), "377");
+	}
+
+	[Test]
+	public static void ToBase02 ()
+	{
+		ulong x = 255;
+		Assert.AreEqual (x.ToBase (2), "11111111");
+	}
 }
