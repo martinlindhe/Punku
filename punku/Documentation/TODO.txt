@@ -9,4 +9,10 @@ Punku git:
 	
 		https://github.com/SamSaffron/dapper-dot-net
 		
-		
+		---
+
+
+math:
+	* hur många siffror i en integer, base10?
+	* dela upp talet 1234 i 1,2,3,4 hur?
+	narcisstic numbner  8208
