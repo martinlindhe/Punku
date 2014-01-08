@@ -9,14 +9,21 @@ public class Math_Tests
 	[Test]
 	public void IsNarcissisticNumber01 ()
 	{
-		int x = 123;
+		ulong x = 123;
 		Assert.AreEqual (Punku.Math.IsNarcissisticNumber (x), false);
 	}
 
 	[Test]
 	public void IsNarcissisticNumber02 ()
 	{
-		int x = 8208;
+		ulong x = 8208;
+		Assert.AreEqual (Punku.Math.IsNarcissisticNumber (x), true);
+	}
+
+	[Test]
+	public void IsNarcissisticNumber03 ()
+	{
+		ulong x = 32164049651;
 		Assert.AreEqual (Punku.Math.IsNarcissisticNumber (x), true);
 	}
 }
