@@ -75,7 +75,6 @@
     <Compile Include="Extensions\CharExtensions.cs" />
     <Compile Include="External\Dapper.NET\SqlMapper.cs" />
     <Compile Include="External\Dapper.NET\SqlMapperExtensions.cs" />
-    <Compile Include="Math\Math.cs" />
     <Compile Include="Extensions\ULongExtensions.cs" />
     <Compile Include="Math\NarcissisticNumber.cs" />
   </ItemGroup>
