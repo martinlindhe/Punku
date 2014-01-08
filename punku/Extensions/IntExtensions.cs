@@ -24,7 +24,7 @@ public static class IntExtensions
 	}
 
 	/**
-	 * @return byte array of the separate digits in the number
+	 * @return byte array of the separate digits in the number (base 10)
 	 */
 	public static byte[] Digits (this int i)
 	{

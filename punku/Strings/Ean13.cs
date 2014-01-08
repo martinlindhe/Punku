@@ -70,7 +70,7 @@ namespace Punku.Strings
 			}
 
 			// round upwards to next ten-digit (eg: 47 => 50)
-			var next_ten = (int)Math.Ceiling (((double)sum / 10)) * 10;
+			var next_ten = (int)System.Math.Ceiling (((double)sum / 10)) * 10;
 			return next_ten - sum;
 		}
 
