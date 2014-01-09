@@ -18,30 +18,33 @@ namespace Punku
 
 		public NaturalNumber (string s, uint numberBase = 10)
 		{
-			if (numberBase != 10)
-				throw new NotImplementedException ("only handles base-10 input");
-
 			NumberBase = numberBase;
-			Digits = Parse (s);
+			Digits = Parse (s, numberBase);
 		}
 
 		/**
-		 * Parses a base-10 number represented in a string
+		 * Parses a number represented in a string
 		 */
-		protected static byte[] Parse (string s)
+		protected static byte[] Parse (string s, uint numberBase = 10)
 		{
 			if (s.Length < 1)
 				throw new FormatException ();
 
-			var res = new byte[s.Length];
+			if (numberBase > 10)
+				throw new NotImplementedException ("TODO over base10");
 
+			// TODO implement > base10 using a "key string" for each digit (0,1,2...)
+
+			var res = new byte[s.Length];
 			int idx = 0;
 
 			foreach (char c in s) {
-				if (c < '0' || c > '9')
-					throw new FormatException ();
 
-				res [idx++] = (byte)(c - '0');
+				byte val = (byte)(c - '0');
+				if (val >= numberBase)
+					throw new FormatException ("digit " + c + " is not in base " + numberBase);
+
+				res [idx++] = val;
 			}
 
 			return res;
@@ -52,7 +55,6 @@ namespace Punku
 		 */
 		public NaturalNumber ToBase (uint digitBase)
 		{
-
 			throw new NotImplementedException ();
 		}
 
