@@ -6,7 +6,6 @@
  */
 using System;
 
-// TODO unit tests for htis class
 namespace Punku
 {
 	/**
@@ -52,7 +51,6 @@ namespace Punku
 		{
 			decimal res = 0;
 
-			// XXXX TODO throw exception if number is too large
 			foreach (byte b in Digits)
 				res = (res * NumberBase) + b;
 
