@@ -30,6 +30,9 @@ namespace Punku
 		 */
 		protected static byte[] Parse (string s)
 		{
+			if (s.Length < 1)
+				throw new FormatException ();
+
 			var res = new byte[s.Length];
 
 			int idx = 0;
@@ -42,6 +45,15 @@ namespace Punku
 			}
 
 			return res;
+		}
+
+		/**
+		 * Converts number to another number base
+		 */
+		public NaturalNumber ToBase (uint digitBase)
+		{
+
+			throw new NotImplementedException ();
 		}
 
 		/**
