@@ -97,15 +97,21 @@ public static class StringExtensions
 	 */
 	public static ulong FromBase (this string input, uint numberBase)
 	{
-		// TODO verify all digits are valid numbers in numberBase
+		// TODO recognixe "0xFFFF" hex, b0010101 binary string directly. see Punku.Convert.Base also
 
-		var reversed = input.Reverse ();
 		ulong result = 0;
-		int pos = 0;
 
-		foreach (char c in reversed) {
-			result += c * (ulong)Math.Pow (numberBase, pos);
-			pos++;
+		if (numberBase > 10)
+			throw new NotImplementedException ("TODO over base10");
+
+
+		foreach (char c in input) {
+
+			byte val = (byte)(c - '0');
+			if (val >= numberBase)
+				throw new FormatException ("digit " + c + " is not in base-" + numberBase);
+
+			result = (result * numberBase) + val;
 		}
 
 		return result;
