@@ -4,40 +4,40 @@ using System.Text;
 public static class ULongExtensions
 {
 	/**
-	 * @return the number of digits in the number
+	 * @return the number of digits in n
 	 */
-	public static uint CountDigits (this ulong i, uint numberBase = 10)
+	public static uint CountDigits (this ulong n, uint numberBase = 10)
 	{
 		uint cnt = 1;
 
-		while (i >= numberBase) {
+		while (n >= numberBase) {
 			cnt++;
-			i /= numberBase;
+			n /= numberBase;
 		}
 
 		return cnt;
 	}
 
 	/**
-	 * @return byte array of the separate digits in the number (base 10)
+	 * @return byte array of the separate digits in n (base 10)
 	 */
-	public static byte[] Digits (this ulong i, uint numberBase = 10)
+	public static byte[] Digits (this ulong n, uint numberBase = 10)
 	{
-		int count = (int)i.CountDigits (numberBase);
+		int count = (int)n.CountDigits (numberBase);
 		byte[] digits = new byte[count];
 
-		for (int n = count - 1; n >= 0; n--) {
-			digits [n] = (byte)(i % numberBase);
-			i /= numberBase;
+		for (int i = count - 1; i >= 0; i--) {
+			digits [i] = (byte)(n % numberBase);
+			n /= numberBase;
 		}
 
 		return digits;
 	}
 
 	/**
-	 * @return string representation of i written in base digitBase
+	 * @return string representation of n written in base digitBase
 	 */
-	public static string ToBase (this ulong i, uint numberBase)
+	public static string ToBase (this ulong n, uint numberBase)
 	{
 		string AlphaCodes = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
@@ -46,12 +46,64 @@ public static class ULongExtensions
 
 		var sb = new StringBuilder ();
 
-		while (i > 0) {
-			sb.Insert (0, AlphaCodes [(int)(i % numberBase)]);
-			i /= numberBase;
+		while (n > 0) {
+			sb.Insert (0, AlphaCodes [(int)(n % numberBase)]);
+			n /= numberBase;
 		}
 
 		return sb.ToString ();
+	}
+
+	/**
+	 * @return true if n is a repeating digit (eg 4444, 999999)
+	 * http://en.wikipedia.org/wiki/Repdigit
+	 */
+	public static bool IsRepdigit (this ulong n, uint numberBase = 10)
+	{
+		var digits = n.Digits (numberBase);
+
+		if (digits.Length < 2)
+			return false;
+
+		byte last = 0;
+
+		foreach (var x in digits) {
+			if (last != 0 && x != last)
+				return false;
+			last = x;
+		}
+
+		return true;
+	}
+
+	/**
+     * A pandigital number is an integer that in a given base has among
+     * its significant digits each digit used in the base at least once.
+     * For example, 1223334444555567890 is a pandigital number in base 10.
+     */
+	public static bool IsPandigitalNumber (this ulong n, uint numberBase = 10)
+	{
+		var digits = n.Digits (numberBase);
+		var found = new byte[numberBase];
+
+		foreach (var digit in digits)
+			found [digit] = 1;
+
+		foreach (var x in found) {
+			if (x == 0)
+				return false;
+		} 
+
+		return true;
+	}
+
+	public static bool IsPrime (this ulong n)
+	{
+		for (ulong j = 2; j < n; j++)
+			if (n % j == 0)
+				return false;
+
+		return true;
 	}
 }
 
