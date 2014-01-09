@@ -51,12 +51,29 @@ public class Math_NaturalNumber
 	}
 
 	[Test]
+	public void ToDecimal07 ()
+	{
+		var bb = new NaturalNumber ("11111111", 2);
+		Assert.AreEqual (bb.ToDecimal (), 255);
+	}
+
+	[Test]
 	public void Verify01 ()
 	{
 		var bb = new NaturalNumber ("123");
 		Assert.AreEqual (
 			bb.Digits, 
 			new byte[] { 1, 2, 3 }
+		);
+	}
+
+	[Test]
+	public void Verify02 ()
+	{
+		var bb = new NaturalNumber ("0");
+		Assert.AreEqual (
+			bb.Digits, 
+			new byte[] { 0 }
 		);
 	}
 }
