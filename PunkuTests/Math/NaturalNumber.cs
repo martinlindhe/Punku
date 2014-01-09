@@ -23,14 +23,28 @@ public class Math_NaturalNumber
 	[Test]
 	public void ToDecimal03 ()
 	{
-		// NOTE: biggest number that fits in decimal datatype
+		var bb = new NaturalNumber ("0");
+		Assert.AreEqual (bb.ToDecimal (), 0);
+	}
+
+	[Test]
+
+	[ExpectedException (typeof(FormatException))]
+	public void ToDecimal04 ()
+	{
+		var bb = new NaturalNumber ("");
+	}
+
+	[Test]
+	public void ToDecimal05 ()
+	{
 		var bb = new NaturalNumber ("79228162514264337593543950335");
-		Assert.AreEqual (bb.ToDecimal (), 79228162514264337593543950335m);
+		Assert.AreEqual (bb.ToDecimal (), Decimal.MaxValue);
 	}
 
 	[Test]
 	[ExpectedException (typeof(OverflowException))]
-	public void ToDecimal04 ()
+	public void ToDecimal06 ()
 	{
 		var bb = new NaturalNumber ("79228162514264337593543950336");
 		bb.ToDecimal ();
