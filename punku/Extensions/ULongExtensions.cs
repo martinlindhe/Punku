@@ -23,6 +23,7 @@ public static class ULongExtensions
 	 */
 	public static byte[] Digits (this ulong n, uint numberBase = 10)
 	{
+		// TODO this method should be in NaturalNumber class
 		int count = (int)n.CountDigits (numberBase);
 		byte[] digits = new byte[count];
 
@@ -97,6 +98,9 @@ public static class ULongExtensions
 		return true;
 	}
 
+	/**
+	 * @return true if n is a prime
+	 */
 	public static bool IsPrime (this ulong n)
 	{
 		for (ulong j = 2; j < n; j++)
@@ -104,6 +108,25 @@ public static class ULongExtensions
 				return false;
 
 		return true;
+	}
+
+	/**
+	 * @return true if n is a even number
+	 */
+	public static bool IsEven (this ulong n)
+	{
+		if (n % 2 == 0)
+			return true;
+
+		return false;
+	}
+
+	/**
+	 * @return true if n is a odd number
+	 */
+	public static bool IsOdd (this ulong n)
+	{
+		return !n.IsEven ();
 	}
 }
 
