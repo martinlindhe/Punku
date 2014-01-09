@@ -40,15 +40,15 @@ public static class ULongExtensions
 	 */
 	public static string ToBase (this ulong n, uint numberBase)
 	{
-		string AlphaCodes = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+		string digitKeys = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
-		if (numberBase < 2 || numberBase > AlphaCodes.Length)
+		if (numberBase < 2 || numberBase > digitKeys.Length)
 			throw new ArgumentException ("digitBase");
 
 		var sb = new StringBuilder ();
 
 		while (n > 0) {
-			sb.Insert (0, AlphaCodes [(int)(n % numberBase)]);
+			sb.Insert (0, digitKeys [(int)(n % numberBase)]);
 			n /= numberBase;
 		}
 

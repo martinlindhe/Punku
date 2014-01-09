@@ -97,8 +97,6 @@ public static class StringExtensions
 	 */
 	public static ulong FromBase (this string input, uint numberBase)
 	{
-		// TODO recognixe "0xFFFF" hex, b0010101 binary string directly. see Punku.Convert.Base also
-
 		ulong result = 0;
 
 		if (numberBase > 10)

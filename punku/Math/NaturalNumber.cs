@@ -25,22 +25,33 @@ namespace Punku
 		/**
 		 * Parses a number represented in a string
 		 */
-		protected static byte[] Parse (string s, uint numberBase = 10)
+		protected static byte[] Parse (
+			string s, 
+			uint numberBase = 10,
+			string digitKeys = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+		)
 		{
+			// TODO add unit test that uses alternate digitKeys to decode something
+
+			// creates a lookup table for char -> digit value
+			byte[] digitValues = new byte[byte.MaxValue];
+			for (int i = 0; i < digitKeys.Length; i++) {
+				byte key = (byte)digitKeys [i];
+				digitValues [key] = (byte)i;
+			}
+
 			if (s.Length < 1)
-				throw new FormatException ();
+				throw new ArgumentOutOfRangeException ();
 
-			if (numberBase > 10)
-				throw new NotImplementedException ("TODO over base10");
-
-			// TODO implement > base10 using a "key string" for each digit (0,1,2...)
+			if (numberBase < 2 || numberBase > digitKeys.Length)
+				throw new ArgumentOutOfRangeException ();
 
 			var res = new byte[s.Length];
 			int idx = 0;
 
 			foreach (char c in s) {
 
-				byte val = (byte)(c - '0');
+				byte val = digitValues [(byte)c];
 				if (val >= numberBase)
 					throw new FormatException ("digit " + c + " is not in base " + numberBase);
 
