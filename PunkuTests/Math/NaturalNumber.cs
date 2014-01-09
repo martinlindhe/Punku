@@ -9,60 +9,78 @@ public class Math_NaturalNumber
 	[Test]
 	public void ToDecimal01 ()
 	{
-		var bb = new NaturalNumber ("12345");
-		Assert.AreEqual (bb.ToDecimal (), 12345);
+		var x = new NaturalNumber ("12345");
+		Assert.AreEqual (x.ToDecimal (), 12345);
 	}
 
 	[Test]
 	public void ToDecimal02 ()
 	{
-		var bb = new NaturalNumber ("00012345");
-		Assert.AreEqual (bb.ToDecimal (), 12345);
+		var x = new NaturalNumber ("00012345");
+		Assert.AreEqual (x.ToDecimal (), 12345);
 	}
 
 	[Test]
 	public void ToDecimal03 ()
 	{
-		var bb = new NaturalNumber ("0");
-		Assert.AreEqual (bb.ToDecimal (), 0);
+		var x = new NaturalNumber ("0");
+		Assert.AreEqual (x.ToDecimal (), 0);
 	}
 
 	[Test]
-
-	[ExpectedException (typeof(FormatException))]
+	[ExpectedException (typeof(ArgumentOutOfRangeException))]
 	public void ToDecimal04 ()
 	{
-		var bb = new NaturalNumber ("");
+		var x = new NaturalNumber ("");
 	}
 
-	[Test]
+	[ExpectedException (typeof(ArgumentOutOfRangeException))]
 	public void ToDecimal05 ()
 	{
-		var bb = new NaturalNumber ("79228162514264337593543950335");
-		Assert.AreEqual (bb.ToDecimal (), Decimal.MaxValue);
+		var x = new NaturalNumber ("1", 1);
 	}
 
-	[Test]
-	[ExpectedException (typeof(OverflowException))]
+	[ExpectedException (typeof(ArgumentOutOfRangeException))]
 	public void ToDecimal06 ()
 	{
-		var bb = new NaturalNumber ("79228162514264337593543950336");
-		bb.ToDecimal ();
+		var x = new NaturalNumber ("1", 0);
 	}
 
 	[Test]
 	public void ToDecimal07 ()
+	{
+		var x = new NaturalNumber ("79228162514264337593543950335");
+		Assert.AreEqual (x.ToDecimal (), Decimal.MaxValue);
+	}
+
+	[Test]
+	[ExpectedException (typeof(OverflowException))]
+	public void ToDecimal08 ()
+	{
+		var x = new NaturalNumber ("79228162514264337593543950336");
+		x.ToDecimal ();
+	}
+
+	[Test]
+	public void ToDecimal09 ()
 	{
 		var bb = new NaturalNumber ("11111111", 2);
 		Assert.AreEqual (bb.ToDecimal (), 255);
 	}
 
 	[Test]
+	public void ToDecimal10 ()
+	{
+		var bb = new NaturalNumber ("FF", 16);
+		Assert.AreEqual (bb.ToDecimal (), 255);
+	}
+
+	[Test]
 	public void Verify01 ()
 	{
-		var bb = new NaturalNumber ("123");
+		var x = new NaturalNumber ("123");
 		Assert.AreEqual (
-			bb.Digits, 
+			x.Digits, 
 			new byte[] { 1, 2, 3 }
 		);
 	}
@@ -70,9 +88,9 @@ public class Math_NaturalNumber
 	[Test]
 	public void Verify02 ()
 	{
-		var bb = new NaturalNumber ("0");
+		var x = new NaturalNumber ("0");
 		Assert.AreEqual (
-			bb.Digits, 
+			x.Digits, 
 			new byte[] { 0 }
 		);
 	}
