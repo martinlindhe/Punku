@@ -75,7 +75,6 @@ public class Convert_Base
 	[Test]
 	public static void Octal01 ()
 	{
-
 		Assert.AreEqual (Punku.Convert.Base.ParseToInt64 ("021"), 17);
 	}
 
@@ -83,7 +82,7 @@ public class Convert_Base
 	public static void BaseConversion01 ()
 	{
 		var x = new Punku.Convert.Base ("255");
-		Assert.AreEqual (x.ToDecimal (), 255);
+		Assert.AreEqual (x.Value, 255);
 		Assert.AreEqual (x.ToOctal (), "0377");
 		Assert.AreEqual (x.ToBinary (), "b11111111");
 		Assert.AreEqual (x.ToHex (), "0xff");

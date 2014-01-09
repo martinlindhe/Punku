@@ -81,4 +81,81 @@ public class Extensions_ULong
 		ulong x = 255;
 		Assert.AreEqual (x.ToBase (2), "11111111");
 	}
+
+	[Test]
+	public static void IsRepdigit01 ()
+	{
+		ulong x = 1;
+		Assert.AreEqual (x.IsRepdigit (), false);
+	}
+
+	[Test]
+	public static void IsRepdigit02 ()
+	{
+		ulong x = 4444444;
+		Assert.AreEqual (x.IsRepdigit (), true);
+	}
+
+	[Test]
+	public static void IsRepdigit03 ()
+	{
+		ulong x = 444445;
+		Assert.AreEqual (x.IsRepdigit (), false);
+	}
+
+	[Test]
+	public static void IsPandigitalNumber01 ()
+	{
+		ulong x = 1223334444555567890;
+		Assert.AreEqual (x.IsPandigitalNumber (10), true);
+	}
+
+	[Test]
+	public static void IsPandigitalNumber02 ()
+	{
+		ulong x = 1023456789;
+		Assert.AreEqual (x.IsPandigitalNumber (10), true);
+	}
+
+	[Test]
+	public static void IsPandigitalNumber03 ()
+	{
+		ulong x = 123456789;
+		Assert.AreEqual (x.IsPandigitalNumber (10), false);
+	}
+
+	[Test]
+	public static void IsPandigitalNumber04 ()
+	{
+		ulong x = 102345678;
+		Assert.AreEqual (x.IsPandigitalNumber (10), false);
+	}
+
+	[Test]
+	public static void IsPandigitalNumber05 ()
+	{
+		ulong x = "1023".FromBase (4);
+		Assert.AreEqual (x.IsPandigitalNumber (4), true);
+	}
+
+	[Test]
+	public static void IsPrime01 ()
+	{
+		ulong x = 223;
+		Assert.AreEqual (x.IsPrime (), true);
+	}
+
+	[Test]
+	public static void IsPrime02 ()
+	{
+		ulong x = 997;
+		Assert.AreEqual (x.IsPrime (), true);
+	}
+
+	[Test]
+	public static void IsPrime03 ()
+	{
+		ulong x = 100;
+		Assert.AreEqual (x.IsPrime (), false);
+	}
 }
