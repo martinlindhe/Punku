@@ -7,12 +7,13 @@ namespace Punku
 	{
 		public MeasureTime ()
 		{
+			Console.WriteLine ("[MeasureTime] Started at " + System.Environment.TickCount);
 			Start ();
 		}
 
 		public new void Stop ()
 		{
-			Console.WriteLine ("Stop after " + Elapsed.ToString () + " s (" + ElapsedMilliseconds + " milliseconds, " + ElapsedTicks + " ticks)");
+			Console.WriteLine ("[MeasureTime] Stopped after " + Elapsed.ToString () + " s (" + ElapsedMilliseconds + " milliseconds, " + ElapsedTicks + " ticks), at " + System.Environment.TickCount);
 			base.Stop ();
 		}
 	}

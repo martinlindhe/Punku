@@ -22,14 +22,9 @@ namespace Punku.Convert
 			Value = ParseToInt64 (s);
 		}
 
-		public long ToDecimal ()
-		{
-			return this.Value;
-		}
-
 		public string ToHex ()
 		{
-			return "0x" + Value.ToString ("x");
+			return "0x" + System.Convert.ToString (Value, 16);
 		}
 
 		public string ToOctal ()

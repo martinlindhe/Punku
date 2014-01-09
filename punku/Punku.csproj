@@ -9,6 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Punku</RootNamespace>
     <AssemblyName>punku</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -73,10 +74,9 @@
     <Compile Include="Extensions\ByteArrayExtensions.cs" />
     <Compile Include="Extensions\IntExtensions.cs" />
     <Compile Include="Extensions\CharExtensions.cs" />
-    <Compile Include="External\Dapper.NET\SqlMapper.cs" />
-    <Compile Include="External\Dapper.NET\SqlMapperExtensions.cs" />
     <Compile Include="Extensions\ULongExtensions.cs" />
     <Compile Include="Math\NarcissisticNumber.cs" />
+    <Compile Include="Math\NaturalNumber.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
@@ -94,7 +94,6 @@
     <Folder Include="Validate\" />
     <Folder Include="Debug\" />
     <Folder Include="Documentation\" />
-    <Folder Include="External\" />
     <Folder Include="Math\" />
   </ItemGroup>
   <ItemGroup>
