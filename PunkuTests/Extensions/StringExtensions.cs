@@ -169,6 +169,24 @@ public class Extensions_String
 	}
 
 	[Test]
+	public void FromBase_01 ()
+	{
+		Assert.AreEqual (
+			"1234".FromBase (10),
+			1234
+		);
+	}
+
+	[Test]
+	public void FromBase_02 ()
+	{
+		Assert.AreEqual (
+			"1023".FromBase (4),
+			75
+		);
+	}
+
+	[Test]
 	public void FromBase64ToByteArray01 ()
 	{
 		Assert.AreEqual (
