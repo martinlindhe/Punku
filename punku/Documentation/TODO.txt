@@ -1,5 +1,5 @@
 ﻿
 
 math:
- 	gör base-converter direkt på ett NaturalNumber objket till en annan base
- 	base algo: http://www.mathworks.com/matlabcentral/fileexchange/30035-improved-base-expansion-algorithm
+	NaturalNumber:
+		Add two numbers

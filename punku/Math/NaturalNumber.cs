@@ -81,6 +81,33 @@ namespace Punku
 
 			return res;
 		}
+
+		public override bool Equals (object o)
+		{
+			NaturalNumber n = (NaturalNumber)o;
+			  
+			if (Digits.Length != n.Digits.Length)
+				return false;
+			  
+			for (int i = 0; i < Digits.Length; i++)
+				if (Digits [i] != n.Digits [i])
+					return false;
+
+			return true;
+		}
+
+		/**
+		 * Overloaded equality operator
+		 */
+		public static bool operator == (NaturalNumber n1, NaturalNumber n2)
+		{
+			return n1.Equals (n2);
+		}
+
+		public static bool operator != (NaturalNumber n1, NaturalNumber n2)
+		{
+			return !(n1.Equals (n2));
+		}
 	}
 }
 
