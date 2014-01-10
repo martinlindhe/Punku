@@ -94,4 +94,22 @@ public class Math_NaturalNumber
 			new byte[] { 0 }
 		);
 	}
+
+	[Test]
+	public void Equals01 ()
+	{
+		// validates NaturalNumber.Equals()
+		var n1 = new NaturalNumber ("123", 10);
+		var n2 = new NaturalNumber ("123", 10);
+		Assert.AreEqual (n1.Equals (n2), true);
+	}
+
+	[Test]
+	public void Equals02 ()
+	{
+		// validates NaturalNumber equality "==" overload
+		var n1 = new NaturalNumber ("123", 10);
+		var n2 = new NaturalNumber ("123", 10);
+		Assert.AreEqual (n1 == n2, true);
+	}
 }
