@@ -107,9 +107,18 @@ public class Math_NaturalNumber
 	[Test]
 	public void Equals02 ()
 	{
-		// validates NaturalNumber equality "==" overload
+		// validates NaturalNumber.Equals()
 		var n1 = new NaturalNumber ("123", 10);
-		var n2 = new NaturalNumber ("123", 10);
+		var n2 = new NaturalNumber ("456", 10);
+		Assert.AreEqual (n1.Equals (n2), false);
+	}
+
+	[Test]
+	public void Equals03 ()
+	{
+		// validates NaturalNumber equality "==" overload
+		var n1 = new NaturalNumber ("777", 8);
+		var n2 = new NaturalNumber ("777", 8);
 		Assert.AreEqual (n1 == n2, true);
 	}
 }
