@@ -5,6 +5,7 @@
  * 		System.Numerics.BigInteger also exists
  */
 using System;
+using System.Text;
 
 namespace Punku
 {
@@ -87,6 +88,16 @@ namespace Punku
 			return res;
 		}
 
+		public string ToString ()
+		{
+			var res = new StringBuilder ();
+
+			foreach (byte b in Digits)
+				res.Append ((char)(b + '0'));
+
+			return res.ToString ();
+		}
+
 		public override bool Equals (object o)
 		{
 			NaturalNumber n = (NaturalNumber)o;
@@ -129,16 +140,25 @@ namespace Punku
 			var length = (n1.Digits.Length > n2.Digits.Length) ? n1.Digits.Length : n2.Digits.Length;
 
 			NaturalNumber res = new NaturalNumber (10);
+
+
 			res.Digits = new byte[length];
+			Console.WriteLine ("adding " + n1.ToDecimal () + " and " + n2.ToDecimal ());
 			  
 	
 			long carry = 0;
 
-			for (int i = 0; i < res.Digits.Length; i++) {
-				byte b1 = (i < n1.Digits.Length) ? n1.Digits [i] : (byte)0;
-				byte b2 = (i < n2.Digits.Length) ? n2.Digits [i] : (byte)0;
+			var c1 = n1.Digits.Length - 1;
+			var c2 = n2.Digits.Length - 1;
+
+			for (int i = length - 1; i >= 0; i--) {
+				byte b1 = (c1 >= 0) ? n1.Digits [c1--] : (byte)0;
+				byte b2 = (c2 >= 0) ? n2.Digits [c2--] : (byte)0;
 				long sum = b1 + b2 + carry;
 				carry = sum >> 8;
+
+				Console.WriteLine (b1 + " + " + b2 + " = " + sum + ", carry = " + carry);
+
 				res.Digits [i] = (byte)(sum & 0xFF);
 			}
 			  
