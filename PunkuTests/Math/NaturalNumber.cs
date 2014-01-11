@@ -155,4 +155,29 @@ public class Math_NaturalNumber
 			12
 		);
 	}
+
+	[Test]
+	public void Add03 ()
+	{
+		// validate add with single carry
+		var n1 = new NaturalNumber ("19", 10);
+		var n2 = new NaturalNumber ("12", 10);
+		Assert.AreEqual (
+			(n1 + n2).ToDecimal (),
+			31
+		);
+	}
+
+	[Test]
+	public void Add04 ()
+	{
+		// FIXME failing
+		// validate add resulting in 1 digit larger number
+		var n1 = new NaturalNumber ("90", 10);
+		var n2 = new NaturalNumber ("30", 10);
+		Assert.AreEqual (
+			(n1 + n2).ToDecimal (),
+			120
+		);
+	}
 }
