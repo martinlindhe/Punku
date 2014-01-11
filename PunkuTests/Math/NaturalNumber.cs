@@ -64,15 +64,25 @@ public class Math_NaturalNumber
 	[Test]
 	public void ToDecimal09 ()
 	{
-		var bb = new NaturalNumber ("11111111", 2);
-		Assert.AreEqual (bb.ToDecimal (), 255);
+		var x = new NaturalNumber ("11111111", 2);
+		Assert.AreEqual (x.ToDecimal (), 255);
 	}
 
 	[Test]
 	public void ToDecimal10 ()
 	{
-		var bb = new NaturalNumber ("FF", 16);
-		Assert.AreEqual (bb.ToDecimal (), 255);
+		var x = new NaturalNumber ("FF", 16);
+		Assert.AreEqual (x.ToDecimal (), 255);
+	}
+
+	[Test]
+	public void ToString01 ()
+	{
+		var x = new NaturalNumber ("123", 10);
+		Assert.AreEqual (
+			x.ToString (),
+			"123"
+		);
 	}
 
 	[Test]
@@ -125,14 +135,24 @@ public class Math_NaturalNumber
 	[Test]
 	public void Add01 ()
 	{
-		// validate add without use of carry
+		// validate add resulting in same-length number
 		var n1 = new NaturalNumber ("435", 10);
 		var n2 = new NaturalNumber ("101", 10);
-		var n3 = n1 + n2;
-
 		Assert.AreEqual (
-			n3.ToDecimal (),
+			(n1 + n2).ToDecimal (),
 			536
+		);
+	}
+
+	[Test]
+	public void Add02 ()
+	{
+		// validate add resulting in 1 digit larger number
+		var n1 = new NaturalNumber ("1", 10);
+		var n2 = new NaturalNumber ("11", 10);
+		Assert.AreEqual (
+			(n1 + n2).ToDecimal (),
+			12
 		);
 	}
 }
