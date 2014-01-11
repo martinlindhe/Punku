@@ -5,11 +5,11 @@ using Punku;
 public static class StringExtensions
 {
 	/**
-	 * repeat the string count times
+	 * @return repeated string count times
 	 */
 	public static string Repeat (this string input, int count)
 	{
-		var builder = new StringBuilder ((input == null ? 0 : input.Length) * count);
+		var builder = new StringBuilder (input.Length * count);
 
 		for (int i = 0; i < count; i++)
 			builder.Append (input);
@@ -31,20 +31,21 @@ public static class StringExtensions
 	}
 
 	/**
-	 * return the number of times letter occurs
+	 * @return the number of times toCount occurs
 	 */
-	public static int Count (this string input, char letter)
+	public static int Count (this string input, char toCount)
 	{
 		int count = 0;
+
 		foreach (char c in input)
-			if (c == letter)
+			if (c == toCount)
 				count++;
 
 		return count;
 	}
 
 	/** 
-	 * true if string only contains 0-9
+	 * @return true if string only contains letters 0-9
 	 */
 	public static bool IsNumbersOnly (this string input)
 	{
@@ -59,7 +60,7 @@ public static class StringExtensions
 	}
 
 	/** 
-	 * true if string only contains 0-9, a-z or A-Z
+	 * @rerurn true if string only contains letters 0-9, a-z or A-Z
 	 */
 	public static bool IsAlphanumeric (this string input)
 	{
@@ -74,7 +75,7 @@ public static class StringExtensions
 	}
 
 	/** 
-	 * true if string is a palindrome, like "racecar"
+	 * @return true if string is a palindrome, like "racecar"
 	 */
 	public static bool IsPalindrome (this string input)
 	{
@@ -112,29 +113,5 @@ public static class StringExtensions
 		}
 
 		return result;
-	}
-
-	/**
-	 * Returns a Base64 encoded representation of the string, converted to UTF-8
-	 */
-	public static string ToBase64 (this string input)
-	{
-		return System.Text.ASCIIEncoding.UTF8.GetBytes (input).ToBase64 ();
-	}
-
-	/**
-	 * Decodes a Base64 string to UTF-8
-	 */
-	public static string FromBase64 (this string input)
-	{
-		return System.Text.ASCIIEncoding.UTF8.GetString (input.FromBase64ToByteArray ());
-	}
-
-	/**
-	 * Decodes a Base64 string to byte[] array
-	 */
-	public static byte[] FromBase64ToByteArray (this string input)
-	{
-		return System.Convert.FromBase64String (input);
 	}
 }

@@ -78,6 +78,7 @@
     <Compile Include="Math\NarcissisticNumber.cs" />
     <Compile Include="Math\NaturalNumber.cs" />
     <Compile Include="Math\Fibonacci.cs" />
+    <Compile Include="Extensions\Base64StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
