@@ -2,4 +2,5 @@
 
 math:
 	NaturalNumber:
-		Add two numbers
+		Subtract two numbers
+

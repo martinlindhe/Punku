@@ -160,12 +160,11 @@ namespace Punku
 
 				// NOTE assumes base 10
 				carry = (sum % 100) / 10;
-				if (sum > 9)
-					sum = sum - 10;
+				sum = (sum % 10);
 
 				//Console.WriteLine (s + sum + ", carry = " + carry);
 
-				res.Digits [i] = (byte)(sum & 0xFF);
+				res.Digits [i] = (byte)sum;
 			}
 
 			return res;
