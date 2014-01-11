@@ -7,6 +7,34 @@ using Punku;
 public class Extensions_ULong
 {
 	[Test]
+	public void CountBits01 ()
+	{
+		ulong x = 1;
+		Assert.AreEqual (x.CountBits (), 1);
+	}
+
+	[Test]
+	public void CountBits02 ()
+	{
+		ulong x = 0;
+		Assert.AreEqual (x.CountBits (), 0);
+	}
+
+	[Test]
+	public void CountBits03 ()
+	{
+		ulong x = 0xFF;
+		Assert.AreEqual (x.CountBits (), 8);
+	}
+
+	[Test]
+	public void CountBits04 ()
+	{
+		ulong x = 0xFFFFF;
+		Assert.AreEqual (x.CountBits (), 20);
+	}
+
+	[Test]
 	public void CountDigits01 ()
 	{
 		ulong x = 1;
