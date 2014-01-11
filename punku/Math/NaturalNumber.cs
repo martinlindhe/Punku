@@ -136,19 +136,16 @@ namespace Punku
 			if (n1.NumberBase != 10 || n2.NumberBase != 10)
 				throw new Exception ("TODO odd base");
 
-
 			var length = (n1.Digits.Length > n2.Digits.Length) ? n1.Digits.Length : n2.Digits.Length;
 
-			// TODO can any two number addition increase the result more than one digit?
+			// NOTE no two numbers can be added that would increase the result more than one digit
 			length++;
 
 			NaturalNumber res = new NaturalNumber (10);
-
-
 			res.Digits = new byte[length];
+
 			Console.WriteLine ("adding " + n1.ToDecimal () + " and " + n2.ToDecimal ());
 			  
-	
 			long carry = 0;
 
 			var c1 = n1.Digits.Length - 1;
@@ -161,8 +158,7 @@ namespace Punku
 
 				string s = b1 + " + " + b2 + " + carry " + carry + " = ";
 
-
-				// NOTE assumes base 10:
+				// NOTE assumes base 10
 				carry = (sum % 100) / 10;
 				if (sum > 9)
 					sum = sum - 10;
@@ -171,19 +167,7 @@ namespace Punku
 
 				res.Digits [i] = (byte)(sum & 0xFF);
 			}
-			  
-			if (carry != 0) {
-				throw new Exception ("carry");
-				// TODO verify this works?!?! it should allocate 1 extra byte at end of buffer
-				// res.Digits [res.Digits.Length] = (byte)(carry);
-				// res.Digits.Length++;
-			}
-			 
-			// TODO hmmm.. it removes padding zeroes ...!??! can this go wrong?
-			/*
-			while (result.Digits.Length > 1 && result.Digits [result.Digits.Length - 1] == 0)
-				result.Digits.Length--;
-*/
+
 			return res;
 		}
 	}
