@@ -128,6 +128,20 @@ public static class ULongExtensions
 	{
 		return !n.IsEven ();
 	}
+
+	/**
+	 * Counts the number of set bits in n
+	 */
+	public static uint CountBits (this ulong n)
+	{
+		// NOTE could be made much faster by creating a lookup table
+		uint cnt = 0;
+
+		for (int i = 0; i <= 63; i++)
+			cnt += (uint)((n >> i) & 1);
+
+		return cnt;
+	}
 }
 
 
