@@ -15,7 +15,7 @@ namespace Punku
 	public class NaturalNumber
 	{
 		public byte[] Digits;
-		protected uint NumberBase;
+		public uint NumberBase;
 
 		public NaturalNumber (uint numberBase = 10)
 		{
@@ -144,7 +144,7 @@ namespace Punku
 			NaturalNumber res = new NaturalNumber (10);
 			res.Digits = new byte[length];
 
-			Console.WriteLine ("adding " + n1.ToDecimal () + " and " + n2.ToDecimal ());
+			//Console.WriteLine ("adding " + n1.ToDecimal () + " and " + n2.ToDecimal ());
 			  
 			long carry = 0;
 
@@ -156,14 +156,14 @@ namespace Punku
 				byte b2 = (c2 >= 0) ? n2.Digits [c2--] : (byte)0;
 				long sum = b1 + b2 + carry;
 
-				string s = b1 + " + " + b2 + " + carry " + carry + " = ";
+				//string s = b1 + " + " + b2 + " + carry " + carry + " = ";
 
 				// NOTE assumes base 10
 				carry = (sum % 100) / 10;
 				if (sum > 9)
 					sum = sum - 10;
 
-				Console.WriteLine (s + sum + ", carry = " + carry);
+				//Console.WriteLine (s + sum + ", carry = " + carry);
 
 				res.Digits [i] = (byte)(sum & 0xFF);
 			}
