@@ -171,7 +171,6 @@ public class Math_NaturalNumber
 	[Test]
 	public void Add04 ()
 	{
-		// FIXME failing
 		// validate add resulting in 1 digit larger number
 		var n1 = new NaturalNumber ("90", 10);
 		var n2 = new NaturalNumber ("30", 10);
