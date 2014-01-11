@@ -157,19 +157,7 @@ public class Extensions_String
 	}
 
 	[Test]
-	public void ToBase64_01 ()
-	{
-		Assert.AreEqual ("pleasure.".ToBase64 (), "cGxlYXN1cmUu");
-	}
-
-	[Test]
-	public void FromBase64_01 ()
-	{
-		Assert.AreEqual ("aGVsbG8=".FromBase64 (), "hello");
-	}
-
-	[Test]
-	public void FromBase_01 ()
+	public void FromBase01 ()
 	{
 		Assert.AreEqual (
 			"1234".FromBase (10),
@@ -178,20 +166,11 @@ public class Extensions_String
 	}
 
 	[Test]
-	public void FromBase_02 ()
+	public void FromBase02 ()
 	{
 		Assert.AreEqual (
 			"1023".FromBase (4),
 			75
-		);
-	}
-
-	[Test]
-	public void FromBase64ToByteArray01 ()
-	{
-		Assert.AreEqual (
-			"AgME".FromBase64ToByteArray (),
-			new byte[] { 2, 3, 4 }
 		);
 	}
 }

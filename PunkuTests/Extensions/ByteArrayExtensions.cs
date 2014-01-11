@@ -110,15 +110,4 @@ public class Extensions_ByteArray
 			new byte[] { (byte)'a', (byte)'b', (byte)'c' }
 		); 
 	}
-
-	[Test]
-	public void ToBase64_01 ()
-	{
-		byte[] x = { 1, 2, 3 };
-
-		Assert.AreEqual (
-			x.ToBase64 (),
-			"AQID"
-		);
-	}
 }

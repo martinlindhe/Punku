@@ -76,6 +76,7 @@
     <Compile Include="Extensions\ULongExtensions.cs" />
     <Compile Include="Math\NarcissisticNumber.cs" />
     <Compile Include="Math\NaturalNumber.cs" />
+    <Compile Include="Extensions\Base64StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />
