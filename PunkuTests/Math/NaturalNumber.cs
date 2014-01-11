@@ -6,11 +6,20 @@ using Punku;
 [Category ("Math")]
 public class Math_NaturalNumber
 {
+	private void VerifyContent (NaturalNumber n)
+	{	
+		// safeguard to see that no invalid values was decoded into the number
+		foreach (var digit in n.Digits)
+			if (digit >= n.NumberBase)
+				throw new Exception ("invalid data");
+	}
+
 	[Test]
 	public void ToDecimal01 ()
 	{
 		var x = new NaturalNumber ("12345");
 		Assert.AreEqual (x.ToDecimal (), 12345);
+		VerifyContent (x);
 	}
 
 	[Test]
@@ -18,6 +27,7 @@ public class Math_NaturalNumber
 	{
 		var x = new NaturalNumber ("00012345");
 		Assert.AreEqual (x.ToDecimal (), 12345);
+		VerifyContent (x);
 	}
 
 	[Test]
@@ -25,6 +35,7 @@ public class Math_NaturalNumber
 	{
 		var x = new NaturalNumber ("0");
 		Assert.AreEqual (x.ToDecimal (), 0);
+		VerifyContent (x);
 	}
 
 	[Test]
@@ -32,18 +43,21 @@ public class Math_NaturalNumber
 	public void ToDecimal04 ()
 	{
 		var x = new NaturalNumber ("");
+		VerifyContent (x);
 	}
 
 	[ExpectedException (typeof(ArgumentOutOfRangeException))]
 	public void ToDecimal05 ()
 	{
 		var x = new NaturalNumber ("1", 1);
+		VerifyContent (x);
 	}
 
 	[ExpectedException (typeof(ArgumentOutOfRangeException))]
 	public void ToDecimal06 ()
 	{
 		var x = new NaturalNumber ("1", 0);
+		VerifyContent (x);
 	}
 
 	[Test]
@@ -51,6 +65,7 @@ public class Math_NaturalNumber
 	{
 		var x = new NaturalNumber ("79228162514264337593543950335");
 		Assert.AreEqual (x.ToDecimal (), Decimal.MaxValue);
+		VerifyContent (x);
 	}
 
 	[Test]
@@ -59,6 +74,7 @@ public class Math_NaturalNumber
 	{
 		var x = new NaturalNumber ("79228162514264337593543950336");
 		x.ToDecimal ();
+		VerifyContent (x);
 	}
 
 	[Test]
@@ -66,6 +82,7 @@ public class Math_NaturalNumber
 	{
 		var x = new NaturalNumber ("11111111", 2);
 		Assert.AreEqual (x.ToDecimal (), 255);
+		VerifyContent (x);
 	}
 
 	[Test]
@@ -73,6 +90,7 @@ public class Math_NaturalNumber
 	{
 		var x = new NaturalNumber ("FF", 16);
 		Assert.AreEqual (x.ToDecimal (), 255);
+		VerifyContent (x);
 	}
 
 	[Test]
@@ -83,6 +101,7 @@ public class Math_NaturalNumber
 			x.ToString (),
 			"123"
 		);
+		VerifyContent (x);
 	}
 
 	[Test]
@@ -93,6 +112,7 @@ public class Math_NaturalNumber
 			x.Digits, 
 			new byte[] { 1, 2, 3 }
 		);
+		VerifyContent (x);
 	}
 
 	[Test]
@@ -103,6 +123,7 @@ public class Math_NaturalNumber
 			x.Digits, 
 			new byte[] { 0 }
 		);
+		VerifyContent (x);
 	}
 
 	[Test]
