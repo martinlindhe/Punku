@@ -16,6 +16,11 @@ namespace Punku
 		public byte[] Digits;
 		protected uint NumberBase;
 
+		public NaturalNumber (uint numberBase = 10)
+		{
+			NumberBase = numberBase;
+		}
+
 		public NaturalNumber (string s, uint numberBase = 10)
 		{
 			NumberBase = numberBase;
@@ -97,16 +102,59 @@ namespace Punku
 		}
 
 		/**
-		 * Overloaded equality operator
+		 * Overloaded EQUAL (==) operator
 		 */
 		public static bool operator == (NaturalNumber n1, NaturalNumber n2)
 		{
 			return n1.Equals (n2);
 		}
 
+		/**
+		 * Overloaded NOT EQUAL (!=) operator
+		 */
 		public static bool operator != (NaturalNumber n1, NaturalNumber n2)
 		{
 			return !(n1.Equals (n2));
+		}
+
+		/**
+		 * Overloaded ADD (+) operator
+		 */
+		public static NaturalNumber operator + (NaturalNumber n1, NaturalNumber n2)
+		{
+			if (n1.NumberBase != 10 || n2.NumberBase != 10)
+				throw new Exception ("TODO odd base");
+
+
+			var length = (n1.Digits.Length > n2.Digits.Length) ? n1.Digits.Length : n2.Digits.Length;
+
+			NaturalNumber res = new NaturalNumber (10);
+			res.Digits = new byte[length];
+			  
+	
+			long carry = 0;
+
+			for (int i = 0; i < res.Digits.Length; i++) {
+				byte b1 = (i < n1.Digits.Length) ? n1.Digits [i] : (byte)0;
+				byte b2 = (i < n2.Digits.Length) ? n2.Digits [i] : (byte)0;
+				long sum = b1 + b2 + carry;
+				carry = sum >> 8;
+				res.Digits [i] = (byte)(sum & 0xFF);
+			}
+			  
+			if (carry != 0) {
+				throw new Exception ("carry");
+				// TODO verify this works?!?! it should allocate 1 extra byte at end of buffer
+				// res.Digits [res.Digits.Length] = (byte)(carry);
+				// res.Digits.Length++;
+			}
+			 
+			// TODO hmmm.. it removes padding zeroes ...!??! can this go wrong?
+			/*
+			while (result.Digits.Length > 1 && result.Digits [result.Digits.Length - 1] == 0)
+				result.Digits.Length--;
+*/
+			return res;
 		}
 	}
 }

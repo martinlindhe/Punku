@@ -102,7 +102,6 @@ public static class StringExtensions
 		if (numberBase > 10)
 			throw new NotImplementedException ("TODO over base10");
 
-
 		foreach (char c in input) {
 
 			byte val = (byte)(c - '0');
