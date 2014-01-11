@@ -76,7 +76,7 @@ public class Math_NaturalNumber
 	}
 
 	[Test]
-	public void Verify01 ()
+	public void Parse01 ()
 	{
 		var x = new NaturalNumber ("123");
 		Assert.AreEqual (
@@ -86,7 +86,7 @@ public class Math_NaturalNumber
 	}
 
 	[Test]
-	public void Verify02 ()
+	public void Parse02 ()
 	{
 		var x = new NaturalNumber ("0");
 		Assert.AreEqual (
@@ -120,5 +120,19 @@ public class Math_NaturalNumber
 		var n1 = new NaturalNumber ("777", 8);
 		var n2 = new NaturalNumber ("777", 8);
 		Assert.AreEqual (n1 == n2, true);
+	}
+
+	[Test]
+	public void Add01 ()
+	{
+		// validate add without use of carry
+		var n1 = new NaturalNumber ("435", 10);
+		var n2 = new NaturalNumber ("101", 10);
+		var n3 = n1 + n2;
+
+		Assert.AreEqual (
+			n3.ToDecimal (),
+			536
+		);
 	}
 }

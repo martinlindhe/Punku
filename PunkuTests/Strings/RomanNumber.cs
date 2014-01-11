@@ -47,4 +47,10 @@ public class Strings_RomanNumber
 	{
 		Assert.AreEqual (Punku.Strings.RomanNumber.RomanToDecimal ("MMMMCMXCIX"), 4999);
 	}
+
+	[Test]
+	public void RomanToDecimal06 ()
+	{
+		Assert.AreEqual (Punku.Strings.RomanNumber.RomanToDecimal ("MCMXCIV"), 1994);
+	}
 }
