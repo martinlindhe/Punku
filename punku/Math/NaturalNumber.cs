@@ -155,7 +155,11 @@ namespace Punku
 				byte b1 = (c1 >= 0) ? n1.Digits [c1--] : (byte)0;
 				byte b2 = (c2 >= 0) ? n2.Digits [c2--] : (byte)0;
 				long sum = b1 + b2 + carry;
-				carry = sum >> 8;
+
+				// FIXME snarare talbas-1
+				carry = (sum > 9) ? -(10 - sum) : 0; 
+				if (sum > 9)
+					sum = sum - 10;
 
 				Console.WriteLine (b1 + " + " + b2 + " = " + sum + ", carry = " + carry);
 
