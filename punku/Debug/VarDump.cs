@@ -8,9 +8,9 @@ namespace Punku
 		/**
 		 * @return pretty-printed JSON representation of the object
 		 */
-		public static string Pretty (this object value)
+		public static void Pretty (this object value)
 		{
-			return JsonConvert.SerializeObject (value, Formatting.Indented);
+			Console.WriteLine (JsonConvert.SerializeObject (value, Formatting.Indented));
 		}
 	}
 }
