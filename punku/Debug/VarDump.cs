@@ -1,15 +1,16 @@
 ﻿using System;
+using Newtonsoft.Json;
 
-//using Newtonsoft.Json;
-public static class ObjectDump
+namespace Punku
 {
-	/**
-		 * Returns a pretty-printed JSON representation of the object
-		 */
-	public static string Dump (this object value)
+	public static class VarDump
 	{
-		return "XXX";
-		//return JsonConvert.SerializeObject (value, Formatting.Indented);
+		/**
+		 * @return pretty-printed JSON representation of the object
+		 */
+		public static string Pretty (this object value)
+		{
+			return JsonConvert.SerializeObject (value, Formatting.Indented);
+		}
 	}
 }
-
