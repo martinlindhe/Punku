@@ -183,11 +183,69 @@ public class Extensions_String
 	}
 
 	[Test]
-	public void ValidUrlHttp ()
+	public void ValidUrlHttp01 ()
 	{
 		Assert.AreEqual (
 			"http://test.com/".IsUrl (), 
 			true);
+	}
+
+	[Test]
+	public void ValidUrlHttp02 ()
+	{
+		Assert.AreEqual (
+			"http:/invalid.com/test".IsUrl (), 
+			false);
+	}
+
+	[Test]
+	public void ValidUrlHttp03 ()
+	{
+		// TODO currently fails
+		Assert.AreEqual (
+			"http://-invalid.leading-char.com".IsUrl (), 
+			false);
+	}
+
+	[Test]
+	public void ValidUrlHttp04 ()
+	{
+		Assert.AreEqual (
+			"http:// invalid with spaces.com".IsUrl (), 
+			false);
+	}
+
+	[Test]
+	public void ValidUrlHttp05 ()
+	{
+		Assert.AreEqual (
+			"x".IsUrl (), 
+			false);
+	}
+
+	[Test]
+	public void ValidUrlHttp06 ()
+	{
+		Assert.AreEqual (
+			"x.x".IsUrl (), 
+			false);
+	}
+
+	[Test]
+	public void ValidUrlHttp07 ()
+	{
+		// TODO currently fails
+		Assert.AreEqual (
+			"x.com".IsUrl (), 
+			false);
+	}
+
+	[Test]
+	public void ValidUrlHttp08 ()
+	{
+		Assert.AreEqual (
+			"http://test.".IsUrl (), 
+			false);
 	}
 
 	[Test]
@@ -280,15 +338,6 @@ http://www.google.se/search?hl=sv&source=hp&q=&btnI=Jag+har+tur&meta=&aq=f&aqi=&
 'HTTP://server.com/aaa@aaa@bbb',
 
 INVALID urls:
-'x',
-'x.com',
-'x.x',
-'http:/invalid.com/test',
-'http://-invalid.leading-char.com',
-'http:// invalid with spaces.com',
-'http://invalid.url-with a.space.com',
-'http://space in url.com/path.php',
 'http://good-domain.com/bad url with space',
-'https://ssl.',   //XXX is detected as valid
 */
 }
