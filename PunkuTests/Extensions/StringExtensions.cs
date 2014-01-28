@@ -267,7 +267,7 @@ public class Extensions_String
 	}
 
 	[Test]
-	public void ValidUrlHttp00 ()
+	public void ValidUrlHttp01 ()
 	{
 		Assert.AreEqual (
 			"http://test.com".IsUrl (), 
@@ -275,7 +275,7 @@ public class Extensions_String
 	}
 
 	[Test]
-	public void ValidUrlHttp01 ()
+	public void ValidUrlHttp02 ()
 	{
 		Assert.AreEqual (
 			"http://test.com/".IsUrl (), 
@@ -283,19 +283,10 @@ public class Extensions_String
 	}
 
 	[Test]
-	public void ValidUrlHttp02 ()
+	public void ValidUrlHttp03 ()
 	{
 		Assert.AreEqual (
 			"http:/invalid.com/test".IsUrl (), 
-			false);
-	}
-
-	[Test]
-	public void ValidUrlHttp03 ()
-	{
-		// TODO test fails
-		Assert.AreEqual (
-			"http://-invalid.leading.char.com".IsUrl (), 
 			false);
 	}
 
@@ -319,15 +310,24 @@ public class Extensions_String
 	public void ValidUrlHttp06 ()
 	{
 		Assert.AreEqual (
-			"x.x".IsUrl (), 
+			"http://test.".IsUrl (), 
 			false);
 	}
 
 	[Test]
 	public void ValidUrlHttp07 ()
 	{
+		// all url:s must start with http or https
 		Assert.AreEqual (
-			"http://test.".IsUrl (), 
+			"x.x".IsUrl (), 
+			false);
+	}
+
+	public void ValidUrlHttp08 ()
+	{
+		// TODO test fails
+		Assert.AreEqual (
+			"http://-invalid.leading.char.com".IsUrl (), 
 			false);
 	}
 
