@@ -75,6 +75,9 @@ public static class StringExtensions
 		return true;
 	}
 
+	/**
+	 * @return true if input is a valid URL
+	 */
 	public static bool IsUrl (this string input)
 	{
 		string regex =
@@ -84,7 +87,7 @@ public static class StringExtensions
 			+ "|"// allows either IP or domain
 			+ @"([0-9a-z_!~*'()-]+\.)*"// tertiary domain(s)- www.
 			+ @"([0-9a-z][0-9a-z-]{0,61})?[0-9a-z]\."// second level domain
-			+ "[a-z]{2,6})"// first level domain- .com or .museum
+			+ "[a-z]{1,6})"// first level domain- .com or .museum
 			+ "(:[0-9]{1,4})?"// port number- :80
 			+ "((/?)|"// a slash isn't required if there is no file name
 			+ "(/[0-9a-z_!~*'().;?:@&=+$,%#-]+)+/?)$";    
@@ -114,6 +117,59 @@ public static class StringExtensions
 				return false;
 
 		return true;
+	}
+
+	/**
+	 * @return true if string is all lower case
+	 */
+	public static bool IsAllLowerCase (this string input)
+	{
+		foreach (char c in input)
+			if (!c.IsLowerCase ())
+				return false;
+
+		return true;
+	}
+
+	/**
+	 * @return true if string is all upper case
+	 */
+	public static bool IsAllUpperCase (this string input)
+	{
+		foreach (char c in input)
+			if (!c.IsUpperCase ())
+				return false;
+
+		return true;
+	}
+
+	/**
+	 * @return true if string has mixed case
+	 */
+	public static bool IsMixedCase (this string input)
+	{
+		bool startFound = false;
+		bool startWasUpper = false;
+
+		foreach (char c in input) {
+			if (!startFound) {
+				startWasUpper = c.IsUpperCase ();
+				startFound = true;
+				continue;
+			} 
+
+			// skip non-letters, which always evaluate to true
+			if (c.IsUpperCase () && c.IsLowerCase ())
+				continue;
+
+			if (c.IsUpperCase () && !startWasUpper)
+				return true;
+
+			if (c.IsLowerCase () && startWasUpper)
+				return true;
+		}
+
+		return false;
 	}
 
 	/**

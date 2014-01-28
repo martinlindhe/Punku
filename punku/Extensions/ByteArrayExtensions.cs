@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Text;
 
 public static class ByteArrayExtensions
@@ -63,6 +64,19 @@ public static class ByteArrayExtensions
 			res [i] = (char)bytes [i];
 
 		return res;
+	}
+
+	/**
+	 * Writes bytes to filename
+	 */
+	public static void ToFile (this byte[] bytes, string filename)
+	{
+		// TODO add unit test
+
+		var stream = new FileStream (filename, FileMode.Create, FileAccess.Write);
+
+		stream.Write (bytes, 0, bytes.Length);
+		stream.Close ();
 	}
 
 	/**
