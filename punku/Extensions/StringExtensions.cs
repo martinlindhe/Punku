@@ -173,6 +173,36 @@ public static class StringExtensions
 	}
 
 	/**
+	 * @return true if string starts with upper case, followed by lower case only
+	 */
+	public static bool StartsWithUpperCase (this string input)
+	{
+
+		bool startFound = false;
+		bool startWasUpper = false;
+
+		foreach (char c in input) {
+
+			if (!startFound) {
+				if (!c.IsUpperCase ())
+					return false;
+
+				startFound = true;
+				continue;
+			}
+
+			// skip non-letters, which always evaluate to true
+			if (c.IsUpperCase () && c.IsLowerCase ())
+				continue;
+
+			if (c.IsUpperCase ())
+				return false;
+		}
+
+		return true;
+	}
+
+	/**
 	 * Decodes a base-x encoded value
 	 */
 	public static ulong FromBase (this string input, uint numberBase)
