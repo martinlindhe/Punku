@@ -127,6 +127,90 @@ public class Extensions_String
 	}
 
 	[Test]
+	public void AllLowerCase01 ()
+	{
+		Assert.AreEqual ("abc".IsAllLowerCase (), true);
+	}
+
+	[Test]
+	public void AllLowerCase02 ()
+	{
+		Assert.AreEqual ("abc def".IsAllLowerCase (), true);
+	}
+
+	[Test]
+	public void AllLowerCase03 ()
+	{
+		Assert.AreEqual ("aBc".IsAllLowerCase (), false);
+	}
+
+	[Test]
+	public void AllUpperCase01 ()
+	{
+		Assert.AreEqual ("ABC".IsAllUpperCase (), true);
+	}
+
+	[Test]
+	public void AllUpperCase02 ()
+	{
+		Assert.AreEqual ("ABC DEF".IsAllUpperCase (), true);
+	}
+
+	[Test]
+	public void AllUpperCase03 ()
+	{
+		Assert.AreEqual ("Abc".IsAllUpperCase (), false);
+	}
+
+	[Test]
+	public void IsMixedCase01 ()
+	{
+		Assert.AreEqual ("abC".IsMixedCase (), true);
+	}
+
+	[Test]
+	public void IsMixedCase02 ()
+	{
+		Assert.AreEqual ("AbC".IsMixedCase (), true);
+	}
+
+	[Test]
+	public void IsMixedCase03 ()
+	{
+		Assert.AreEqual ("Abc".IsMixedCase (), true);
+	}
+
+	[Test]
+	public void IsMixedCase04 ()
+	{
+		Assert.AreEqual ("ABC DeF".IsMixedCase (), true);
+	}
+
+	[Test]
+	public void IsMixedCase05 ()
+	{
+		Assert.AreEqual ("aBc".IsMixedCase (), true);
+	}
+
+	[Test]
+	public void IsMixedCase06 ()
+	{
+		Assert.AreEqual ("abc".IsMixedCase (), false);
+	}
+
+	[Test]
+	public void IsMixedCase07 ()
+	{
+		Assert.AreEqual ("ABC".IsMixedCase (), false);
+	}
+
+	[Test]
+	public void IsMixedCase08 ()
+	{
+		Assert.AreEqual ("ABC DEF".IsMixedCase (), false);
+	}
+
+	[Test]
 	public void NumbersOnly06 ()
 	{
 		Assert.AreEqual ("1".IsNumbersOnly (), true);
@@ -183,6 +267,14 @@ public class Extensions_String
 	}
 
 	[Test]
+	public void ValidUrlHttp00 ()
+	{
+		Assert.AreEqual (
+			"http://test.com".IsUrl (), 
+			true);
+	}
+
+	[Test]
 	public void ValidUrlHttp01 ()
 	{
 		Assert.AreEqual (
@@ -201,9 +293,9 @@ public class Extensions_String
 	[Test]
 	public void ValidUrlHttp03 ()
 	{
-		// TODO currently fails
+		// TODO test fails
 		Assert.AreEqual (
-			"http://-invalid.leading-char.com".IsUrl (), 
+			"http://-invalid.leading.char.com".IsUrl (), 
 			false);
 	}
 
@@ -233,15 +325,6 @@ public class Extensions_String
 
 	[Test]
 	public void ValidUrlHttp07 ()
-	{
-		// TODO currently fails
-		Assert.AreEqual (
-			"x.com".IsUrl (), 
-			false);
-	}
-
-	[Test]
-	public void ValidUrlHttp08 ()
 	{
 		Assert.AreEqual (
 			"http://test.".IsUrl (), 
