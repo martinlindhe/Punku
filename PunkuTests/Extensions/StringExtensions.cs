@@ -85,6 +85,12 @@ public class Extensions_String
 	}
 
 	[Test]
+	public void NumbersOnly06 ()
+	{
+		Assert.AreEqual ("1".IsNumbersOnly (), true);
+	}
+
+	[Test]
 	public void Alphanumeric01 ()
 	{
 		Assert.AreEqual ("".IsAlphanumeric (), false);
@@ -211,9 +217,27 @@ public class Extensions_String
 	}
 
 	[Test]
-	public void NumbersOnly06 ()
+	public void StartsWithUpperCase01 ()
 	{
-		Assert.AreEqual ("1".IsNumbersOnly (), true);
+		Assert.AreEqual ("Hello".StartsWithUpperCase (), true);
+	}
+
+	[Test]
+	public void StartsWithUpperCase02 ()
+	{
+		Assert.AreEqual ("Hello there".StartsWithUpperCase (), true);
+	}
+
+	[Test]
+	public void StartsWithUpperCase03 ()
+	{
+		Assert.AreEqual ("HELLO".StartsWithUpperCase (), false);
+	}
+
+	[Test]
+	public void StartsWithUpperCase04 ()
+	{
+		Assert.AreEqual ("hello".StartsWithUpperCase (), false);
 	}
 
 	[Test]
