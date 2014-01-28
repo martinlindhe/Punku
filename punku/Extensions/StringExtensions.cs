@@ -81,8 +81,8 @@ public static class StringExtensions
 	public static bool IsUrl (this string input)
 	{
 		string regex =
-			"^(https?://)"
-			+ "?(([0-9a-z_!~*'().&=+$%-]+: )?[0-9a-z_!~*'().&=+$%-]+@)?"//user@
+			"^(https?://){1}"
+			+ "(([0-9a-z_!~*'().&=+$%-]+: )?[0-9a-z_!~*'().&=+$%-]+@)?"//user@
 			+ @"(([0-9]{1,3}\.){3}[0-9]{1,3}"// IP- 199.194.52.184
 			+ "|"// allows either IP or domain
 			+ @"([0-9a-z_!~*'()-]+\.)*"// tertiary domain(s)- www.
