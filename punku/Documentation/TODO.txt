@@ -1,6 +1,0 @@
-﻿
-
-math:
-	NaturalNumber:
-		Subtract two numbers
-

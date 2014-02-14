@@ -27,6 +27,7 @@ public class Extensions_String
 	[Test]
 	public void Reverse02 ()
 	{
+		// verify unicode characters are handled correctly (ie not byte-by-byte reversing)
 		Assert.AreEqual ("höger".Reverse (), "regöh");
 	}
 
