@@ -10,5 +10,4 @@ of these implementations.
 
 ## TODO
 
-* move the natural number stuff to own project
-
+ * drop newtonsoft.json, add tiny json serializer and tests insteads

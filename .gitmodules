@@ -1,6 +1,0 @@
-[submodule "External/Newtonsoft.Json"]
-	path = External/Newtonsoft.Json
-	url = https://github.com/JamesNK/Newtonsoft.Json
-[submodule "External/Dapper.NET"]
-	path = External/Dapper.NET
-	url = https://github.com/SamSaffron/dapper-dot-net

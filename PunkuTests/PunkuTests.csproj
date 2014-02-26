@@ -75,7 +75,6 @@
     <Compile Include="Extensions\CharExtensions.cs" />
     <Compile Include="Extensions\ULongExtensions.cs" />
     <Compile Include="Math\NarcissisticNumber.cs" />
-    <Compile Include="Math\NaturalNumber.cs" />
     <Compile Include="Extensions\Base64StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -85,12 +84,12 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System" />
-    <Reference Include="nunit.framework">
-      <HintPath>..\..\nunit-2.9.6.net-4.5\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\punku\Punku.csproj">
+    <ProjectReference Include="..\Punku\Punku.csproj">
       <Project>{09D942E9-3228-4FB0-A1C0-64969E2322BF}</Project>
       <Name>Punku</Name>
     </ProjectReference>

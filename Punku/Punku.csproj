@@ -87,6 +87,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Hash\" />
@@ -97,7 +99,6 @@
     <Folder Include="Extensions\" />
     <Folder Include="Validate\" />
     <Folder Include="Debug\" />
-    <Folder Include="Documentation\" />
     <Folder Include="Math\" />
     <Folder Include="External\" />
     <Folder Include="External\Dapper.NET\" />
