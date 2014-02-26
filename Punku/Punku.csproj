@@ -52,10 +52,6 @@
     <Compile Include="Convert\Volume.cs" />
     <Compile Include="Strings\MorseCode.cs" />
     <Compile Include="Strings\RomanNumber.cs" />
-    <Compile Include="Hash\Sha1.cs" />
-    <Compile Include="Hash\Sha2_256.cs" />
-    <Compile Include="Hash\Sha2_512.cs" />
-    <Compile Include="Hash\Md5.cs" />
     <Compile Include="Geometry\Coordinate.cs" />
     <Compile Include="Strings\Luhn.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
@@ -76,12 +72,15 @@
     <Compile Include="Extensions\CharExtensions.cs" />
     <Compile Include="Extensions\ULongExtensions.cs" />
     <Compile Include="Math\NarcissisticNumber.cs" />
-    <Compile Include="Math\NaturalNumber.cs" />
     <Compile Include="Math\Fibonacci.cs" />
     <Compile Include="Extensions\Base64StringExtensions.cs" />
     <Compile Include="External\Dapper.NET\SqlMapperAsync.cs" />
     <Compile Include="External\Dapper.NET\SqlMapperExtensions.cs" />
     <Compile Include="External\Dapper.NET\SqlMapper.cs" />
+    <Compile Include="Hash\SHA1.cs" />
+    <Compile Include="Hash\SHA2_256.cs" />
+    <Compile Include="Hash\SHA2_512.cs" />
+    <Compile Include="Hash\MD5.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
@@ -104,12 +103,11 @@
     <Folder Include="External\Dapper.NET\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Documentation\TODO.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\External\Newtonsoft.Json\Src\Newtonsoft.Json\Newtonsoft.Json.csproj">
-      <Project>{EEEA67F9-9089-481D-A4DC-0966DEC9FD7D}</Project>
-      <Name>Newtonsoft.Json</Name>
-    </ProjectReference>
+    <None Include="..\README.md">
+      <Link>README.md</Link>
+    </None>
+    <None Include="..\LICENSE">
+      <Link>LICENSE</Link>
+    </None>
   </ItemGroup>
 </Project>
