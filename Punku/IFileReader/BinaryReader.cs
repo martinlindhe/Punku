@@ -3,39 +3,47 @@ using System.IO;
 
 namespace Punku
 {
+	/** 
+	 * Reads binary data from files
+	 */
 	public class BinaryReader : IFileReader
 	{
-		public byte[] Data { get; private set; }
+		public byte[] Data;
 
-		public long Length { get; private set; }
+		public int Length { get { return this.Data.Length; } }
 
 		public BinaryReader (string filename)
 		{
-			Read (filename);
+			this.Data = Read (filename);
 		}
 
 		/**
+		 * Returns file content in a byte array
 		 * NOTE: src.Read() can throw FileNotFoundException
 		 */
-		public void Read (string filename)
+		public static byte[] Read (string filename)
 		{
 			var src = new FileStream (filename, FileMode.Open, FileAccess.Read);
 
-			this.Length = src.Length;
-			this.Data = new byte[this.Length];
-                             
-			var numBytesToRead = this.Length;            
-			var numBytesRead = 0;
-               
-			while (numBytesToRead > 0) {                   
-				int n = src.Read (this.Data, numBytesRead, (int)numBytesToRead);
+			var length = src.Length;
+			var data = new byte[length];
 
-				if (n == 0)
+			var bytesToRead = length;            
+			var totBytesRead = 0;
+
+			while (bytesToRead > 0) {                   
+				int bytesRead = src.Read (data, totBytesRead, (int)bytesToRead);
+
+				if (bytesRead == 0)
 					break;
 
-				numBytesRead += n;
-				numBytesToRead -= n;
+				totBytesRead += bytesRead;
+				bytesToRead -= bytesRead;
 			}
+
+			src.Dispose ();
+
+			return data;
 		}
 	}
 }

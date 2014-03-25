@@ -6,8 +6,10 @@ developed in Mono using OSX and Linux.
 Over 300 unit tests strives to verify the correctness
 of these implementations.
 
+Some parts of the tests will test .NET functionality,
+in an attempt to act as usage by example.
 
 
 ## TODO
 
- * drop newtonsoft.json, add tiny json serializer and tests insteads
+* xxx

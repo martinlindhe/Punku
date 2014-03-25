@@ -79,8 +79,6 @@ namespace Punku.Strings
 			if (!IsValid (s))
 				throw new FormatException ();
 
-			var check = s.Substring (s.Length - 1, 1);
-
 			var ean13 = new Ean13 (s);
 
 			// Country lookup: http://en.wikipedia.org/wiki/List_of_GS1_country_codes

@@ -46,6 +46,7 @@ public class FileReaders
 	public void BitmapDrawPixel01 ()
 	{
 		// Draws a pixel on image, writes as BMP and verifies output
+		// NOTE: we assume a uncompressed 32bpp bitmap will be created
 
 		// TODO verify by more examples: draw line, draw circle, draw polygon, draw letter
 
@@ -62,7 +63,7 @@ public class FileReaders
 		// TODO write tiff directly to memory stream, then decode from stream, instead of to disk in between
 
 
-		var yy = Punku.ImageReader.Read (filename);
+		var yy = Punku.ImageReader.Read (filename); // TODO add ImageReader.Read( MemoryStream )
 		Assert.AreEqual (yy.Width, 3);
 		Assert.AreEqual (yy.Height, 3);
 		yy.Dispose ();
@@ -70,13 +71,26 @@ public class FileReaders
 
 		var data = Punku.BinaryReader.Read (filename);
 
-		// TODO show header & dimensions, split bytes in 3x3 grid etc
 		Assert.AreEqual (data.ToHexString (),
-			"424d5a00000000000000360000002800" +
-			"00000300000003000000010020000000" +
-			"000000000000c40e0000c40e00000000" +
-			"00000000000000000000000000000000" +
-			"00000000000000000000000000000000" +
-			"00ff0000000000000000");
+			"424d" + // header
+			"5a000000" + // file size
+			"00000000" + // reserved
+			"36000000" + // offset
+			"28000000" + // length of BitMapInfoHeader
+			"03000000" + // width
+			"03000000" + // height
+			"0100" + // planes
+			"2000" + // bpp
+			"00000000" + // compression
+			"00000000" + // size of pic in bytes
+			"c40e0000" + // horiz resolution
+			"c40e0000" + // vert resolution
+			"00000000" + // number of used colors
+			"00000000" + // number of important colors
+             // img data
+			"00000000" + "00000000" + "00000000" +
+			"00000000" + "00000000" + "00000000" +
+			"000000ff" + "00000000" + "00000000"
+		);
 	}
 }

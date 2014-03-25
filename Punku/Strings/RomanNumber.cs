@@ -22,7 +22,7 @@ namespace Punku.Strings
 		public static string DecimalToRoman (int value)
 		{
 			if (value > 4999)
-				throw new Exception ("Cannot represent numbers larger than 4999 in plain ASCII");
+				throw new Exception ("Cannot represent numbers larger than 4999");
 
 			List<RomanValue> list = new List<RomanValue> ();
 

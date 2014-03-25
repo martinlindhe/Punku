@@ -9,12 +9,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newtonsoft.Json", "Punku\Ex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newtonsoft.Json.Tests", "Punku\External\Newtonsoft.Json.Tests\Newtonsoft.Json.Tests.csproj", "{CCD1B8C4-7349-409C-A090-A9B9A1ABD981}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testProject", "testProject\testProject.csproj", "{055FFB1D-3BB3-48C6-B004-BEDCA5B4164F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{055FFB1D-3BB3-48C6-B004-BEDCA5B4164F}.Debug|x86.ActiveCfg = Debug|x86
+		{055FFB1D-3BB3-48C6-B004-BEDCA5B4164F}.Debug|x86.Build.0 = Debug|x86
+		{055FFB1D-3BB3-48C6-B004-BEDCA5B4164F}.Release|x86.ActiveCfg = Release|x86
+		{055FFB1D-3BB3-48C6-B004-BEDCA5B4164F}.Release|x86.Build.0 = Release|x86
 		{09D942E9-3228-4FB0-A1C0-64969E2322BF}.Debug|x86.ActiveCfg = Debug|x86
 		{09D942E9-3228-4FB0-A1C0-64969E2322BF}.Debug|x86.Build.0 = Debug|x86
 		{09D942E9-3228-4FB0-A1C0-64969E2322BF}.Release|x86.ActiveCfg = Release|x86
@@ -33,6 +39,6 @@ Global
 		{EEEA67F9-9089-481D-A4DC-0966DEC9FD7D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Punku\Punku.csproj
+		StartupItem = testProject\testProject.csproj
 	EndGlobalSection
 EndGlobal

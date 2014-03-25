@@ -9,6 +9,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>testProject</RootNamespace>
     <AssemblyName>testProject</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,4 +32,16 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="App.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Punku\Punku.csproj">
+      <Project>{09D942E9-3228-4FB0-A1C0-64969E2322BF}</Project>
+      <Name>Punku</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
 </Project>

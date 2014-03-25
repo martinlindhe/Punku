@@ -177,9 +177,7 @@ public static class StringExtensions
 	 */
 	public static bool StartsWithUpperCase (this string input)
 	{
-
 		bool startFound = false;
-		bool startWasUpper = false;
 
 		foreach (char c in input) {
 
