@@ -75,6 +75,7 @@
     <Compile Include="Hash\MD5.cs" />
     <Compile Include="Strings\DottedDecimalNotation.cs" />
     <Compile Include="Network\IPv4.cs" />
+    <Compile Include="Math\FactorSmallNumber.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
