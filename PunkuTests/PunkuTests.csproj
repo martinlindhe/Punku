@@ -80,6 +80,7 @@
     <Compile Include="Strings\DottedDecimalNotation.cs" />
     <Compile Include="Network\IPv4.cs" />
     <Compile Include="Math\FactorSmallNumber.cs" />
+    <Compile Include="Network\EmailAddress.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />

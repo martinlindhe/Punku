@@ -76,6 +76,7 @@
     <Compile Include="Network\IPv4.cs" />
     <Compile Include="Math\FactorSmallNumber.cs" />
     <Compile Include="Hash\SHA2_384.cs" />
+    <Compile Include="Network\EmailAddress.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
