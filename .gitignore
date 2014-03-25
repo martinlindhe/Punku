@@ -2,6 +2,7 @@
 *.dll
 *.exe.mdb
 *.dll.mdb
+*.userprefs
 bin/
 obj/
 .directory
