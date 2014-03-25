@@ -39,6 +39,7 @@
     <Folder Include="Extensions\" />
     <Folder Include="_Resources\" />
     <Folder Include="Math\" />
+    <Folder Include="Network\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IFileReader\FileReaders.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Math\NarcissisticNumber.cs" />
     <Compile Include="Extensions\Base64StringExtensions.cs" />
     <Compile Include="Strings\DottedDecimalNotation.cs" />
+    <Compile Include="Network\IPv4.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />

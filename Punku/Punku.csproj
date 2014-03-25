@@ -74,6 +74,7 @@
     <Compile Include="Hash\SHA2_512.cs" />
     <Compile Include="Hash\MD5.cs" />
     <Compile Include="Strings\DottedDecimalNotation.cs" />
+    <Compile Include="Network\IPv4.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
@@ -95,6 +96,7 @@
     <Folder Include="Math\" />
     <Folder Include="External\" />
     <Folder Include="External\Dapper.NET\" />
+    <Folder Include="Network\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md">
