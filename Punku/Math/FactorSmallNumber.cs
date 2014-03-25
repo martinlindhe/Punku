@@ -1,7 +1,11 @@
-﻿using System;
+﻿/**
+ * toy
+ */
+
+using System;
 using System.Collections.Generic;
 
-namespace Punku
+namespace Punku.Math
 {
 	public class FactorSmallNumber
 	{
@@ -30,4 +34,3 @@ namespace Punku
 		}
 	}
 }
-

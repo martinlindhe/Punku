@@ -117,4 +117,3 @@ public static class ByteArrayExtensions
 		return arr;
 	}
 }
-

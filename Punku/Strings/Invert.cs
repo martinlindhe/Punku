@@ -26,4 +26,3 @@ namespace Punku.Strings
 		}
 	}
 }
-

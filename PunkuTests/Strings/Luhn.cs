@@ -49,4 +49,3 @@ public class Strings_Luhn
 		Assert.AreEqual (Punku.Strings.Luhn.Calculate ("969722774"), 3);
 	}
 }
-

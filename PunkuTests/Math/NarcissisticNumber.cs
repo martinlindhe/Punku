@@ -10,20 +10,20 @@ public class Math_NarcissisticNumber
 	public void IsNarcissisticNumber01 ()
 	{
 		ulong x = 123;
-		Assert.AreEqual (Punku.NarcissisticNumber.IsNarcissisticNumber (x), false);
+		Assert.AreEqual (Punku.Math.NarcissisticNumber.IsNarcissisticNumber (x), false);
 	}
 
 	[Test]
 	public void IsNarcissisticNumber02 ()
 	{
 		ulong x = 8208;
-		Assert.AreEqual (Punku.NarcissisticNumber.IsNarcissisticNumber (x), true);
+		Assert.AreEqual (Punku.Math.NarcissisticNumber.IsNarcissisticNumber (x), true);
 	}
 
 	[Test]
 	public void IsNarcissisticNumber03 ()
 	{
 		ulong x = 32164049651;
-		Assert.AreEqual (Punku.NarcissisticNumber.IsNarcissisticNumber (x), true);
+		Assert.AreEqual (Punku.Math.NarcissisticNumber.IsNarcissisticNumber (x), true);
 	}
 }

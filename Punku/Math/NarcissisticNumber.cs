@@ -7,7 +7,7 @@
 using System;
 using Punku;
 
-namespace Punku
+namespace Punku.Math
 {
 	public class NarcissisticNumber
 	{
@@ -48,4 +48,3 @@ namespace Punku
 		}
 	}
 }
-

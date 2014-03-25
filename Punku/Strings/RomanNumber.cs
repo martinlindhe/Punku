@@ -85,4 +85,3 @@ namespace Punku.Strings
 		}
 	}
 }
-

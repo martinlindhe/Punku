@@ -3,7 +3,7 @@
  */
 using System;
 
-namespace Punku
+namespace Punku.Math
 {
 	public class Fibonacci
 	{
@@ -35,4 +35,3 @@ namespace Punku
 		}
 	}
 }
-

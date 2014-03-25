@@ -18,5 +18,3 @@ public class Strings_MorseCode
 		Assert.AreEqual (Punku.Strings.MorseCode.Encode ("hello world"), ".... . .-.. .-.. ---  .-- --- .-. .-.. -..");
 	}
 }
-
-

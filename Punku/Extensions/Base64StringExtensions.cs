@@ -35,4 +35,3 @@ public static class Base64StringExtensions
 		return System.Convert.FromBase64String (input);
 	}
 }
-

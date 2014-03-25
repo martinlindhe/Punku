@@ -7,4 +7,3 @@ public static class IntExtensions
 		return (i < 0) ? true : false;
 	}
 }
-

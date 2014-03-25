@@ -143,5 +143,3 @@ public static class ULongExtensions
 		return cnt;
 	}
 }
-
-

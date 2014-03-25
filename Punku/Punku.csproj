@@ -58,7 +58,6 @@
     <Compile Include="Strings\StringTransformer.cs" />
     <Compile Include="Extensions\CharArrayExtensions.cs" />
     <Compile Include="Debug\VarDump.cs" />
-    <Compile Include="Hash\Sha2_384.cs" />
     <Compile Include="Extensions\ByteArrayExtensions.cs" />
     <Compile Include="Extensions\IntExtensions.cs" />
     <Compile Include="Extensions\CharExtensions.cs" />
@@ -76,6 +75,7 @@
     <Compile Include="Strings\DottedDecimalNotation.cs" />
     <Compile Include="Network\IPv4.cs" />
     <Compile Include="Math\FactorSmallNumber.cs" />
+    <Compile Include="Hash\SHA2_384.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />

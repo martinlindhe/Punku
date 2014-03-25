@@ -41,4 +41,3 @@ public class Extensions_Char
 		Assert.AreEqual (' '.IsLowerCase (), true);
 	}
 }
-
