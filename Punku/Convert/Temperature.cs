@@ -5,11 +5,10 @@
  * http://en.wikipedia.org/wiki/Conversion_of_units#Temperature
  * http://en.wikipedia.org/wiki/Orders_of_magnitude_%28temperature%29
  *
- * @author Martin Lindhe, 2009-2013 <martin@ubique.se>
+ * @author Martin Lindhe, 2009-2014 <martin@ubique.se>
  */
 using System;
 
-// TODO: decode all SI formats of kelvin
 namespace Punku.Convert
 {
 	public class Temperature
@@ -90,6 +89,7 @@ namespace Punku.Convert
 			case "C":
 			case "celcius":
 			case "centigrade":
+			case "centigrades":
 				return value;
 
 			case "F":
@@ -136,37 +136,37 @@ namespace Punku.Convert
 			// 10^6 K
 			case "MK":
 			case "megakelvin":
-				throw new Exception ();
+				return Temperature.KelvinToCelcius (value * 1000000m);
 
 			// 10^9 K
 			case "GK":
 			case "gigakelvin":
-				throw new Exception ();
+				return Temperature.KelvinToCelcius (value * 1000000000m);
 
 			// 10^12 K
 			case "TK":
 			case "terakelvin":
-				throw new Exception ();
+				return Temperature.KelvinToCelcius (value * 1000000000000m);
 
 			// 10^15 K
 			case "PK":
 			case "petakelvin":
-				throw new Exception ();
+				return Temperature.KelvinToCelcius (value * 1000000000000000m);
 
 			// 10^18 K
 			case "EK":
 			case "exakelvin":
-				throw new Exception ();
+				return Temperature.KelvinToCelcius (value * 1000000000000000000m);
 
 			// 10^21 K
 			case "ZK":
 			case "zettakelvin":
-				throw new Exception ();
+				return Temperature.KelvinToCelcius (value * 1000000000000000000000m);
 
 			// 10^24 K
 			case "YK":
 			case "yottakelvin":
-				throw new Exception ();
+				return Temperature.KelvinToCelcius (value * 1000000000000000000000000m);
 
 			// 10−1 K
 			case "dK":
@@ -186,37 +186,37 @@ namespace Punku.Convert
 			// 10−6 K
 			case "µK":
 			case "microkelvin":
-				throw new Exception ();
+				return Temperature.KelvinToCelcius (value / 1000000m);
 
 			// 10−9 K
 			case "nK":
 			case "nanokelvin":
-				throw new Exception ();
+				return Temperature.KelvinToCelcius (value / 1000000000m);
 
 			// 10−12 K
 			case "pK":
 			case "picokelvin":
-				throw new Exception ();
+				return Temperature.KelvinToCelcius (value / 1000000000000m);
 
 			// 10−15 K 	
 			case "fK":
 			case "femtokelvin":
-				throw new Exception ();
+				return Temperature.KelvinToCelcius (value / 1000000000000000m);
 
 			// 10−18 K
 			case "aK":
 			case "attokelvin":
-				throw new Exception ();
+				return Temperature.KelvinToCelcius (value / 1000000000000000000m);
 
 			// 10−21 K
 			case "zK":
 			case "zeptokelvin":
-				throw new Exception ();
+				return Temperature.KelvinToCelcius (value / 1000000000000000000000m);
 
 			// 10−24 K
 			case "yK":
 			case "yoctokelvin":
-				throw new Exception ();
+				return Temperature.KelvinToCelcius (value / 1000000000000000000000000m);
 			}
 
 			throw new Exception ("from " + format);
@@ -228,6 +228,7 @@ namespace Punku.Convert
 			case "C":
 			case "celcius":
 			case "centigrade":
+			case "centigrades":
 				return c;
 
 			case "F":
