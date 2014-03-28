@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-// TODO: validate input string as "valid roman number"
 namespace Punku.Strings
 {
 	public class RomanValue
@@ -19,6 +18,19 @@ namespace Punku.Strings
 
 	public class RomanNumber
 	{
+		/**
+		 * @return true if s is a valid roman number
+		 */
+		public static bool IsRomanNumber (string s)
+		{
+			foreach (char c in s) {
+				if (c != 'M' && c != 'D' && c != 'C' && c != 'L' && c != 'X' && c != 'V' && c != 'I')
+					return false;
+			}
+
+			return true;
+		}
+
 		public static string DecimalToRoman (int value)
 		{
 			if (value > 4999)
