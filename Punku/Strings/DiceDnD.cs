@@ -3,7 +3,6 @@
  */
 using System;
 
-// TODO rework to a static class as it would fit usage better?
 namespace Punku.Game
 {
 	public class DiceDnD
@@ -47,6 +46,12 @@ namespace Punku.Game
 
 			MinValue = numberOfDices + adjustment;
 			MaxValue = (numberOfDices * numberOfDots) + adjustment;
+		}
+
+		public static int Roll (string cmd)
+		{
+			var dice = new DiceDnD (cmd);
+			return dice.Roll ();
 		}
 
 		public int Roll ()
