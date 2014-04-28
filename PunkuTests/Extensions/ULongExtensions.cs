@@ -169,22 +169,57 @@ public class Extensions_ULong
 	[Test]
 	public static void IsPrime01 ()
 	{
+		ulong x = 0;
+		Assert.AreEqual (x.IsPrime (), false);
+	}
+
+	[Test]
+	public static void IsPrime02 ()
+	{
+		ulong x = 1;
+		Assert.AreEqual (x.IsPrime (), false);
+	}
+
+	[Test]
+	public static void IsPrime03 ()
+	{
+		ulong x = 2;
+		Assert.AreEqual (x.IsPrime (), true);
+	}
+
+	[Test]
+	public static void IsPrime04 ()
+	{
+		ulong x = 3;
+		Assert.AreEqual (x.IsPrime (), true);
+	}
+
+	[Test]
+	public static void IsPrime05 ()
+	{
 		ulong x = 223;
 		Assert.AreEqual (x.IsPrime (), true);
 	}
 
 	[Test]
-	public static void IsPrime02 ()
+	public static void IsPrime06 ()
 	{
 		ulong x = 997;
 		Assert.AreEqual (x.IsPrime (), true);
 	}
 
 	[Test]
-	public static void IsPrime03 ()
+	public static void IsPrime07 ()
 	{
 		ulong x = 100;
 		Assert.AreEqual (x.IsPrime (), false);
+	}
+
+	[Test]
+	public static void IsPrime08 ()
+	{
+		ulong x = 1572174119;
+		Assert.AreEqual (x.IsPrime (), true);
 	}
 
 	[Test]

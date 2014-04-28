@@ -101,13 +101,24 @@ public static class ULongExtensions
 	/**
 	 * @return true if n is a prime
 	 */
-	public static bool IsPrime (this ulong n)
+	public static bool IsPrime (this ulong candidate)
 	{
-		for (ulong j = 2; j < n; j++)
-			if (n % j == 0)
-				return false;
+		// 2 is the only even number prime
+		if ((candidate & 1) == 0) {
+			if (candidate == 2) {
+				return true;
+			}
 
-		return true;
+			return false;
+		}
+
+		for (ulong i = 3; (i * i) <= candidate; i += 2) {
+			if ((candidate % i) == 0) {
+				return false;
+			}
+		}
+
+		return candidate != 1;
 	}
 
 	/**
