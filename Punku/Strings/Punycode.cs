@@ -117,7 +117,7 @@ namespace Punku
 				return false;
 
 			for (int i = 4; i < s.Length; i++) {
-				if (!s [i].IsAsciiLetterOrDigit ()) {
+				if (s [i] != '-' && !s [i].IsAsciiLetterOrDigit ()) {
 					return false;
 				}
 			}

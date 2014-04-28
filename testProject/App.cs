@@ -10,7 +10,9 @@ namespace testProject
 	{
 		public static void Main ()
 		{
-			Log ("res _" + Punku.Strings.DottedDecimalNotation.ToDecimalNotation (0xFF0000) + "_");
+			// Log ("res _" + Punku.Strings.DottedDecimalNotation.ToDecimalNotation (0xFF0000) + "_");
+
+			Log (Punycode.Decode ("xn--ls8h"));
 
 		}
 
