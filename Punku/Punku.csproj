@@ -80,6 +80,7 @@
     <Compile Include="Math\FactorSmallNumber.cs" />
     <Compile Include="Hash\SHA2_384.cs" />
     <Compile Include="Network\EmailAddress.cs" />
+    <Compile Include="Strings\Punycode.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />
