@@ -21,7 +21,7 @@ namespace Punku
  		 * Punycodes a unicode string
  		 *
  		 * @param input Unicode string
- 	     * @return Punycoded string
+		 * @return Punycoded string
  		 */
 		public static string Encode (string input)
 		{
@@ -126,7 +126,7 @@ namespace Punku
 		}
 
 		/**
-         * Decode a punycoded string
+		 * Decode a punycoded string
  		 *
  		 * @param input Punycode string
  		 * @return Unicode string
