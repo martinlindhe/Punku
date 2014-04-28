@@ -76,7 +76,8 @@ public static class StringExtensions
 	}
 
 	/**
-	 * @return true if s is a valid HTTP/HTTPS URL
+	 * @return true if s is a valid HTTP URL
+	 * according to RFC 3986
 	 */
 	public static bool IsUrl (this string s)
 	{

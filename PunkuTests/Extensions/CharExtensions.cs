@@ -30,7 +30,7 @@ public class Extensions_Char
 	[Test]
 	public void IsUpperCase03 ()
 	{
-		// non characters are always false
+		// NOTE non characters are always false
 		Assert.AreEqual (' '.IsUpperCase (), false);
 	}
 
@@ -49,7 +49,43 @@ public class Extensions_Char
 	[Test]
 	public void IsLowerCase03 ()
 	{
-		// non characters are always false
+		// NOTE non characters are always false
 		Assert.AreEqual (' '.IsLowerCase (), false);
+	}
+
+	[Test]
+	public void IsAsciiLetter1 ()
+	{
+		Assert.AreEqual ('o'.IsAsciiLetter (), true);
+	}
+
+	[Test]
+	public void IsAsciiLetter2 ()
+	{
+		Assert.AreEqual ('ö'.IsAsciiLetter (), false);
+	}
+
+	[Test]
+	public void IsAsciiLetter3 ()
+	{
+		Assert.AreEqual ('4'.IsAsciiLetter (), false);
+	}
+
+	[Test]
+	public void IsAsciiDigit1 ()
+	{
+		Assert.AreEqual ('7'.IsAsciiDigit (), true);
+	}
+
+	[Test]
+	public void IsAsciiDigit2 ()
+	{
+		Assert.AreEqual ('f'.IsAsciiDigit (), false);
+	}
+
+	[Test]
+	public void IsAsciiDigit3 ()
+	{
+		Assert.AreEqual ('ö'.IsAsciiDigit (), false);
 	}
 }
