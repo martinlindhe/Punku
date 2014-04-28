@@ -348,9 +348,10 @@ public class Extensions_String
 			false);
 	}
 
+	[Test]
 	public void ValidUrlHttp08 ()
 	{
-		// TODO test fails
+		// NOTE domain names must start with a-z or 0-9
 		Assert.AreEqual (
 			"http://-invalid.leading.char.com".IsUrl (), 
 			false);
@@ -427,25 +428,108 @@ public class Extensions_String
 			"http://test.com:1000/file.php".IsUrl (), 
 			true);
 	}
-	/* valid urls
-http://www.google.se/search?hl=sv&source=hp&q=&btnI=Jag+har+tur&meta=&aq=f&aqi=&aql=&oq=&gs_rfai=
-'https://some-url.com/?query=&name=joe?filter=*.*#some_anchor',
-'http://hh-1hallo.msn.blabla.com:80800/test/test/test.aspx?dd=dd&id=dki',
-'http://web5.uottawa.ca/admingov/reglements-methodes.html',
-'ftp://username:password@example.com:21/file.zip',
-'http://www.esa.int',
-'http://at.activation.com/track/me;1442:PPS35:tta/',
-'http://maps.google.com/maps/geo?ll=11.11,11.11&output=json&key=2sddf-d3d3-d3d3d',
-'http://url.com/path|path2',
-'http://url.net/What\'s%20new%20in%20V4.9a.txt',
-'http://username@server.com/path?arg=value',
-'http://username:password@server.com/path?arg=value',
-'http://digg.com/submit?phase=2&url=http&#37;3A&#37;2F&#37;2Fexample.com%2Fpath%2F2on%2F%3Fdomain%3Dp1&p2=text%3A+string',
-'http://en.wikipedia.org/wiki/Yahoo!',
-'http://server.com/aaa@aaa@bbb',
-'HTTP://server.com/aaa@aaa@bbb',
 
-INVALID urls:
-'http://good-domain.com/bad url with space',
-*/
+	[Test]
+	public void ValidUrl21 ()
+	{
+		Assert.AreEqual (
+			"HTTP://WWW.SERVER.COM/".IsUrl (), 
+			true);
+	}
+
+	[Test]
+	public void ValidUrl22 ()
+	{
+		Assert.AreEqual (
+			"https://some-url.com/?query=&name=joe?filter=*.*#some_anchor".IsUrl (), 
+			true);
+	}
+
+	[Test]
+	public void ValidUrl23 ()
+	{
+		Assert.AreEqual (
+			"http://server.com:9999/".IsUrl (), 
+			true);
+	}
+
+	[Test]
+	public void ValidUrl23c ()
+	{
+		Assert.AreEqual (
+			"http://server.com:30000/".IsUrl (), 
+			true);
+	}
+
+	[Test]
+	public void ValidUrl24 ()
+	{
+		Assert.AreEqual (
+			"http://web5.uottawa.ca/admingov/reglements-methodes.html".IsUrl (), 
+			true);
+	}
+
+	[Test]
+	public void ValidUrl25 ()
+	{
+		Assert.AreEqual (
+			"http://www.esa.int".IsUrl (), 
+			true);
+	}
+
+	[Test]
+	public void ValidUrl26 ()
+	{
+		Assert.AreEqual (
+			"http://at.activation.com/track/me;1442:PPS35:tta/".IsUrl (), 
+			true);
+	}
+
+	[Test]
+	public void ValidUrl27 ()
+	{
+		Assert.AreEqual (
+			"http://maps.google.com/maps/geo?ll=11.11,11.11&output=json&key=2s22-d111-d111".IsUrl (), 
+			true);
+	}
+
+	[Test]
+	public void ValidUrl29 ()
+	{
+		Assert.AreEqual (
+			@"http://url.net/What's%20new%20in%20V2.9a.txt".IsUrl (), 
+			true);
+	}
+
+	[Test]
+	public void ValidUrl32 ()
+	{
+		Assert.AreEqual (
+			"http://server.com/submit?phase=2&url=http&#37;3A&#37;2F&#37;2Fexample.com%2Fpath%2F2on%2F%3Fdomain%3Dp1&p2=text%3A+string".IsUrl (), 
+			true);
+	}
+
+	[Test]
+	public void ValidUrl33 ()
+	{
+		Assert.AreEqual (
+			"http://en.wikipedia.org/wiki/Yahoo!".IsUrl (), 
+			true);
+	}
+
+	[Test]
+	public void ValidUrl34 ()
+	{
+		Assert.AreEqual (
+			"http://server.com/aaa@aaa@bbb".IsUrl (), 
+			true);
+	}
+
+	[Test]
+	public void ValidUrl35 ()
+	{
+		Assert.AreEqual (
+			"http://good-domain.com/bad url with space".IsUrl (), 
+			false);
+	}
 }
