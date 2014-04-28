@@ -29,14 +29,14 @@ Global
 		{55E06305-C6B6-492D-A394-A11238A495CF}.Debug|x86.Build.0 = Debug|x86
 		{55E06305-C6B6-492D-A394-A11238A495CF}.Release|x86.ActiveCfg = Release|x86
 		{55E06305-C6B6-492D-A394-A11238A495CF}.Release|x86.Build.0 = Release|x86
-		{CCD1B8C4-7349-409C-A090-A9B9A1ABD981}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{CCD1B8C4-7349-409C-A090-A9B9A1ABD981}.Debug|x86.Build.0 = Debug|Any CPU
-		{CCD1B8C4-7349-409C-A090-A9B9A1ABD981}.Release|x86.ActiveCfg = Release|Any CPU
-		{CCD1B8C4-7349-409C-A090-A9B9A1ABD981}.Release|x86.Build.0 = Release|Any CPU
-		{EEEA67F9-9089-481D-A4DC-0966DEC9FD7D}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{EEEA67F9-9089-481D-A4DC-0966DEC9FD7D}.Debug|x86.Build.0 = Debug|Any CPU
-		{EEEA67F9-9089-481D-A4DC-0966DEC9FD7D}.Release|x86.ActiveCfg = Release|Any CPU
-		{EEEA67F9-9089-481D-A4DC-0966DEC9FD7D}.Release|x86.Build.0 = Release|Any CPU
+		{CCD1B8C4-7349-409C-A090-A9B9A1ABD981}.Debug|x86.ActiveCfg = Debug|x86
+		{CCD1B8C4-7349-409C-A090-A9B9A1ABD981}.Debug|x86.Build.0 = Debug|x86
+		{CCD1B8C4-7349-409C-A090-A9B9A1ABD981}.Release|x86.ActiveCfg = Release|x86
+		{CCD1B8C4-7349-409C-A090-A9B9A1ABD981}.Release|x86.Build.0 = Release|x86
+		{EEEA67F9-9089-481D-A4DC-0966DEC9FD7D}.Debug|x86.ActiveCfg = Debug|x86
+		{EEEA67F9-9089-481D-A4DC-0966DEC9FD7D}.Debug|x86.Build.0 = Debug|x86
+		{EEEA67F9-9089-481D-A4DC-0966DEC9FD7D}.Release|x86.ActiveCfg = Release|x86
+		{EEEA67F9-9089-481D-A4DC-0966DEC9FD7D}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = testProject\testProject.csproj
