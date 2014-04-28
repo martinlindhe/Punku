@@ -14,19 +14,11 @@ public static class CharExtensions
 
 	public static bool IsUpperCase (this char c)
 	{
-		// TODO recognize åäö etc
-		if (c >= 'a' && c <= 'z')
-			return false;
-
-		return true;
+		return Char.IsUpper (c);
 	}
 
 	public static bool IsLowerCase (this char c)
 	{
-		// TODO recognize ÅÄÖ etc
-		if (c >= 'A' && c <= 'Z')
-			return false;
-
-		return true;
+		return Char.IsLower (c);
 	}
 }

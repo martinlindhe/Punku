@@ -24,8 +24,14 @@ public class Extensions_Char
 	[Test]
 	public void IsUpperCase02 ()
 	{
-		// non characters are always true
-		Assert.AreEqual (' '.IsUpperCase (), true);
+		Assert.AreEqual ('Ö'.IsUpperCase (), true);
+	}
+
+	[Test]
+	public void IsUpperCase03 ()
+	{
+		// non characters are always false
+		Assert.AreEqual (' '.IsUpperCase (), false);
 	}
 
 	[Test]
@@ -37,7 +43,13 @@ public class Extensions_Char
 	[Test]
 	public void IsLowerCase02 ()
 	{
-		// non characters are always true
-		Assert.AreEqual (' '.IsLowerCase (), true);
+		Assert.AreEqual ('ö'.IsLowerCase (), true);
+	}
+
+	[Test]
+	public void IsLowerCase03 ()
+	{
+		// non characters are always false
+		Assert.AreEqual (' '.IsLowerCase (), false);
 	}
 }

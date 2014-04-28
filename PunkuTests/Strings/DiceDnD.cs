@@ -16,8 +16,8 @@ public class Strings_DiceDnD
 	public void Roll1 ()
 	{
 		var d = new Punku.Game.DiceDnD ("2D6");
-		Assert.AreEqual (d.MinValue, 2, "FAIL 1");
-		Assert.AreEqual (d.MaxValue, 12, "FAIL 2"); 
+		Assert.AreEqual (d.MinValue, 2);
+		Assert.AreEqual (d.MaxValue, 12); 
 		RandomCheckRolls (d);
 	}
 
@@ -25,8 +25,8 @@ public class Strings_DiceDnD
 	public void Roll2 ()
 	{
 		var d = new Punku.Game.DiceDnD ("1D8+60");
-		Assert.AreEqual (d.MinValue, 61, "FAIL 3"); 
-		Assert.AreEqual (d.MaxValue, 68, "FAIL 4"); 
+		Assert.AreEqual (d.MinValue, 61); 
+		Assert.AreEqual (d.MaxValue, 68); 
 		RandomCheckRolls (d);
 	}
 
@@ -34,17 +34,17 @@ public class Strings_DiceDnD
 	public void Roll3 ()
 	{
 		var d = new Punku.Game.DiceDnD ("10d2-10");
-		Assert.AreEqual (d.MinValue, 0, "FAIL 5"); 
-		Assert.AreEqual (d.MaxValue, 10, "FAIL 6"); 
+		Assert.AreEqual (d.MinValue, 0); 
+		Assert.AreEqual (d.MaxValue, 10); 
 		RandomCheckRolls (d);    
 	}
 
 	[Test]
-	public void Roll4 ()
+	public void RollStatic1 ()
 	{
 		var d = Punku.Game.DiceDnD.Roll ("10d2-10");
-		Assert.LessOrEqual (10, d, "FAIL 6");  
-		Assert.GreaterOrEqual (0, d, "FAIL 5"); 
+		Assert.GreaterOrEqual (d, 0); 
+		Assert.LessOrEqual (d, 10);  
 	}
 
 	[Test]

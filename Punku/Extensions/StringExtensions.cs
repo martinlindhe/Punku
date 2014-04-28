@@ -120,24 +120,24 @@ public static class StringExtensions
 	}
 
 	/**
-	 * @return true if string is all lower case
+	 * @return true if letters in string is all lower case
 	 */
 	public static bool IsAllLowerCase (this string input)
 	{
 		foreach (char c in input)
-			if (!c.IsLowerCase ())
+			if (Char.IsLetter (c) && !c.IsLowerCase ())
 				return false;
 
 		return true;
 	}
 
 	/**
-	 * @return true if string is all upper case
+	 * @return true if letters in string is all upper case
 	 */
 	public static bool IsAllUpperCase (this string input)
 	{
 		foreach (char c in input)
-			if (!c.IsUpperCase ())
+			if (Char.IsLetter (c) && !c.IsUpperCase ())
 				return false;
 
 		return true;
