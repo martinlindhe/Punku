@@ -23,7 +23,6 @@ public static class ULongExtensions
 	 */
 	public static byte[] Digits (this ulong n, uint numberBase = 10)
 	{
-		// TODO this method should be in NaturalNumber class
 		int count = (int)n.CountDigits (numberBase);
 		byte[] digits = new byte[count];
 
